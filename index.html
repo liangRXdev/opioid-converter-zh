@@ -143,7 +143,7 @@ select:focus, input[type="number"]:focus {
 .feedback-info { background: var(--info-bg); border-left: 3px solid var(--accent); color: #1A5F6E; }
 
 /* Results */
-#resultPanel { display: none; }
+/* 修復：移除 #resultPanel { display: none; }，改由 HTML 行內樣式與 JS 控制 */
 .result-ome {
   background: var(--accent);
   color: #fff;
@@ -377,7 +377,22 @@ select:focus, input[type="number"]:focus {
         </div>
         <div class="col-12 col-sm-3" id="doseInputGroup">
           <label for="inpDose" id="lblDose">劑量 (mg/day)</label>
+          <!-- 一般藥物輸入框 -->
           <input type="number" id="inpDose" placeholder="0" min="0" step="any">
+          <!-- 貼片專用防呆下拉選單 (預設隱藏) -->
+          <select id="selPatchDose" style="display:none;">
+            <option value="">— 選擇貼片規格 —</option>
+            <option value="12">12 mcg/h (或12.5)</option>
+            <option value="25">25 mcg/h</option>
+            <option value="37">37.5 mcg/h (25+12.5)</option>
+            <option value="50">50 mcg/h</option>
+            <option value="62">62.5 mcg/h (50+12.5)</option>
+            <option value="75">75 mcg/h</option>
+            <option value="87">87.5 mcg/h (75+12.5)</option>
+            <option value="100">100 mcg/h</option>
+            <option value="125">125 mcg/h</option>
+            <option value="150">150 mcg/h</option>
+          </select>
         </div>
         <div class="col-12 col-sm-4" id="freqGroup" style="display:none;">
           <label for="inpFreq">每日使用次數</label>
@@ -415,8 +430,8 @@ select:focus, input[type="number"]:focus {
       <div id="errMsg" class="feedback-box feedback-danger mt-2" style="display:none;"></div>
     </div>
 
-    <!-- RESULTS -->
-    <div id="resultPanel" class="tool-card">
+    <!-- RESULTS (加入 style="display:none;" 初始化隱藏) -->
+    <div id="resultPanel" class="tool-card" style="display:none;">
       <div class="section-title">換算結果</div>
 
       <!-- OME display -->
@@ -537,22 +552,13 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.2.0 | 澄清藥劑部</div>
+<div class="version-badge">v1.2.1 | 澄清藥劑部</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — 澄清綜合醫院藥劑部
-// v1.2.0 | Reference: UpToDate + Reddy 2015 (Cancer)
-// OME Conversion factors (to oral morphine mg/day):
-//   Morphine oral: × 1
-//   Morphine IV/SC: × 3
-//   Hydromorphone oral: × 5
-//   Hydromorphone IV/SC: × 25
-//   Oxycodone oral: × 1.5
-//   Codeine oral: × 0.15
-//   Codeine IM: × 0.15 (approx, not recommended IV)
-//   Fentanyl patch: mcg/h × 2 (UpToDate default)
+// v1.2.1 | Added Patch Poka-Yoke & Rendering Fix
 // ============================================================
 
 const DRUGS = {
@@ -566,7 +572,7 @@ const DRUGS = {
   codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）' },
 };
 
-const PATCH_SIZES = [12, 25, 50, 75, 100]; // mcg/h
+const PATCH_SIZES = [12, 25, 50, 75, 100]; // 用於給予標準規格建議
 
 // Tab switching
 document.querySelectorAll('.nav-link[data-tab]').forEach(el => {
@@ -587,15 +593,21 @@ function onDrugChange() {
 
   const lblDose = document.getElementById('lblDose');
   const doseInput = document.getElementById('inpDose');
+  const patchSelect = document.getElementById('selPatchDose');
 
   if (drug.isPatch) {
     lblDose.textContent = '貼片強度 (mcg/h)';
-    doseInput.placeholder = '12 / 25 / 50 / 75 / 100';
-    doseInput.step = '1';
+    // 啟用防呆下拉選單，隱藏文字輸入框
+    doseInput.style.display = 'none';
+    patchSelect.style.display = '';
+    
     document.getElementById('freqGroup').style.display = 'none';
     document.getElementById('inpFreq').value = '1';
   } else {
-    lblDose.textContent = `單次劑量 (mg)`;
+    lblDose.textContent = '單次劑量 (mg)';
+    // 恢復文字輸入框，隱藏下拉選單
+    doseInput.style.display = '';
+    patchSelect.style.display = 'none';
     doseInput.placeholder = '0';
     doseInput.step = '0.1';
     document.getElementById('freqGroup').style.display = '';
@@ -624,40 +636,37 @@ function calculate() {
 
   const drug = DRUGS[key];
   const freq = parseFloat(document.getElementById('inpFreq').value) || 1;
-  let doseInput = parseFloat(document.getElementById('inpDose').value);
+  let doseInput;
 
-  if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
-
-  // For patches, input is already mcg/h (total, not per-dose)
-  const totalDose = drug.isPatch ? doseInput : doseInput * freq;
-
-  // Validate patch size
-  if (drug.isPatch && !PATCH_SIZES.includes(doseInput)) {
-    const validSizes = PATCH_SIZES.join(' / ');
-    showError(`貼片規格建議為：${validSizes} mcg/h。您輸入的 ${doseInput} mcg/h 為非標準規格，計算仍可進行但請注意。`);
+  // 根據藥物類型取得數值 (防呆機制生效區)
+  if (drug.isPatch) {
+    doseInput = parseFloat(document.getElementById('selPatchDose').value);
+    if (isNaN(doseInput)) { showError('請從下拉選單選擇有效的貼片劑量。'); return; }
+  } else {
+    doseInput = parseFloat(document.getElementById('inpDose').value);
+    if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
   }
 
-  // Extreme high dose check
-  const rawOME = drug.toOME(totalDose);
+  // 貼片已經是總劑量 (mcg/h)，非貼片需乘上頻次
+  const totalDose = drug.isPatch ? doseInput : doseInput * freq;
 
-  if (rawOME > 1000) { showError(`劑量過高（OME ${rawOME.toFixed(0)} mg/day）。請確認輸入單位是否正確（mg vs mcg）。`); return; }
+  // 極高劑量防護
+  const rawOME = drug.toOME(totalDose);
+  if (rawOME > 1000) { showError(`劑量過高（OME ${rawOME.toFixed(0)} mg/day）。請確認輸入單位與數值是否正確。`); return; }
 
   const useCrossTol = document.getElementById('toggleCrossTol').checked;
   const crossTolFactor = useCrossTol ? 0.75 : 1.0;
 
-  // If same drug same route, no cross-tolerance reduction needed
-  // OME is the pivot point
   const ome = rawOME;
-  const adjustedOME = ome * (useCrossTol ? 1 : 1); // OME itself doesn't get reduced; target doses do
 
-  // Display
+  // 更新顯示
   document.getElementById('omeValue').textContent = ome.toFixed(1);
   document.getElementById('omeNote').textContent =
     `來源：${drug.label} ${drug.isPatch ? doseInput + ' mcg/h' : totalDose.toFixed(1) + ' mg/day'} → OME`;
 
   document.getElementById('crossTolNote').style.display = useCrossTol ? '' : 'none';
 
-  // Generate result items (exclude source drug from highlights; show all)
+  // 產出各項藥物對應劑量
   const grid = document.getElementById('resultGrid');
   grid.innerHTML = '';
 
@@ -673,7 +682,6 @@ function calculate() {
     const d = DRUGS[dk];
     const rawDose = d.fromOME(ome);
     const adjDose = (dk === key) ? rawDose : rawDose * crossTolFactor;
-
     const isSource = dk === key;
     const card = document.createElement('div');
     card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
@@ -701,7 +709,7 @@ function calculate() {
     grid.appendChild(card);
   });
 
-  // Patch recommendation
+  // Fentanyl 貼片建議邏輯
   const targetPatchDose = DRUGS.fentanyl_patch.fromOME(ome) * crossTolFactor;
   const lower = PATCH_SIZES.filter(s => s <= targetPatchDose).slice(-1)[0];
   const higher = PATCH_SIZES.filter(s => s > targetPatchDose)[0];
@@ -720,16 +728,22 @@ function calculate() {
   patchRecText.innerHTML = ` ${patchRec}`;
   patchRecEl.style.display = key !== 'fentanyl_patch' ? '' : 'none';
 
-  // High dose warning
   document.getElementById('highDoseWarn').style.display = ome > 200 ? '' : 'none';
 
-  document.getElementById('resultPanel').style.display = '';
+  // 顯示結果面板
+  document.getElementById('resultPanel').style.display = 'block';
   document.getElementById('resultPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetForm() {
   document.getElementById('selDrug').value = '';
   document.getElementById('inpDose').value = '';
+  document.getElementById('selPatchDose').value = '';
+  
+  // 恢復預設 UI 狀態
+  document.getElementById('inpDose').style.display = '';
+  document.getElementById('selPatchDose').style.display = 'none';
+  
   document.getElementById('inpFreq').value = '1';
   document.getElementById('freqGroup').style.display = 'none';
   document.getElementById('lblDose').textContent = '劑量 (mg/day)';
@@ -745,7 +759,7 @@ function buildRefTable() {
   const rows = [
     { label: '🩹 Fentanyl 貼片', key: 'fentanyl_patch', custom: PATCH_SIZES.map(p => p + ' mcg/h') },
     { label: 'OME (口服嗎啡等效/24h)', key: null, custom: patchOME.map(v => v.toFixed(0) + ' mg') },
-    null, // divider
+    null,
     { label: 'Morphine 口服 (tab/SR)', key: 'morphine_oral' },
     { label: 'Morphine IV/SC', key: 'morphine_iv_sc' },
     null,
