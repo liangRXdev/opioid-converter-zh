@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鴉片類劑量換算系統 | 澄清藥劑部</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #F5F0E8;
+  --bg-card: #FFFFFF;
+  --accent: #3D7A8A;
+  --accent-hover: #2E6B7A;
+  --accent-light: #E8F4F7;
+  --text-primary: #2C2C2C;
+  --text-muted: #6B7280;
+  --border: #E0D9CE;
+  --danger: #C0392B;
+  --danger-bg: #FCF0EE;
+  --success: #27AE60;
+  --success-bg: #EBF7F1;
+  --warning: #D68910;
+  --warning-bg: #FEF9EC;
+  --info-bg: #E8F4F7;
+  --radius-card: 10px;
+  --radius-input: 5px;
+  --shadow-card: 0 2px 10px rgba(0,0,0,0.07);
+  --transition: 0.2s ease;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg-primary);
+  font-family: 'Noto Sans TC', sans-serif;
+  color: var(--text-primary);
+  font-size: 15px;
+  min-height: 100vh;
+}
+
+.page-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.page-header h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+.page-header .subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-light);
+}
+
+/* Form elements */
+label { font-size: 0.82rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.3rem; }
+select, input[type="number"] {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-input);
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  width: 100%;
+  background: #FAFAFA;
+  color: var(--text-primary);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  min-height: 44px;
+}
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(61,122,138,0.15);
+  background: #fff;
+}
+
+/* Buttons */
+.btn-calc {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-input);
+  padding: 0.65rem 1.5rem;
+  font-size: 1rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  min-height: 44px;
+  width: 100%;
+}
+.btn-calc:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.btn-calc:active { transform: scale(0.98); }
+
+.btn-reset {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-input);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-family: 'Noto Sans TC', sans-serif;
+  cursor: pointer;
+  transition: all var(--transition);
+  min-height: 44px;
+}
+.btn-reset:hover { border-color: var(--text-muted); color: var(--text-primary); }
+
+/* Inline feedback */
+.feedback-box {
+  border-radius: var(--radius-input);
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+.feedback-warn { background: var(--warning-bg); border-left: 3px solid var(--warning); color: #7B5800; }
+.feedback-danger { background: var(--danger-bg); border-left: 3px solid var(--danger); color: var(--danger); }
+.feedback-info { background: var(--info-bg); border-left: 3px solid var(--accent); color: #1A5F6E; }
+
+/* Results */
+#resultPanel { display: none; }
+.result-ome {
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-card);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.result-ome .ome-label { font-size: 0.8rem; opacity: 0.85; margin-bottom: 0.2rem; }
+.result-ome .ome-value {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+.result-ome .ome-unit { font-size: 0.9rem; opacity: 0.85; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.result-item {
+  background: #F8F9FA;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  transition: border-color var(--transition);
+}
+.result-item:hover { border-color: var(--accent); }
+.result-item.highlight {
+  background: var(--accent-light);
+  border-color: var(--accent);
+}
+.result-item .drug-name { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.2rem; }
+.result-item .drug-dose {
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+.result-item .drug-unit { font-size: 0.75rem; color: var(--text-muted); }
+.result-item.patch-item { border-left: 3px solid var(--accent); }
+
+/* Cross tolerance toggle */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--warning-bg);
+  border: 1px solid #F0D070;
+  border-radius: var(--radius-input);
+  margin-top: 1rem;
+}
+.form-check-input:checked { background-color: var(--accent); border-color: var(--accent); }
+
+/* Reference table */
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+.ref-table thead tr { background: var(--accent); color: #fff; }
+.ref-table thead th {
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.ref-table thead th:first-child { text-align: left; }
+.ref-table tbody tr { border-bottom: 1px solid var(--border); }
+.ref-table tbody tr:nth-child(even) { background: #FAFAF8; }
+.ref-table tbody tr:hover { background: var(--accent-light); }
+.ref-table td {
+  padding: 0.55rem 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.ref-table td:first-child {
+  text-align: left;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+.patch-badge {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+}
+
+/* Tabs */
+.nav-tabs { border-bottom: 2px solid var(--border); }
+.nav-tabs .nav-link {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0;
+  transition: color var(--transition);
+}
+.nav-tabs .nav-link:hover { color: var(--accent); }
+.nav-tabs .nav-link.active {
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+  margin-bottom: -2px;
+  background: transparent;
+}
+
+/* Source tags */
+.source-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  background: #EDF2F7;
+  color: var(--text-muted);
+  border-radius: 3px;
+  padding: 1px 5px;
+  font-family: 'JetBrains Mono', monospace;
+  vertical-align: middle;
+  margin-left: 3px;
+}
+
+/* Disclaimer */
+.disclaimer {
+  background: var(--danger-bg);
+  border: 1px solid #F5C6BB;
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.78rem;
+  color: #7A1F10;
+  line-height: 1.6;
+}
+.disclaimer strong { font-weight: 700; }
+
+/* Footer */
+.guideline-footer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 1rem;
+  line-height: 1.7;
+}
+.version-badge {
+  position: fixed;
+  bottom: 12px;
+  right: 14px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(245,240,232,0.9);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  z-index: 100;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .page-header { padding: 0.85rem 1rem; }
+  .tool-card { padding: 1.1rem; }
+  .ref-table { font-size: 0.72rem; }
+  .ref-table td, .ref-table th { padding: 0.45rem 0.4rem; }
+  .ome-value { font-size: 1.6rem !important; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<div class="page-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+  <div>
+    <h1>💊 鴉片類劑量換算系統</h1>
+    <div class="subtitle">Opioid Equianalgesic Dose Converter | 澄清綜合醫院藥劑部</div>
+  </div>
+</div>
+
+<div class="container-lg pb-5" style="max-width: 960px;">
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer mb-3">
+    <strong>⚠ 臨床免責聲明：</strong>
+    本工具僅供臨床決策輔助，所有換算結果為近似值，<strong>不得</strong>取代臨床判斷。
+    跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性），並依病患腎功能、疼痛控制狀態及個別反應調整。
+    高劑量（TDF &gt; 100 mcg/h）或老年病患請更保守換算。
+  </div>
+
+  <!-- TABS -->
+  <ul class="nav nav-tabs mb-0" id="mainTabs">
+    <li class="nav-item"><a class="nav-link active" href="#" data-tab="calc">🔢 劑量換算計算機</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-tab="table">📋 貼片劑量對照表</a></li>
+  </ul>
+
+  <!-- TAB: CALCULATOR -->
+  <div id="tab-calc">
+    <div class="tool-card" style="border-radius: 0 0 10px 10px;">
+      <div class="section-title">輸入目前用藥</div>
+      <div class="row g-3 align-items-end">
+        <div class="col-12 col-sm-5">
+          <label for="selDrug">藥物</label>
+          <select id="selDrug" onchange="onDrugChange()">
+            <option value="">— 選擇藥物 —</option>
+            <optgroup label="Fentanyl 芬太尼">
+              <option value="fentanyl_patch">Fentanyl 貼片 (TDF)</option>
+            </optgroup>
+            <optgroup label="Morphine 嗎啡">
+              <option value="morphine_oral">Morphine 口服 (tab/SR)</option>
+              <option value="morphine_iv_sc">Morphine 靜脈/皮下注射 (IV/SC)</option>
+            </optgroup>
+            <optgroup label="Hydromorphone 氫嗎啡酮">
+              <option value="hydromorphone_oral">Hydromorphone 口服</option>
+              <option value="hydromorphone_iv_sc">Hydromorphone IV/SC</option>
+            </optgroup>
+            <optgroup label="Oxycodone 羥考酮">
+              <option value="oxycodone_oral">Oxycodone 口服</option>
+            </optgroup>
+            <optgroup label="Codeine 可待因">
+              <option value="codeine_oral">Codeine 口服</option>
+              <option value="codeine_im">Codeine IM（僅供參考，臨床少用）</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="col-12 col-sm-3" id="doseInputGroup">
+          <label for="inpDose" id="lblDose">劑量 (mg/day)</label>
+          <input type="number" id="inpDose" placeholder="0" min="0" step="any">
+        </div>
+        <div class="col-12 col-sm-4" id="freqGroup" style="display:none;">
+          <label for="inpFreq">每日使用次數</label>
+          <select id="inpFreq">
+            <option value="1">× 1（持續型 / 貼片）</option>
+            <option value="2">× 2（Q12H）</option>
+            <option value="3">× 3（Q8H）</option>
+            <option value="4">× 4（Q6H）</option>
+            <option value="6">× 6（Q4H）</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cross-tolerance toggle -->
+      <div class="toggle-row mt-3">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="toggleCrossTol" checked>
+          <label class="form-check-label" for="toggleCrossTol" style="font-size:0.85rem; color:#7B5800; font-weight:500;">
+            跨藥物轉換減量 25%（不完全交叉耐受性）
+          </label>
+        </div>
+        <span style="font-size:0.75rem; color:#A08000; margin-left:auto;">UpToDate 建議 25–50%</span>
+      </div>
+
+      <div class="row g-2 mt-3">
+        <div class="col-8 col-sm-5">
+          <button class="btn-calc" onclick="calculate()">計算換算劑量</button>
+        </div>
+        <div class="col-4 col-sm-3">
+          <button class="btn-reset" onclick="resetForm()">清除</button>
+        </div>
+      </div>
+
+      <!-- Inline feedback -->
+      <div id="errMsg" class="feedback-box feedback-danger mt-2" style="display:none;"></div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="resultPanel" class="tool-card">
+      <div class="section-title">換算結果</div>
+
+      <!-- OME display -->
+      <div class="result-ome">
+        <div class="ome-label">口服嗎啡等效劑量 (Oral Morphine Equivalent, OME)</div>
+        <div>
+          <span class="ome-value" id="omeValue">—</span>
+          <span class="ome-unit"> mg / 24h</span>
+        </div>
+        <div id="omeNote" style="font-size:0.75rem; margin-top:0.3rem; opacity:0.85;"></div>
+      </div>
+
+      <!-- Cross-tolerance info -->
+      <div id="crossTolNote" class="feedback-box feedback-warn mb-3" style="display:none;">
+        ⚠ 已套用 25% 不完全交叉耐受性減量。原始等效劑量 × 0.75，建議以此為起始劑量，再依反應調整。
+      </div>
+
+      <!-- Target doses grid -->
+      <div class="section-title mt-1">各藥物換算劑量</div>
+      <div class="result-grid" id="resultGrid"></div>
+
+      <!-- Fentanyl patch recommendation -->
+      <div id="patchRec" class="feedback-box feedback-info mt-1" style="display:none;">
+        <strong>🩹 Fentanyl 貼片建議規格：</strong>
+        <span id="patchRecText"></span>
+      </div>
+
+      <!-- High dose warning -->
+      <div id="highDoseWarn" class="feedback-box feedback-danger mt-2" style="display:none;">
+        <strong>⚠ 高劑量警示：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。
+        建議加強監測，考慮疼痛科或安寧療護會診。
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: REFERENCE TABLE -->
+  <div id="tab-table" style="display:none;">
+    <div class="tool-card" style="border-radius: 0 0 10px 10px; overflow-x: auto;">
+      <div class="section-title">Fentanyl 貼片標準劑量對照表</div>
+      <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom:1rem;">
+        以 Fentanyl 貼片強度為基準，對應各藥物每日劑量。來源：UpToDate (NCCN/CDC 2022) + Reddy et al. 2015 (Cancer)。
+        <span class="source-tag">OME ÷ 2 rule</span>
+        <br>換算前請統一以 OME 為中間值。表中數值為等效起始劑量，轉換時建議減 25–50%。
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="ref-table" id="refTable">
+          <thead>
+            <tr>
+              <th style="text-align:left; min-width:180px;">藥物 / 途徑</th>
+              <th>12 mcg/h</th>
+              <th>25 mcg/h</th>
+              <th>50 mcg/h</th>
+              <th>75 mcg/h</th>
+              <th>100 mcg/h</th>
+            </tr>
+          </thead>
+          <tbody id="refTableBody"></tbody>
+        </table>
+      </div>
+
+      <!-- Reddy 2015 note -->
+      <div class="feedback-box feedback-info mt-3">
+        <strong>Reddy et al. 2015 (Cancer)：</strong>
+        n=101 癌症病患，中位數 ORR from MEDD to TDF (mcg/hr) = <strong>0.4</strong>（即 MEDD ÷ 2.5 = TDF mcg/h）。
+        比傳統 ÷2 公式更保守 20%，建議高劑量轉換（MEDD &gt; 200 mg/day）時採用。
+        Spearman r = 0.77，變異範圍大（−0.02 to 0.04 mg/mg），BMI、albumin 不影響 ORR。
+      </div>
+
+      <!-- Conversion ratio comparison -->
+      <div class="section-title mt-4">各指引 ORR 對照（Morphine oral mg/day → TDF mcg/h）</div>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">來源</th>
+            <th>換算公式</th>
+            <th>100mg OME → TDF</th>
+            <th>備注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Janssen 原廠 PI</td>
+            <td style="font-family:'JetBrains Mono',monospace;">÷ 3 (150:1)</td>
+            <td style="font-family:'JetBrains Mono',monospace;">~33 mcg/h</td>
+            <td>最保守；常導致劑量不足</td>
+          </tr>
+          <tr>
+            <td>UpToDate / NCCN 2026</td>
+            <td style="font-family:'JetBrains Mono',monospace;">÷ 2 (100:1)</td>
+            <td style="font-family:'JetBrains Mono',monospace;">50 mcg/h</td>
+            <td>臨床共識主流；本工具預設</td>
+          </tr>
+          <tr style="background: var(--accent-light);">
+            <td><strong>Reddy 2015 (Cancer)</strong></td>
+            <td style="font-family:'JetBrains Mono',monospace;"><strong>÷ 2.5 (100:1 mg)</strong></td>
+            <td style="font-family:'JetBrains Mono',monospace;"><strong>40 mcg/h</strong></td>
+            <td>最大規模前瞻性換算研究，高劑量建議使用</td>
+          </tr>
+          <tr>
+            <td>Expert consensus (Breitbart 2000)</td>
+            <td style="font-family:'JetBrains Mono',monospace;">÷ 2 (100:1)</td>
+            <td style="font-family:'JetBrains Mono',monospace;">50 mcg/h</td>
+            <td>Round down 如疼痛控制良好</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- GUIDELINE FOOTER -->
+  <footer class="guideline-footer">
+    參考指引：UpToDate Opioid Conversion Table (NCCN 2026 · CDC 2022) ·
+    Reddy A et al. Cancer 2016;122:149-56 ·
+    EAPC Guidelines 2012 · Palliative Care Formulary 6th ed.
+    <br>
+    換算係數：Morphine IV/SC ×3 → Oral · Hydromorphone oral ×5 → OME · Hydromorphone IV/SC ×25 → OME ·
+    Oxycodone oral ×1.5 → OME · Codeine oral ×0.15 → OME
+  </footer>
+</div>
+
+<div class="version-badge">v1.2.0 | 澄清藥劑部</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ============================================================
+// OPIOID CONVERSION TOOL — 澄清綜合醫院藥劑部
+// v1.2.0 | Reference: UpToDate + Reddy 2015 (Cancer)
+// OME Conversion factors (to oral morphine mg/day):
+//   Morphine oral: × 1
+//   Morphine IV/SC: × 3
+//   Hydromorphone oral: × 5
+//   Hydromorphone IV/SC: × 25
+//   Oxycodone oral: × 1.5
+//   Codeine oral: × 0.15
+//   Codeine IM: × 0.15 (approx, not recommended IV)
+//   Fentanyl patch: mcg/h × 2 (UpToDate default)
+// ============================================================
+
+const DRUGS = {
+  fentanyl_patch:        { label: 'Fentanyl 貼片', route: 'transdermal', unit: 'mcg/h',   toOME: d => d * 2,   fromOME: ome => ome / 2,   isPatch: true },
+  morphine_oral:         { label: 'Morphine 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 1,   fromOME: ome => ome / 1 },
+  morphine_iv_sc:        { label: 'Morphine IV/SC', route: 'IV/SC',       unit: 'mg/day',  toOME: d => d * 3,   fromOME: ome => ome / 3 },
+  hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
+  hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
+  oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
+  codeine_oral:          { label: 'Codeine 口服',   route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true },
+  codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）' },
+};
+
+const PATCH_SIZES = [12, 25, 50, 75, 100]; // mcg/h
+
+// Tab switching
+document.querySelectorAll('.nav-link[data-tab]').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelectorAll('.nav-link[data-tab]').forEach(x => x.classList.remove('active'));
+    this.classList.add('active');
+    const tab = this.dataset.tab;
+    document.getElementById('tab-calc').style.display = tab === 'calc' ? '' : 'none';
+    document.getElementById('tab-table').style.display = tab === 'table' ? '' : 'none';
+  });
+});
+
+function onDrugChange() {
+  const key = document.getElementById('selDrug').value;
+  const drug = DRUGS[key];
+  if (!drug) return;
+
+  const lblDose = document.getElementById('lblDose');
+  const doseInput = document.getElementById('inpDose');
+
+  if (drug.isPatch) {
+    lblDose.textContent = '貼片強度 (mcg/h)';
+    doseInput.placeholder = '12 / 25 / 50 / 75 / 100';
+    doseInput.step = '1';
+    document.getElementById('freqGroup').style.display = 'none';
+    document.getElementById('inpFreq').value = '1';
+  } else {
+    lblDose.textContent = `單次劑量 (mg)`;
+    doseInput.placeholder = '0';
+    doseInput.step = '0.1';
+    document.getElementById('freqGroup').style.display = '';
+  }
+  hideResult();
+  hideError();
+}
+
+function showError(msg) {
+  const el = document.getElementById('errMsg');
+  el.textContent = msg;
+  el.style.display = '';
+}
+function hideError() {
+  document.getElementById('errMsg').style.display = 'none';
+}
+function hideResult() {
+  document.getElementById('resultPanel').style.display = 'none';
+}
+
+function calculate() {
+  hideError();
+
+  const key = document.getElementById('selDrug').value;
+  if (!key) { showError('請先選擇藥物。'); return; }
+
+  const drug = DRUGS[key];
+  const freq = parseFloat(document.getElementById('inpFreq').value) || 1;
+  let doseInput = parseFloat(document.getElementById('inpDose').value);
+
+  if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
+
+  // For patches, input is already mcg/h (total, not per-dose)
+  const totalDose = drug.isPatch ? doseInput : doseInput * freq;
+
+  // Validate patch size
+  if (drug.isPatch && !PATCH_SIZES.includes(doseInput)) {
+    const validSizes = PATCH_SIZES.join(' / ');
+    showError(`貼片規格建議為：${validSizes} mcg/h。您輸入的 ${doseInput} mcg/h 為非標準規格，計算仍可進行但請注意。`);
+  }
+
+  // Extreme high dose check
+  const rawOME = drug.toOME(totalDose);
+
+  if (rawOME > 1000) { showError(`劑量過高（OME ${rawOME.toFixed(0)} mg/day）。請確認輸入單位是否正確（mg vs mcg）。`); return; }
+
+  const useCrossTol = document.getElementById('toggleCrossTol').checked;
+  const crossTolFactor = useCrossTol ? 0.75 : 1.0;
+
+  // If same drug same route, no cross-tolerance reduction needed
+  // OME is the pivot point
+  const ome = rawOME;
+  const adjustedOME = ome * (useCrossTol ? 1 : 1); // OME itself doesn't get reduced; target doses do
+
+  // Display
+  document.getElementById('omeValue').textContent = ome.toFixed(1);
+  document.getElementById('omeNote').textContent =
+    `來源：${drug.label} ${drug.isPatch ? doseInput + ' mcg/h' : totalDose.toFixed(1) + ' mg/day'} → OME`;
+
+  document.getElementById('crossTolNote').style.display = useCrossTol ? '' : 'none';
+
+  // Generate result items (exclude source drug from highlights; show all)
+  const grid = document.getElementById('resultGrid');
+  grid.innerHTML = '';
+
+  const DRUG_DISPLAY_ORDER = [
+    'fentanyl_patch',
+    'morphine_oral', 'morphine_iv_sc',
+    'hydromorphone_oral', 'hydromorphone_iv_sc',
+    'oxycodone_oral',
+    'codeine_oral', 'codeine_im'
+  ];
+
+  DRUG_DISPLAY_ORDER.forEach(dk => {
+    const d = DRUGS[dk];
+    const rawDose = d.fromOME(ome);
+    const adjDose = (dk === key) ? rawDose : rawDose * crossTolFactor;
+
+    const isSource = dk === key;
+    const card = document.createElement('div');
+    card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
+
+    let doseDisplay;
+    if (d.isPatch) {
+      doseDisplay = adjDose.toFixed(1);
+    } else if (d.isWeak) {
+      doseDisplay = adjDose.toFixed(0);
+    } else {
+      doseDisplay = adjDose.toFixed(1);
+    }
+
+    let warnHtml = '';
+    if (d.warn) warnHtml = `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.3rem;">${d.warn}</div>`;
+    if (isSource) warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 來源藥物（未減量）</div>`;
+    if (dk === 'codeine_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
+
+    card.innerHTML = `
+      <div class="drug-name">${d.label}${isSource ? ' ✓' : ''}</div>
+      <div class="drug-dose">${doseDisplay}</div>
+      <div class="drug-unit">${d.unit}</div>
+      ${warnHtml}
+    `;
+    grid.appendChild(card);
+  });
+
+  // Patch recommendation
+  const targetPatchDose = DRUGS.fentanyl_patch.fromOME(ome) * crossTolFactor;
+  const lower = PATCH_SIZES.filter(s => s <= targetPatchDose).slice(-1)[0];
+  const higher = PATCH_SIZES.filter(s => s > targetPatchDose)[0];
+
+  let patchRec = '';
+  if (lower && higher) {
+    patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守，疼痛已控制）或 <strong>${higher} mcg/h</strong>（積極，疼痛未控制）。`;
+  } else if (lower) {
+    patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
+  } else {
+    patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
+  }
+
+  const patchRecEl = document.getElementById('patchRec');
+  const patchRecText = document.getElementById('patchRecText');
+  patchRecText.innerHTML = ` ${patchRec}`;
+  patchRecEl.style.display = key !== 'fentanyl_patch' ? '' : 'none';
+
+  // High dose warning
+  document.getElementById('highDoseWarn').style.display = ome > 200 ? '' : 'none';
+
+  document.getElementById('resultPanel').style.display = '';
+  document.getElementById('resultPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetForm() {
+  document.getElementById('selDrug').value = '';
+  document.getElementById('inpDose').value = '';
+  document.getElementById('inpFreq').value = '1';
+  document.getElementById('freqGroup').style.display = 'none';
+  document.getElementById('lblDose').textContent = '劑量 (mg/day)';
+  document.getElementById('inpDose').placeholder = '0';
+  hideError();
+  hideResult();
+}
+
+// Build reference table
+function buildRefTable() {
+  const patchOME = PATCH_SIZES.map(p => DRUGS.fentanyl_patch.toOME(p));
+
+  const rows = [
+    { label: '🩹 Fentanyl 貼片', key: 'fentanyl_patch', custom: PATCH_SIZES.map(p => p + ' mcg/h') },
+    { label: 'OME (口服嗎啡等效/24h)', key: null, custom: patchOME.map(v => v.toFixed(0) + ' mg') },
+    null, // divider
+    { label: 'Morphine 口服 (tab/SR)', key: 'morphine_oral' },
+    { label: 'Morphine IV/SC', key: 'morphine_iv_sc' },
+    null,
+    { label: 'Hydromorphone 口服', key: 'hydromorphone_oral' },
+    { label: 'Hydromorphone IV/SC', key: 'hydromorphone_iv_sc' },
+    null,
+    { label: 'Oxycodone 口服', key: 'oxycodone_oral' },
+    null,
+    { label: 'Codeine 口服', key: 'codeine_oral' },
+    { label: 'Codeine IM ⚠', key: 'codeine_im' },
+  ];
+
+  const tbody = document.getElementById('refTableBody');
+  tbody.innerHTML = '';
+
+  rows.forEach(row => {
+    if (!row) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td colspan="6" style="padding:2px 0; background: var(--bg-primary);"></td>`;
+      tbody.appendChild(tr);
+      return;
+    }
+
+    const tr = document.createElement('tr');
+    let cells = `<td>${row.label}</td>`;
+
+    if (row.custom) {
+      row.custom.forEach((val, i) => {
+        const isHighlight = row.key === 'fentanyl_patch';
+        cells += `<td>${isHighlight ? `<span class="patch-badge">${val}</span>` : `<strong>${val}</strong>`}</td>`;
+      });
+    } else {
+      patchOME.forEach(ome => {
+        const drug = DRUGS[row.key];
+        const dose = drug.fromOME(ome);
+        let display;
+        if (drug.isWeak) {
+          display = dose.toFixed(0) + ' mg';
+        } else {
+          display = dose % 1 === 0 ? dose.toFixed(0) + ' mg' : dose.toFixed(1) + ' mg';
+        }
+        if (row.key === 'codeine_oral' && dose > 400) {
+          display = `<span style="color:var(--danger);">${display} ⚠</span>`;
+        }
+        cells += `<td>${display}</td>`;
+      });
+    }
+
+    tr.innerHTML = cells;
+    tbody.appendChild(tr);
+  });
+}
+
+buildRefTable();
+
+// Allow Enter key to calculate
+document.getElementById('inpDose').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') calculate();
+});
+</script>
+</body>
+</html>
