@@ -369,6 +369,9 @@ select:focus, input[type="number"]:focus {
             <optgroup label="Oxycodone 羥考酮">
               <option value="oxycodone_oral">Oxycodone 口服</option>
             </optgroup>
+            <optgroup label="Tramadol 曲馬多">
+              <option value="tramadol_oral">Tramadol 口服</option>
+            </optgroup>
             <optgroup label="Codeine 可待因">
               <option value="codeine_oral">Codeine 口服</option>
               <option value="codeine_im">Codeine IM（僅供參考，臨床少用）</option>
@@ -513,10 +516,10 @@ select:focus, input[type="number"]:focus {
         </thead>
         <tbody>
           <tr>
-            <td>Janssen 原廠 PI</td>
-            <td style="font-family:'JetBrains Mono',monospace;">÷ 3 (150:1)</td>
-            <td style="font-family:'JetBrains Mono',monospace;">~33 mcg/h</td>
-            <td>最保守；常導致劑量不足</td>
+            <td>Janssen Duragesic® PI</td>
+            <td style="font-family:'JetBrains Mono',monospace;">÷ 3–4（依劑量區間查表）</td>
+            <td style="font-family:'JetBrains Mono',monospace;">25 mcg/h（60–134 mg/d 區間）</td>
+            <td>最保守；按 PI 表查對應區間，非固定公式（Micromedex 2025）</td>
           </tr>
           <tr>
             <td>UpToDate / NCCN 2026</td>
@@ -547,8 +550,8 @@ select:focus, input[type="number"]:focus {
     Reddy A et al. Cancer 2016;122:149-56 ·
     EAPC Guidelines 2012 · Palliative Care Formulary 6th ed.
     <br>
-    換算係數：Morphine IV/SC ×3 → Oral · Hydromorphone oral ×5 → OME · Hydromorphone IV/SC ×25 → OME ·
-    Oxycodone oral ×1.5 → OME · Codeine oral ×0.15 → OME
+    換算係數：Morphine IV/SC ×3 → Oral · Hydromorphone oral ×5 → OME（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25 → OME（UpToDate；NCCN 2026 ×20）·
+    Oxycodone oral ×1.5 → OME · Tramadol oral ×0.1 → OME · Codeine oral ×0.15 → OME · Codeine IM ×0.23 → OME
   </footer>
 </div>
 
@@ -568,8 +571,9 @@ const DRUGS = {
   hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
   hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
   oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
+  tramadol_oral:         { label: 'Tramadol 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.1, fromOME: ome => ome / 0.1,  isWeak: true, warn: '⚠ 前驅藥（CYP2D6 活化）；最大劑量 400 mg/day；腎衰竭需調整（Micromedex 2025）' },
   codeine_oral:          { label: 'Codeine 口服',   route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true },
-  codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）' },
+  codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.23,fromOME: ome => ome / 0.23, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）；IM 等效劑量 130 mg（≠ 口服 200 mg，Micromedex 2025）' },
 };
 
 const PATCH_SIZES = [12, 25, 50, 75, 100]; // 用於給予標準規格建議
@@ -675,6 +679,7 @@ function calculate() {
     'morphine_oral', 'morphine_iv_sc',
     'hydromorphone_oral', 'hydromorphone_iv_sc',
     'oxycodone_oral',
+    'tramadol_oral',
     'codeine_oral', 'codeine_im'
   ];
 
@@ -699,6 +704,9 @@ function calculate() {
     if (d.warn) warnHtml = `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.3rem;">${d.warn}</div>`;
     if (isSource) warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 來源藥物（未減量）</div>`;
     if (dk === 'codeine_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
+    if (dk === 'hydromorphone_oral') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×5（6 mg=30 MME）；NCCN 2026 Table 2 採 ×4（7.5 mg），差異 25%</div>`;
+    if (dk === 'hydromorphone_iv_sc') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×25（1.2 mg=30 MME）；NCCN 2026 採 ×20（1.5 mg），差異 20%</div>`;
+    if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
 
     card.innerHTML = `
       <div class="drug-name">${d.label}${isSource ? ' ✓' : ''}</div>
@@ -767,6 +775,8 @@ function buildRefTable() {
     { label: 'Hydromorphone IV/SC', key: 'hydromorphone_iv_sc' },
     null,
     { label: 'Oxycodone 口服', key: 'oxycodone_oral' },
+    null,
+    { label: 'Tramadol 口服 ⚠', key: 'tramadol_oral' },
     null,
     { label: 'Codeine 口服', key: 'codeine_oral' },
     { label: 'Codeine IM ⚠', key: 'codeine_im' },
