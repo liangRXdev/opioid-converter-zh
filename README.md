@@ -95,7 +95,7 @@
 | 🔴 **避免**（GFR < 30）| Morphine（口服/IV）| M6G 蓄積 → CNS 抑制加重 | Micromedex 2025 |
 | 🔴 **避免**（GFR < 30）| Codeine（口服/IM）| 活性代謝物蓄積 → CNS 毒性 | Micromedex 2025 |
 | 🟡 **減量監測**（GFR < 30）| Hydromorphone（口服/IV）| H3G 蓄積 → 肌陣攣、癲癇 | Micromedex 2025 |
-| 🟡 **減量監測**（GFR < 30）| Tramadol（口服）| 代謝物蓄積 → 癲癇閾值降低 | Micromedex 2025 |
+| 🟡 **減量監測**（GFR < 30）| Tramadol（口服 / IV/IM）| 代謝物蓄積 → 癲癇閾值降低，需延長給藥間隔 | Micromedex 2025 |
 | 🟡 **減量監測**（GFR < 30）| Oxycodone（口服）| 代謝物蓄積 | Micromedex 2025 |
 | 🟢 **可選**（腎衰竭）| Fentanyl（貼片/IV）| 無活性代謝物蓄積 | UpToDate 2026 |
 | 🟢 **首選**（腎衰竭）| Buprenorphine（貼片）| 非腎臟清除；GFR < 15 仍可使用 | UpToDate 2026 |
@@ -107,6 +107,22 @@
 | **癌症疼痛**（NCCN 2026）| 🔴 高劑量警示 | OME > 200 mg/day | 疼痛科 / 安寧療護會診 |
 | **非癌症慢性疼痛**（CDC 2022）| 🟡 注意 | OME ≥ 50 mg/day | 重新評估治療目標與風險效益 |
 | **非癌症慢性疼痛**（CDC 2022）| 🔴 高劑量警示 | OME ≥ 90 mg/day | 強烈建議逐步減量、多模式鎮痛策略 |
+
+### Tramadol 口服 vs IV/IM 換算差異
+
+| 途徑 | 等效劑量（= 30 MME）| 換算因子 | 來源 |
+|------|-------------------|---------|------|
+| **口服** | 300 mg | ×0.1 | Micromedex 2025 |
+| **IV/IM** | ~214 mg（推算）| **×0.14 ⚠ 推算值** | 藥理推算（無主要指引）|
+
+推算依據：Tramadol 口服生體可用率（bioavailability）≈ 70%；IV/IM ≈ 100%。
+換算：oral ×0.1 ÷ 0.70 ≈ **×0.143**，取整為 ×0.14。
+
+> **UpToDate 2026、NCCN 2026、Micromedex 2025 均未明確列出 IV/IM Tramadol 的 MME 換算因子。**
+> 工具內結果已標記「[推算值]」，僅供估算參考，不作為臨床決策主要依據。
+
+**額外不確定性：CYP2D6 多型性**
+Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活性。弱代謝者（poor metabolizer）實際鎮痛效果可能大幅低於計算值，使固定 MME 因子的參考價值進一步降低。
 
 ### Opioid Rotation 減量原則
 
