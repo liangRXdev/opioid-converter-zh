@@ -4,8 +4,7 @@
 
 臨床藥師用途的 Opioid MME（Morphine Milligram Equivalent）換算工具，支援多藥物等效換算、情境切換（癌症 / 非癌症）、腎功能風險提示、Buprenorphine 貼片、Fentanyl IV 輸注，以及跨藥物輪替減量計算。
 
-🔗 **線上使用**：[https://liangrxdev.github.io/opioid-converter-zh/](https://liangrxdev.github.io/opioid-converter-zh/)
-
+ [![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-blue?style=for-the-badge)](https://https://liangrxdev.github.io/opioid-converter-zh/)
 ---
 
 ## 功能特色
