@@ -1,0 +1,26 @@
+{
+  "name": "鴉片類劑量換算系統",
+  "short_name": "OME轉換",
+  "description": "Opioid MME 換算工具，供臨床藥師使用",
+  "lang": "zh-TW",
+  "start_url": "/opioid-converter-zh/",
+  "scope": "/opioid-converter-zh/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#FD7E14",
+  "background_color": "#FD7E14",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

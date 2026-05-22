@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>鴉片類劑量換算系統</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FD7E14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OME轉換">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -645,9 +651,17 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.4.0 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.1 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/opioid-converter-zh/sw.js', { scope: '/opioid-converter-zh/' })
+      .catch(() => {});
+  });
+}
+</script>
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL
