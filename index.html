@@ -409,15 +409,17 @@ select:focus, input[type="number"]:focus {
         </div>
       </div>
 
-      <!-- Cross-tolerance toggle -->
+      <!-- Cross-tolerance select -->
       <div class="toggle-row mt-3">
-        <div class="form-check form-switch mb-0">
-          <input class="form-check-input" type="checkbox" id="toggleCrossTol" checked>
-          <label class="form-check-label" for="toggleCrossTol" style="font-size:0.85rem; color:#7B5800; font-weight:500;">
-            跨藥物轉換減量 25%（不完全交叉耐受性）
-          </label>
-        </div>
-        <span style="font-size:0.75rem; color:#A08000; margin-left:auto;">UpToDate 建議 25–50%</span>
+        <label for="crossTolSelect" style="font-size:0.85rem; color:#7B5800; font-weight:500; margin:0; white-space:nowrap;">
+          跨藥物轉換減量
+        </label>
+        <select id="crossTolSelect" style="font-size:0.85rem; color:#7B5800; background:transparent; border:1px solid #E0C060; border-radius:4px; padding:0.2rem 0.5rem; cursor:pointer; flex:1; max-width:220px;">
+          <option value="0">不減量（疼痛未控制）</option>
+          <option value="25" selected>減量 25%（疼痛已控制）</option>
+          <option value="50">減量 50%（高齡 / 高風險）</option>
+        </select>
+        <span style="font-size:0.75rem; color:#A08000; margin-left:auto; white-space:nowrap;">UpToDate 建議 25–50%</span>
       </div>
 
       <div class="row g-2 mt-3">
@@ -448,9 +450,7 @@ select:focus, input[type="number"]:focus {
       </div>
 
       <!-- Cross-tolerance info -->
-      <div id="crossTolNote" class="feedback-box feedback-warn mb-3" style="display:none;">
-        ⚠ 已套用 25% 不完全交叉耐受性減量。原始等效劑量 × 0.75，建議以此為起始劑量，再依反應調整。
-      </div>
+      <div id="crossTolNote" class="feedback-box feedback-warn mb-3" style="display:none;"></div>
 
       <!-- Target doses grid -->
       <div class="section-title mt-1">各藥物換算劑量</div>
@@ -658,8 +658,8 @@ function calculate() {
   const rawOME = drug.toOME(totalDose);
   if (rawOME > 1000) { showError(`劑量過高（OME ${rawOME.toFixed(0)} mg/day）。請確認輸入單位與數值是否正確。`); return; }
 
-  const useCrossTol = document.getElementById('toggleCrossTol').checked;
-  const crossTolFactor = useCrossTol ? 0.75 : 1.0;
+  const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
+  const crossTolFactor = 1 - crossTolPct / 100;
 
   const ome = rawOME;
 
@@ -668,7 +668,13 @@ function calculate() {
   document.getElementById('omeNote').textContent =
     `來源：${drug.label} ${drug.isPatch ? doseInput + ' mcg/h' : totalDose.toFixed(1) + ' mg/day'} → OME`;
 
-  document.getElementById('crossTolNote').style.display = useCrossTol ? '' : 'none';
+  const crossTolNote = document.getElementById('crossTolNote');
+  if (crossTolPct > 0) {
+    crossTolNote.textContent = `⚠ 已套用 ${crossTolPct}% 不完全交叉耐受性減量。原始等效劑量 × ${crossTolFactor.toFixed(2)}，建議以此為起始劑量，再依反應調整。`;
+    crossTolNote.style.display = '';
+  } else {
+    crossTolNote.style.display = 'none';
+  }
 
   // 產出各項藥物對應劑量
   const grid = document.getElementById('resultGrid');
@@ -753,6 +759,7 @@ function resetForm() {
   document.getElementById('selPatchDose').style.display = 'none';
   
   document.getElementById('inpFreq').value = '1';
+  document.getElementById('crossTolSelect').value = '25';
   document.getElementById('freqGroup').style.display = 'none';
   document.getElementById('lblDose').textContent = '劑量 (mg/day)';
   document.getElementById('inpDose').placeholder = '0';
