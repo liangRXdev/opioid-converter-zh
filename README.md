@@ -38,6 +38,7 @@
 | Hydromorphone | IV / SC | ×25 | UpToDate 2026；NCCN 2026 採 ×20 |
 | Oxycodone | 口服 | ×1.5 | 全來源一致 |
 | Tramadol | 口服 | ×0.1 | 前驅藥（CYP2D6）；最大 400 mg/day |
+| Tramadol | IV/IM | ×0.14 ⚠ | **推算值**（oral ×0.1 ÷ bioavailability 0.70）；無主要指引支持，僅供估算 |
 | Codeine | 口服 | ×0.15 | — |
 | Codeine | IM | ×0.23 | IM 等效劑量 130 mg ≠ 口服 200 mg；臨床已不建議常規 IM 使用 |
 
@@ -133,6 +134,8 @@
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.2 | 2026-05-22 | 新增 Tramadol IV/IM（×0.14，推算值；標記無主要指引支持）|
+| v1.4.1 | 2026-05-22 | PWA 支援：manifest.json、Service Worker、OME Calc 圖示（#FD7E14）|
 | v1.4.0 | 2026-05-22 | 情境切換（癌症 NCCN 2026 / 非癌症 CDC 2022）；腎功能提示標籤；新增 Buprenorphine 貼片（Norspan®）；新增 Fentanyl IV 持續輸注 |
 | v1.3.0 | 2026-05-22 | 多藥物累積清單；Breakthrough dose 計算；複製換算摘要按鈕；跨耐受性三選項（0/25/50%）|
 | v1.2.1 | 2026-05-22 | 修正 Codeine IM 換算因子（×0.15→×0.23）；修正 Janssen PI 標示（÷3→÷3–4）；補充 Hydromorphone 來源差異說明；新增 Tramadol 支援 |
