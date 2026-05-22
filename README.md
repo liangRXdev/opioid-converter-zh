@@ -2,7 +2,7 @@
 
 **Opioid Equianalgesic Dose Converter（繁體中文版）**
 
-臨床藥師用途的 Opioid MME（Morphine Milligram Equivalent）換算工具，支援多藥物等效換算、Fentanyl 貼片劑量對照與跨藥物輪替減量計算。
+臨床藥師用途的 Opioid MME（Morphine Milligram Equivalent）換算工具，支援多藥物等效換算、情境切換（癌症 / 非癌症）、腎功能提示、Buprenorphine 貼片、Fentanyl IV 輸注，以及跨藥物輪替減量計算。
 
 🔗 **線上使用**：[https://liangrxdev.github.io/opioid-converter-zh/](https://liangrxdev.github.io/opioid-converter-zh/)
 
@@ -13,10 +13,12 @@
 | 功能 | 說明 |
 |------|------|
 | **劑量換算計算機** | 輸入目前用藥劑量，即時輸出所有支援藥物的等效 OME 及換算劑量 |
-| **不完全交叉耐受性減量** | 一鍵套用 25% 減量（opioid rotation 標準做法）|
+| **情境切換** | 癌症疼痛（NCCN 2026）vs. 非癌症慢性疼痛（CDC 2022），自動切換警示閾值 |
+| **腎功能注意提示** | 每張結果卡片顯示 🫘 腎衰竭風險標籤（危險 / 注意 / 安全）|
+| **不完全交叉耐受性減量** | 不減量 / 減 25% / 減 50% 三選項（opioid rotation 標準做法）|
 | **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項）|
-| **高劑量警示** | OME > 200 mg/day 自動顯示警示，建議會診 |
-| **貼片劑量對照表** | 以貼片強度為基準，列出所有藥物對應每日劑量 |
+| **高劑量警示** | 癌症：OME > 200 警示；非癌症：≥ 50 注意 / ≥ 90 警示（CDC 2022）|
+| **貼片劑量對照表** | 以 Fentanyl 貼片強度為基準，列出所有藥物對應每日劑量（含 Buprenorphine）|
 | **各指引換算比例比較** | UpToDate / NCCN 2026 / Reddy 2015 / Duragesic PI 並列比較 |
 
 ---
@@ -26,6 +28,8 @@
 | 藥物 | 途徑 | MME 換算因子 | 備注 |
 |------|------|------------|------|
 | Fentanyl 貼片（TDF）| Transdermal | ÷2（mcg/h → mg OME/day）| 使用 UpToDate / NCCN 2026 ÷2 公式 |
+| Buprenorphine 貼片（Norspan®）| Transdermal | ×2.5（20 mcg/h = 50 mg OME）| 規格：5 / 10 / 20 mcg/h |
+| Fentanyl IV 持續輸注 | IV Infusion | ×7.2（mcg/hr → mg OME/day）| 1 mcg/hr × 24h × 0.3 生體可用率 |
 | Morphine | 口服 | ×1（基準）| — |
 | Morphine | IV / SC | ×3 | — |
 | Hydromorphone | 口服 | ×5 | UpToDate 2026；NCCN 2026 採 ×4，差異 25%（見注意事項）|
@@ -87,6 +91,8 @@
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.0 | 2026-05-22 | 情境切換（癌症 NCCN 2026 / 非癌症 CDC 2022）；腎功能提示標籤；新增 Buprenorphine 貼片（Norspan®）；新增 Fentanyl IV 持續輸注 |
+| v1.3.0 | 2026-05-22 | 多藥物累積清單；Breakthrough dose 計算；複製換算摘要按鈕；跨耐受性三選項（0/25/50%）|
 | v1.2.1 | 2026-05-22 | 修正 Codeine IM 換算因子（×0.15→×0.23）；修正 Janssen PI 標示（÷3→÷3–4）；補充 Hydromorphone 來源差異說明；新增 Tramadol 支援 |
 | v1.2.0 | — | 新增 Fentanyl 貼片防呆下拉選單（取代自由輸入）；修正 resultPanel 初始顯示 bug |
 | v1.1.x | — | 加入跨藥物耐受性 toggle；高劑量警示；貼片規格建議邏輯 |
