@@ -2,7 +2,7 @@
 
 **Opioid Equianalgesic Dose Converter（繁體中文版）**
 
-臨床藥師用途的 Opioid MME（Morphine Milligram Equivalent）換算工具，支援多藥物等效換算、情境切換（癌症 / 非癌症）、腎功能提示、Buprenorphine 貼片、Fentanyl IV 輸注，以及跨藥物輪替減量計算。
+臨床藥師用途的 Opioid MME（Morphine Milligram Equivalent）換算工具，支援多藥物等效換算、情境切換（癌症 / 非癌症）、腎功能風險提示、Buprenorphine 貼片、Fentanyl IV 輸注，以及跨藥物輪替減量計算。
 
 🔗 **線上使用**：[https://liangrxdev.github.io/opioid-converter-zh/](https://liangrxdev.github.io/opioid-converter-zh/)
 
@@ -13,11 +13,14 @@
 | 功能 | 說明 |
 |------|------|
 | **劑量換算計算機** | 輸入目前用藥劑量，即時輸出所有支援藥物的等效 OME 及換算劑量 |
+| **多藥物累積清單** | 同時輸入多種藥物，累計總 OME 後統一換算（複合疼痛管理情境）|
 | **情境切換** | 癌症疼痛（NCCN 2026）vs. 非癌症慢性疼痛（CDC 2022），自動切換警示閾值 |
-| **腎功能注意提示** | 每張結果卡片顯示 🫘 腎衰竭風險標籤（危險 / 注意 / 安全）|
-| **不完全交叉耐受性減量** | 不減量 / 減 25% / 減 50% 三選項（opioid rotation 標準做法）|
-| **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項）|
 | **高劑量警示** | 癌症：OME > 200 警示；非癌症：≥ 50 注意 / ≥ 90 警示（CDC 2022）|
+| **腎功能注意提示** | 每張結果卡片顯示 🫘 腎衰竭風險標籤（危險 / 注意 / 安全，Micromedex 2025）|
+| **不完全交叉耐受性減量** | 不減量 / 減 25% / 減 50% 三選項（opioid rotation 標準做法）|
+| **Breakthrough Dose** | 自動計算 PRN 搶救劑量（總 OME × 10–20%，含 Morphine / Hydromorphone / Oxycodone 換算）|
+| **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項）|
+| **複製換算摘要** | 一鍵複製純文字換算報告，可直接貼入病歷或交班記錄 |
 | **貼片劑量對照表** | 以 Fentanyl 貼片強度為基準，列出所有藥物對應每日劑量（含 Buprenorphine）|
 | **各指引換算比例比較** | UpToDate / NCCN 2026 / Reddy 2015 / Duragesic PI 並列比較 |
 
@@ -27,7 +30,7 @@
 
 | 藥物 | 途徑 | MME 換算因子 | 備注 |
 |------|------|------------|------|
-| Fentanyl 貼片（TDF）| Transdermal | ÷2（mcg/h → mg OME/day）| 使用 UpToDate / NCCN 2026 ÷2 公式 |
+| Fentanyl 貼片（TDF）| Transdermal | ÷2（mcg/h → mg OME/day）| UpToDate / NCCN 2026 ÷2 公式 |
 | Buprenorphine 貼片（Norspan®）| Transdermal | ×2.5（20 mcg/h = 50 mg OME）| 規格：5 / 10 / 20 mcg/h |
 | Fentanyl IV 持續輸注 | IV Infusion | ×7.2（mcg/hr → mg OME/day）| 1 mcg/hr × 24h × 0.3 生體可用率 |
 | Morphine | 口服 | ×1（基準）| — |
@@ -64,6 +67,46 @@
 
 > UpToDate 原文聲明：*"Suggested doses for conversion to transdermal fentanyl are LESS CONSERVATIVE than recommendations in the US product labeling."*
 > 高齡、opioid-naïve、高劑量（MEDD > 300 mg/day）患者建議改用 ÷2.5（Reddy 2015）。
+
+### Buprenorphine 貼片換算說明
+
+本工具使用 **×2.5 公式**（20 mcg/h = 50 mg OME/day）：
+
+| Norspan® 規格 | OME 等效 |
+|-------------|---------|
+| 5 mcg/h | 12.5 mg/day |
+| 10 mcg/h | 25 mg/day |
+| 20 mcg/h | 50 mg/day |
+
+> Buprenorphine 為部分 μ 受體促效劑，高劑量時換算不確定性增加。本工具換算因子適用於低至中劑量（≤ 20 mcg/h）；高劑量或從 full agonist 轉換請諮詢疼痛科。
+
+### Fentanyl IV 持續輸注換算說明
+
+換算因子 **×7.2**（1 mcg/hr 持續輸注 ≈ 7.2 mg OME/day）：
+
+計算依據：1 mcg/hr × 24 hr/day × 0.3（IV fentanyl 對應口服嗎啡等效近似值）= 7.2 mg OME/day
+
+> 此為臨床常用近似值，IV fentanyl 個體間藥代動力學差異大，實際換算需結合鎮靜深度評估（如 CPOT / NRS）。
+
+### 腎功能風險分級（本工具採用）
+
+| 風險等級 | 藥物 | 機制 / 臨床意義 | 來源 |
+|---------|------|-------------|------|
+| 🔴 **避免**（GFR < 30）| Morphine（口服/IV）| M6G 蓄積 → CNS 抑制加重 | Micromedex 2025 |
+| 🔴 **避免**（GFR < 30）| Codeine（口服/IM）| 活性代謝物蓄積 → CNS 毒性 | Micromedex 2025 |
+| 🟡 **減量監測**（GFR < 30）| Hydromorphone（口服/IV）| H3G 蓄積 → 肌陣攣、癲癇 | Micromedex 2025 |
+| 🟡 **減量監測**（GFR < 30）| Tramadol（口服）| 代謝物蓄積 → 癲癇閾值降低 | Micromedex 2025 |
+| 🟡 **減量監測**（GFR < 30）| Oxycodone（口服）| 代謝物蓄積 | Micromedex 2025 |
+| 🟢 **可選**（腎衰竭）| Fentanyl（貼片/IV）| 無活性代謝物蓄積 | UpToDate 2026 |
+| 🟢 **首選**（腎衰竭）| Buprenorphine（貼片）| 非腎臟清除；GFR < 15 仍可使用 | UpToDate 2026 |
+
+### 情境切換閾值說明
+
+| 情境 | 警示等級 | 閾值 | 建議動作 |
+|------|---------|------|---------|
+| **癌症疼痛**（NCCN 2026）| 🔴 高劑量警示 | OME > 200 mg/day | 疼痛科 / 安寧療護會診 |
+| **非癌症慢性疼痛**（CDC 2022）| 🟡 注意 | OME ≥ 50 mg/day | 重新評估治療目標與風險效益 |
+| **非癌症慢性疼痛**（CDC 2022）| 🔴 高劑量警示 | OME ≥ 90 mg/day | 強烈建議逐步減量、多模式鎮痛策略 |
 
 ### Opioid Rotation 減量原則
 
