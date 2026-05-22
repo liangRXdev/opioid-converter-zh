@@ -356,6 +356,23 @@ select:focus, input[type="number"]:focus {
   transition: all var(--transition);
 }
 .btn-copy:hover { background: var(--accent); color: #fff; }
+
+/* Context row */
+.context-row {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  background: #EEF2FF; border: 1px solid #C7D2FE;
+  border-radius: var(--radius-input); margin-top: 0.75rem;
+}
+
+/* Medium / caution feedback */
+.feedback-caution { background: #FFF3E0; border-left: 3px solid #F57C00; color: #7B3F00; }
+
+/* Renal flag tag */
+.renal-flag {
+  font-size: 0.67rem; border-radius: 3px;
+  padding: 0.1rem 0.35rem; margin-top: 0.3rem; display: inline-block;
+}
 </style>
 </head>
 <body>
@@ -413,6 +430,12 @@ select:focus, input[type="number"]:focus {
               <option value="codeine_oral">Codeine 口服</option>
               <option value="codeine_im">Codeine IM（僅供參考，臨床少用）</option>
             </optgroup>
+            <optgroup label="Buprenorphine 丁基原啡因">
+              <option value="buprenorphine_td">Buprenorphine 貼片 (TDB, Norspan®)</option>
+            </optgroup>
+            <optgroup label="Fentanyl 靜脈注射">
+              <option value="fentanyl_iv">Fentanyl IV 持續輸注</option>
+            </optgroup>
           </select>
         </div>
         <div class="col-12 col-sm-3" id="doseInputGroup">
@@ -444,6 +467,16 @@ select:focus, input[type="number"]:focus {
             <option value="6">× 6（Q4H）</option>
           </select>
         </div>
+      </div>
+
+      <!-- Clinical context select -->
+      <div class="context-row mt-3">
+        <label for="clinicContext" style="font-size:0.85rem; color:#3730A3; font-weight:500; margin:0; white-space:nowrap;">情境</label>
+        <select id="clinicContext" style="font-size:0.85rem; color:#3730A3; background:transparent; border:1px solid #C7D2FE; border-radius:4px; padding:0.2rem 0.5rem; cursor:pointer; flex:1; max-width:240px;">
+          <option value="cancer">癌症疼痛（NCCN 2026）</option>
+          <option value="noncancer">非癌症慢性疼痛（CDC 2022）</option>
+        </select>
+        <span id="contextNote" style="font-size:0.72rem; color:#4338CA; margin-left:auto; white-space:nowrap;">OME &gt; 200 警示</span>
       </div>
 
       <!-- Cross-tolerance select -->
@@ -506,10 +539,11 @@ select:focus, input[type="number"]:focus {
         <span id="patchRecText"></span>
       </div>
 
-      <!-- High dose warning -->
-      <div id="highDoseWarn" class="feedback-box feedback-danger mt-2" style="display:none;">
-        <strong>⚠ 高劑量警示：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。
-        建議加強監測，考慮疼痛科或安寧療護會診。
+      <!-- High dose warning (context-aware, text set by JS) -->
+      <div id="highDoseWarn" class="feedback-box feedback-danger mt-2" style="display:none;"></div>
+      <!-- Medium dose caution (non-cancer CDC 2022 ≥50 MME) -->
+      <div id="highDoseWarnMedium" class="feedback-box feedback-caution mt-2" style="display:none;">
+        <strong>⚠ 劑量注意（CDC 2022）：</strong> OME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。
       </div>
 
       <!-- Breakthrough dose -->
@@ -605,24 +639,27 @@ select:focus, input[type="number"]:focus {
     Reddy A et al. Cancer 2016;122:149-56 ·
     EAPC Guidelines 2012 · Palliative Care Formulary 6th ed.
     <br>
-    換算係數：Morphine IV/SC ×3 → Oral · Hydromorphone oral ×5 → OME（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25 → OME（UpToDate；NCCN 2026 ×20）·
-    Oxycodone oral ×1.5 → OME · Tramadol oral ×0.1 → OME · Codeine oral ×0.15 → OME · Codeine IM ×0.23 → OME
+    換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25（UpToDate；NCCN 2026 ×20）·
+    Oxycodone oral ×1.5 · Tramadol oral ×0.1 · Codeine oral ×0.15 · Codeine IM ×0.23 ·
+    Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×7.2（mcg/hr 換算 mg OME/day）
   </footer>
 </div>
 
-<div class="version-badge">v1.3.0 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.0 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL
-// v1.3.0 | Multi-drug list, Breakthrough dose, Copy summary
+// v1.4.0 | Cancer/non-cancer context, renal flags, Buprenorphine TD, IV Fentanyl
 // ============================================================
 
 let drugList = []; // { key, label, doseLabel, ome }
 
 const DRUGS = {
   fentanyl_patch:        { label: 'Fentanyl 貼片', route: 'transdermal', unit: 'mcg/h',   toOME: d => d * 2,   fromOME: ome => ome / 2,   isPatch: true },
+  buprenorphine_td:      { label: 'Buprenorphine 貼片', route: 'transdermal', unit: 'mcg/h', toOME: d => d * 2.5, fromOME: ome => ome / 2.5, isPatch: true, isBupPatch: true },
+  fentanyl_iv:           { label: 'Fentanyl IV 持續輸注', route: 'IV', unit: 'mcg/hr',    toOME: d => d * 7.2, fromOME: ome => ome / 7.2,  isIVInfusion: true },
   morphine_oral:         { label: 'Morphine 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 1,   fromOME: ome => ome / 1 },
   morphine_iv_sc:        { label: 'Morphine IV/SC', route: 'IV/SC',       unit: 'mg/day',  toOME: d => d * 3,   fromOME: ome => ome / 3 },
   hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
@@ -633,7 +670,23 @@ const DRUGS = {
   codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.23,fromOME: ome => ome / 0.23, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）；IM 等效劑量 130 mg（≠ 口服 200 mg，Micromedex 2025）' },
 };
 
-const PATCH_SIZES = [12, 25, 50, 75, 100]; // 用於給予標準規格建議
+const PATCH_SIZES = [12, 25, 50, 75, 100]; // fentanyl patch sizes for reference table
+const BUP_PATCH_SIZES = [5, 10, 20];       // Norspan® mcg/h
+
+// Renal adjustment flags (Micromedex 2025 / UpToDate 2026)
+const RENAL_FLAGS = {
+  morphine_oral:       { level: 'danger',  note: 'GFR<30：M6G 蓄積 → CNS 毒性，避免使用（Micromedex 2025）' },
+  morphine_iv_sc:      { level: 'danger',  note: 'GFR<30：M6G 蓄積 → CNS 毒性，避免使用（Micromedex 2025）' },
+  hydromorphone_oral:  { level: 'caution', note: 'GFR<30：H3G 蓄積 → 神經毒性（肌陣攣），減量並監測（Micromedex 2025）' },
+  hydromorphone_iv_sc: { level: 'caution', note: 'GFR<30：H3G 蓄積 → 神經毒性（肌陣攣），減量並監測（Micromedex 2025）' },
+  codeine_oral:        { level: 'danger',  note: 'GFR<30：活性代謝物蓄積 → CNS 毒性，應避免（Micromedex 2025）' },
+  codeine_im:          { level: 'danger',  note: 'GFR<30：活性代謝物蓄積 → CNS 毒性，應避免（Micromedex 2025）' },
+  tramadol_oral:       { level: 'caution', note: 'GFR<30：代謝物蓄積 → 癲癇閾值降低，需延長給藥間隔（Micromedex 2025）' },
+  oxycodone_oral:      { level: 'caution', note: 'GFR<30：代謝物蓄積，建議減量（Micromedex 2025）' },
+  fentanyl_patch:      { level: 'ok',      note: '腎衰竭可選：無活性代謝物蓄積（UpToDate 2026）' },
+  fentanyl_iv:         { level: 'ok',      note: '腎衰竭可選：無活性代謝物蓄積（UpToDate 2026）' },
+  buprenorphine_td:    { level: 'ok',      note: '腎衰竭首選：非腎臟清除，GFR<15 仍可使用（UpToDate 2026）' },
+};
 
 // Tab switching
 document.querySelectorAll('.nav-link[data-tab]').forEach(el => {
@@ -647,6 +700,27 @@ document.querySelectorAll('.nav-link[data-tab]').forEach(el => {
   });
 });
 
+function populatePatchOptions(type) {
+  const sel = document.getElementById('selPatchDose');
+  sel.innerHTML = '<option value="">— 選擇貼片規格 —</option>';
+  if (type === 'bup') {
+    BUP_PATCH_SIZES.forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s; opt.textContent = `${s} mcg/h (Norspan®)`;
+      sel.appendChild(opt);
+    });
+  } else {
+    [[12,'12 mcg/h (或12.5)'],[25,'25 mcg/h'],[37,'37.5 mcg/h (25+12.5)'],
+     [50,'50 mcg/h'],[62,'62.5 mcg/h (50+12.5)'],[75,'75 mcg/h'],
+     [87,'87.5 mcg/h (75+12.5)'],[100,'100 mcg/h'],[125,'125 mcg/h'],[150,'150 mcg/h']]
+    .forEach(([v,t]) => {
+      const opt = document.createElement('option');
+      opt.value = v; opt.textContent = t;
+      sel.appendChild(opt);
+    });
+  }
+}
+
 function onDrugChange() {
   const key = document.getElementById('selDrug').value;
   const drug = DRUGS[key];
@@ -658,15 +732,21 @@ function onDrugChange() {
 
   if (drug.isPatch) {
     lblDose.textContent = '貼片強度 (mcg/h)';
-    // 啟用防呆下拉選單，隱藏文字輸入框
     doseInput.style.display = 'none';
     patchSelect.style.display = '';
-    
+    populatePatchOptions(drug.isBupPatch ? 'bup' : 'fentanyl');
+    document.getElementById('freqGroup').style.display = 'none';
+    document.getElementById('inpFreq').value = '1';
+  } else if (drug.isIVInfusion) {
+    lblDose.textContent = '輸注速率 (mcg/hr)';
+    doseInput.style.display = '';
+    doseInput.placeholder = '0';
+    doseInput.step = '0.1';
+    patchSelect.style.display = 'none';
     document.getElementById('freqGroup').style.display = 'none';
     document.getElementById('inpFreq').value = '1';
   } else {
     lblDose.textContent = '單次劑量 (mg)';
-    // 恢復文字輸入框，隱藏下拉選單
     doseInput.style.display = '';
     patchSelect.style.display = 'none';
     doseInput.placeholder = '0';
@@ -690,6 +770,10 @@ function addDrug() {
     doseInput = parseFloat(document.getElementById('selPatchDose').value);
     if (isNaN(doseInput)) { showError('請從下拉選單選擇有效的貼片劑量。'); return; }
     doseLabel = `${doseInput} mcg/h`;
+  } else if (drug.isIVInfusion) {
+    doseInput = parseFloat(document.getElementById('inpDose').value);
+    if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
+    doseLabel = `${doseInput} mcg/hr 持續輸注`;
   } else {
     doseInput = parseFloat(document.getElementById('inpDose').value);
     if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
@@ -697,7 +781,7 @@ function addDrug() {
     doseLabel = freq > 1 ? `${doseInput} mg × ${freq} = ${td.toFixed(1)} mg/day` : `${td.toFixed(1)} mg/day`;
   }
 
-  const totalDose = drug.isPatch ? doseInput : doseInput * freq;
+  const totalDose = (drug.isPatch || drug.isIVInfusion) ? doseInput : doseInput * freq;
   const ome = drug.toOME(totalDose);
   if (ome > 1000) { showError(`單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。`); return; }
 
@@ -784,7 +868,7 @@ function calculate() {
   grid.innerHTML = '';
 
   const DRUG_DISPLAY_ORDER = [
-    'fentanyl_patch',
+    'fentanyl_patch', 'buprenorphine_td', 'fentanyl_iv',
     'morphine_oral', 'morphine_iv_sc',
     'hydromorphone_oral', 'hydromorphone_iv_sc',
     'oxycodone_oral',
@@ -811,6 +895,14 @@ function calculate() {
     if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×5（6 mg=30 MME）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
     if (dk === 'hydromorphone_iv_sc')  warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×25（1.2 mg=30 MME）；NCCN 2026 採 ×20（1.5 mg），差異 20%</div>`;
+    if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×7.2（1 mcg/hr × 24h × 0.3 生體可用率）</div>`;
+    if (dk === 'buprenorphine_td') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">Norspan® 規格：5 / 10 / 20 mcg/h；換算因子 ×2.5（20 mcg/h = 50 mg OME）</div>`;
+    if (RENAL_FLAGS[dk]) {
+      const rf = RENAL_FLAGS[dk];
+      const rfColor = rf.level === 'danger' ? 'var(--danger)' : rf.level === 'caution' ? '#8B4513' : '#1A5E38';
+      const rfBg    = rf.level === 'danger' ? 'var(--danger-bg)' : rf.level === 'caution' ? 'var(--warning-bg)' : 'var(--success-bg)';
+      warnHtml += `<div class="renal-flag" style="color:${rfColor}; background:${rfBg};">🫘 ${rf.note}</div>`;
+    }
 
     card.innerHTML = `
       <div class="drug-name">${d.label}${isSource ? ' ✓' : ''}</div>
@@ -833,7 +925,31 @@ function calculate() {
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 
-  document.getElementById('highDoseWarn').style.display = totalOME > 200 ? '' : 'none';
+  const clinicCtx = document.getElementById('clinicContext').value;
+  const warnEl = document.getElementById('highDoseWarn');
+  const cautionEl = document.getElementById('highDoseWarnMedium');
+  if (clinicCtx === 'cancer') {
+    cautionEl.style.display = 'none';
+    if (totalOME > 200) {
+      warnEl.innerHTML = '<strong>⚠ 高劑量警示（NCCN 2026）：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。建議加強監測，考慮疼痛科或安寧療護會診。';
+      warnEl.style.display = '';
+    } else {
+      warnEl.style.display = 'none';
+    }
+  } else {
+    // CDC 2022 non-cancer: ≥90 = danger, 50–89 = caution
+    if (totalOME >= 90) {
+      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> OME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
+      warnEl.style.display = '';
+      cautionEl.style.display = 'none';
+    } else if (totalOME >= 50) {
+      warnEl.style.display = 'none';
+      cautionEl.style.display = '';
+    } else {
+      warnEl.style.display = 'none';
+      cautionEl.style.display = 'none';
+    }
+  }
 
   // Breakthrough dose
   const btMin = totalOME * 0.10;
@@ -934,6 +1050,8 @@ function buildRefTable() {
     null,
     { label: 'Codeine 口服', key: 'codeine_oral' },
     { label: 'Codeine IM ⚠', key: 'codeine_im' },
+    null,
+    { label: '🩹 Buprenorphine 貼片 (Norspan®)', key: 'buprenorphine_td' },
   ];
 
   const tbody = document.getElementById('refTableBody');
@@ -960,7 +1078,9 @@ function buildRefTable() {
         const drug = DRUGS[row.key];
         const dose = drug.fromOME(ome);
         let display;
-        if (drug.isWeak) {
+        if (drug.isPatch || drug.isIVInfusion) {
+          display = dose.toFixed(1) + ' mcg/h';
+        } else if (drug.isWeak) {
           display = dose.toFixed(0) + ' mg';
         } else {
           display = dose % 1 === 0 ? dose.toFixed(0) + ' mg' : dose.toFixed(1) + ' mg';
@@ -979,8 +1099,15 @@ function buildRefTable() {
 
 buildRefTable();
 
+function updateContextNote() {
+  const ctx = document.getElementById('clinicContext').value;
+  document.getElementById('contextNote').textContent =
+    ctx === 'cancer' ? 'OME > 200 警示' : 'CDC 2022：≥50 注意 ／ ≥90 警示';
+}
+
 document.getElementById('inpDose').addEventListener('keydown', e => { if (e.key === 'Enter') addDrug(); });
 document.getElementById('crossTolSelect').addEventListener('change', () => { if (drugList.length > 0) calculate(); });
+document.getElementById('clinicContext').addEventListener('change', () => { updateContextNote(); if (drugList.length > 0) calculate(); });
 </script>
 </body>
 </html>
