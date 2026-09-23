@@ -1,4 +1,5 @@
-const CACHE = 'opioid-converter-v1.4.0';
+const PREFIX = 'opioid-converter-';
+const CACHE = `${PREFIX}v1.4.0`;
 
 const PRECACHE = [
   '/opioid-converter-zh/',
@@ -19,8 +20,13 @@ self.addEventListener('install', e => {
 // Activate: remove old caches
 self.addEventListener('activate', e => {
   e.waitUntil(
+    // 只汰換**本工具自己的** cache。
+    // 本站與其他工具共用 liangrxdev.github.io 這個 origin，CacheStorage 是整個
+    // origin 共用的——少了前綴守衛，這裡的 activate 會把鄰居工具的離線快取一起刪光。
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      Promise.all(
+        keys.filter(k => k.startsWith(PREFIX) && k !== CACHE).map(k => caches.delete(k))
+      )
     )
   );
   self.clients.claim();
