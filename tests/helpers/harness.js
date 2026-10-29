@@ -65,7 +65,11 @@ function loadApp(opts = {}) {
     createElement(tag) { return new FakeElement('', tag); },
   };
   const clipboard = { last: null, writeText(t) { this.last = t; return Promise.resolve(); } };
-  const FixedDate = class extends Date { constructor(...a) { super(...(a.length ? a : [Date.UTC(2026, 0, 1, 4, 0, 0)])); } };
+  // toLocaleString 依執行環境的時區與 ICU 而異，固定字串讓 golden 跨機器可重現
+  const FixedDate = class extends Date {
+    constructor(...a) { super(...(a.length ? a : [Date.UTC(2026, 0, 1, 4, 0, 0)])); }
+    toLocaleString() { return '2026/1/1 12:00:00'; }
+  };
   const sandbox = {
     document,
     navigator: { clipboard },
