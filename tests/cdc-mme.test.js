@@ -126,3 +126,16 @@ test('#3 癌症情境：無 MME 行、摘要無 MME，警示仍以 OME', () => {
   const { st } = ui([{ key: 'morphine_iv_sc', dose: 100, freq: 1 }], 'cancer');
   assert.match(st.highDose, /高劑量警示（NCCN 2026）：<\/strong> OME &gt; 200/);
 });
+
+// ---- #4 換算係數出處與 CDC 分開 ----
+test('#4 換算係數出處不標示為 CDC；Tramadol 口服 ×0.1 標示 Micromedex 2025', () => {
+  const fs = require('node:fs');
+  const html = fs.readFileSync(require('node:path').join(__dirname, '..', 'index.html'), 'utf8');
+  const caption = /以 Fentanyl 貼片強度為基準[^<]*/.exec(html)[0];
+  assert.doesNotMatch(caption, /CDC/, caption);
+  const factors = /換算係數：[\s\S]*?<\/footer>/.exec(html)[0];
+  assert.doesNotMatch(factors, /CDC/);
+  assert.match(factors, /Tramadol oral ×0\.1（Micromedex 2025）/);
+  assert.doesNotMatch(/UpToDate Opioid Conversion Table \(([^)]*)\)/.exec(html)[1], /CDC/);
+  assert.doesNotMatch(C.DRUGS.tramadol_oral.warn, /CDC/);
+});

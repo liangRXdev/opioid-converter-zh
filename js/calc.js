@@ -20,6 +20,8 @@
     hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
     hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
     oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
+    // Tramadol 口服換算係數 0.1：Micromedex 2025（300 mg ≈ 30 MME）。CDC 2022 MME 表為 0.2，
+    // 僅用於 CDC_MME_FACTORS 的非癌症風險評估，不用於換算。
     tramadol_oral:         { label: 'Tramadol 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.1,  fromOME: ome => ome / 0.1,  isWeak: true, warn: '⚠ 前驅藥（CYP2D6 活化）；最大劑量 400 mg/day；腎衰竭需調整（Micromedex 2025）' },
     tramadol_iv:           { label: 'Tramadol IV/IM', route: 'IV/IM',       unit: 'mg/day',  toOME: d => d * 0.14, fromOME: ome => ome / 0.14, isWeak: true, warn: '⚠ [推算值] 換算因子 ×0.14（單次給藥 oral BA ≈70%，Grond 2004）；長期服藥後 oral BA 升至 90–100%，慢性輪換情境下 IV/IM 與口服差異縮小；UpToDate/NCCN 均無明確 IV 換算因子；CYP2D6 個體差異大，結果僅供估算參考' },
     codeine_oral:          { label: 'Codeine 口服',   route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true },
