@@ -1,0 +1,2721 @@
+{
+ "morphine_oral 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|0.0 mg/day|0.01"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "69fb949de0cac89088860b5301f5c4411d5139c821f2e1ff7c0164f2250cc092"
+ },
+ "morphine_oral 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|0.0 mg/day|0.04"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "d40ed4d9bdfefcbf856a2f55047f05a5a05134a7543315bef7a21e13b123bd8c"
+ },
+ "morphine_oral 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|0.5 mg/day|0.5"
+  ],
+  "ome": "0.5",
+  "doses": "0.2 0.2 0.1 0.5 0.1 0.1 0.0 0.3 4 3 3 2",
+  "patchRec": " 計算值 0.2 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "465f499ce70d686d88340a29677524b9e842bb93546f1032f6c21cb8626f3f41"
+ },
+ "morphine_oral 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|1.0 mg/day|1"
+  ],
+  "ome": "1.0",
+  "doses": "0.4 0.3 0.1 1.0 0.3 0.2 0.0 0.5 8 5 5 3",
+  "patchRec": " 計算值 0.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "b7a7ce6ef91a911d163fbe6fafa39f6912b50a5ddf1048296551ce8719319fe7"
+ },
+ "morphine_oral 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|2.5 mg/day|2.5"
+  ],
+  "ome": "2.5",
+  "doses": "0.9 0.8 0.3 2.5 0.6 0.4 0.1 1.3 19 13 13 8",
+  "patchRec": " 計算值 0.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "a264336a93bbe9207aac6374315fbf7ccf54efeca1c9f8e2bf22fd5e68ff3732"
+ },
+ "morphine_oral 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|7.5 mg/day|7.5"
+  ],
+  "ome": "7.5",
+  "doses": "2.8 2.3 0.8 7.5 1.9 1.1 0.2 3.8 56 40 38 24",
+  "patchRec": " 計算值 2.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e9414c6079f7cbf0b2fe37bc5e8114fa30feadd04bd760452505809baebd3616"
+ },
+ "morphine_oral 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|10.0 mg/day|10"
+  ],
+  "ome": "10.0",
+  "doses": "3.8 3.0 1.0 10.0 2.5 1.5 0.3 5.0 75 54 50 33",
+  "patchRec": " 計算值 3.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "eeb4ae4b0d3baacd131480e1d52351bb4842cadd13c7304c59e52d72ff85a875"
+ },
+ "morphine_oral 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|15.6 mg/day|15.55"
+  ],
+  "ome": "15.6",
+  "doses": "5.8 4.7 1.6 15.6 3.9 2.3 0.5 7.8 117 83 78 51",
+  "patchRec": " 計算值 5.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "d4df131d8274f57c8349242ae7b37ae8486d4f28d3f5ea9098f170bc7f13fcc0"
+ },
+ "morphine_oral 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 30.0 7.5 4.5 0.9 15.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f51a4ed67f38eb04ecfe239ae1644d64f3d764eed36e82e9d3e4e2279ba99c4c"
+ },
+ "morphine_oral 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|33.3 mg/day|33.3333"
+  ],
+  "ome": "33.3",
+  "doses": "12.5 10.0 3.5 33.3 8.3 5.0 1.0 16.7 250 179 167 109",
+  "patchRec": " 計算值 12.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "6d235f6bb5569c875d2edf058bf75a2ebb4735c80ec217467e38ad7d1557e3d0"
+ },
+ "morphine_oral 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|100.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 100.0 25.0 15.0 3.0 50.0 750 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "2a8916edd8ffd0bd7bc862c0d0b65abe121b94bded56804a6c146eeff1c135e7"
+ },
+ "morphine_oral 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|333.3 mg/day|333.333"
+  ],
+  "ome": "333.3",
+  "doses": "125.0 100.0 34.7 333.3 83.3 50.0 10.0 166.7 2500 1786 1667 1087",
+  "patchRec": " 計算值 125.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "3273a12a813c474a0d2f9e537de84cbe08cadd436cd37404cd7ac65d6fee43a1"
+ },
+ "morphine_oral 1000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|1000.0 mg/day|1000"
+  ],
+  "ome": "1000.0",
+  "doses": "375.0 300.0 104.2 1000.0 250.0 150.0 30.0 500.0 7500 5357 5000 3261",
+  "patchRec": " 計算值 375.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "487488cad96ba6bd62b7b547a53a83637698c369b09e945886889f820a835dbb"
+ },
+ "morphine_oral 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_oral -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_oral ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_oral abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_oral 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "morphine_oral 10000×1": {
+  "error": "單項 OME 過高（10000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0ff76e4cba8649da26cdd324876b44e4b5abe39a9806430e00f040a286632d3f"
+ },
+ "morphine_oral 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|5 mg × 4 = 20.0 mg/day|20"
+  ],
+  "ome": "20.0",
+  "doses": "7.5 6.0 2.1 20.0 5.0 3.0 0.6 10.0 150 107 100 65",
+  "patchRec": " 計算值 7.5 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "06d0b87384cb2aab9ee39a46b4a75e3855528a416b34f637c459393a4a8c4fed"
+ },
+ "morphine_oral 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|2.5 mg × 6 = 15.0 mg/day|15"
+  ],
+  "ome": "15.0",
+  "doses": "5.6 4.5 1.6 15.0 3.8 2.3 0.4 7.5 113 80 75 49",
+  "patchRec": " 計算值 5.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "183dd5e048753b645e65f15559c57e8d8741cf5c2bbe645f830ae15e76a6f7af"
+ },
+ "morphine_iv_sc 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|0.0 mg/day|0.03"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "77c642f78870a0cd5562b7000ef81659966560edd9bec52995fcf2493dc30184"
+ },
+ "morphine_iv_sc 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|0.0 mg/day|0.12"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.1 0.0 0.0 0.0 0.1 1 1 1 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "bba82a887cb996c85db6501f2a4566fe51665c3e15f85a880f6e4a2638dc362b"
+ },
+ "morphine_iv_sc 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|0.5 mg/day|1.5"
+  ],
+  "ome": "1.5",
+  "doses": "0.6 0.4 0.2 1.1 0.5 0.2 0.0 0.8 11 8 8 5",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "57219a0d2508d7fa19893359b73a8af8adae3f0d767b2c79b4ee2d7dac17e8d5"
+ },
+ "morphine_iv_sc 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|1.0 mg/day|3"
+  ],
+  "ome": "3.0",
+  "doses": "1.1 0.9 0.3 2.3 1.0 0.4 0.1 1.5 23 16 15 10",
+  "patchRec": " 計算值 1.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "c81ab08729051c01b94878b4e0c0ad2d83dd808f4ed3c3f6e468bf60c8f1023b"
+ },
+ "morphine_iv_sc 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|2.5 mg/day|7.5"
+  ],
+  "ome": "7.5",
+  "doses": "2.8 2.3 0.8 5.6 2.5 1.1 0.2 3.8 56 40 38 24",
+  "patchRec": " 計算值 2.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "da31d36c0c14aaadbd63ce3f2a52be59d61ba41fd38913cd6a3db2d2848ee897"
+ },
+ "morphine_iv_sc 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|7.5 mg/day|22.5"
+  ],
+  "ome": "22.5",
+  "doses": "8.4 6.8 2.3 16.9 7.5 3.4 0.7 11.3 169 121 113 73",
+  "patchRec": " 計算值 8.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "52921bfc8a381e6782c6687a1dc411757030704b762b2a5eb14e13c398722ca6"
+ },
+ "morphine_iv_sc 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|10.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 22.5 10.0 4.5 0.9 15.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e8664098978795c615bdab6366a4be8017895943797477575811d9e658d6563c"
+ },
+ "morphine_iv_sc 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|15.6 mg/day|46.650000000000006"
+  ],
+  "ome": "46.7",
+  "doses": "17.5 14.0 4.9 35.0 15.6 7.0 1.4 23.3 350 250 233 152",
+  "patchRec": " 計算值 17.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "162e5ef1ded9215bd16b2439ad68720153536e413e90ff767577f753565496f5"
+ },
+ "morphine_iv_sc 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|30.0 mg/day|90"
+  ],
+  "ome": "90.0",
+  "doses": "33.8 27.0 9.4 67.5 30.0 13.5 2.7 45.0 675 482 450 293",
+  "patchRec": " 計算值 33.8 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "f3a053fbbc348197b582cb7ec871bb6c970b1933833a254d24cdbd4316b9d60b"
+ },
+ "morphine_iv_sc 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|33.3 mg/day|99.9999"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 75.0 33.3 15.0 3.0 50.0 750 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "9ebe0a7d3f99bff6b884c63d9912293a0b345c6d5856954f2ca3cc3c3d36887d"
+ },
+ "morphine_iv_sc 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|100.0 mg/day|300"
+  ],
+  "ome": "300.0",
+  "doses": "112.5 90.0 31.3 225.0 100.0 45.0 9.0 150.0 2250 1607 1500 978",
+  "patchRec": " 計算值 112.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "25599d8c6334fc842eeef21bd0d8cf921bfb8bd8099fd0c69afab17fc78073c4"
+ },
+ "morphine_iv_sc 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|333.3 mg/day|999.999"
+  ],
+  "ome": "1000.0",
+  "doses": "375.0 300.0 104.2 750.0 333.3 150.0 30.0 500.0 7500 5357 5000 3261",
+  "patchRec": " 計算值 375.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "1c70f780a96d47693db844837a621844a10d9e2ae0f4ac78877381c6ff50fddb"
+ },
+ "morphine_iv_sc 1000×1": {
+  "error": "單項 OME 過高（3000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "7c5ced179003f9a78b6ee98fa8ac39195434f38da4733cba52b53e9c251cfe07"
+ },
+ "morphine_iv_sc 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_iv_sc -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_iv_sc ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_iv_sc abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_iv_sc 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "morphine_iv_sc 10000×1": {
+  "error": "單項 OME 過高（30000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "5540e9f3f1b75f58cecf6b8cfcad2c23694efbfad64726be8ea97bf528ba22d1"
+ },
+ "morphine_iv_sc 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|5 mg × 4 = 20.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "22.5 18.0 6.3 45.0 20.0 9.0 1.8 30.0 450 321 300 196",
+  "patchRec": " 計算值 22.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "34bb5ef9fbf98a5997f73ddcd8702c0da2a0a72482897c6bd8b0b919c967cb7f"
+ },
+ "morphine_iv_sc 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_iv_sc|2.5 mg × 6 = 15.0 mg/day|45"
+  ],
+  "ome": "45.0",
+  "doses": "16.9 13.5 4.7 33.8 15.0 6.8 1.4 22.5 338 241 225 147",
+  "patchRec": " 計算值 16.9 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "8bae5144cf12005180fbdf38b11b4fee97d2921112516d307a9ec50d47d1f4b4"
+ },
+ "hydromorphone_oral 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|0.0 mg/day|0.05"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "84a6df36d78ca48463cd5292b204a58a48edbdff3f6a192814908a53b2b2f716"
+ },
+ "hydromorphone_oral 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|0.0 mg/day|0.2"
+  ],
+  "ome": "0.2",
+  "doses": "0.1 0.1 0.0 0.2 0.1 0.0 0.0 0.1 2 1 1 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "525f3456a3b1938805d0383024a6a55c08c35435a9f6399eb0c293b9561d2cd4"
+ },
+ "hydromorphone_oral 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|0.5 mg/day|2.5"
+  ],
+  "ome": "2.5",
+  "doses": "0.9 0.8 0.3 1.9 0.6 0.5 0.1 1.3 19 13 13 8",
+  "patchRec": " 計算值 0.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "138e62e101ab1c5c5554dbf04eb33a4debde72ce8eb8cc3cd2265f32cf535261"
+ },
+ "hydromorphone_oral 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|1.0 mg/day|5"
+  ],
+  "ome": "5.0",
+  "doses": "1.9 1.5 0.5 3.8 1.3 1.0 0.2 2.5 38 27 25 16",
+  "patchRec": " 計算值 1.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "35365e186a5bbb526d6e704b4f7b9591c080cc738df2b570d977dc8659bc244e"
+ },
+ "hydromorphone_oral 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|2.5 mg/day|12.5"
+  ],
+  "ome": "12.5",
+  "doses": "4.7 3.8 1.3 9.4 3.1 2.5 0.4 6.3 94 67 63 41",
+  "patchRec": " 計算值 4.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "b32a20b74d6fcd498731fb6e0bb9498599121875c1a8712f6c5bf1339cc85521"
+ },
+ "hydromorphone_oral 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|7.5 mg/day|37.5"
+  ],
+  "ome": "37.5",
+  "doses": "14.1 11.3 3.9 28.1 9.4 7.5 1.1 18.8 281 201 188 122",
+  "patchRec": " 計算值 14.1 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "55c2c0eb858d65bd4c67b9e1db947aab8217ac1682146dd0b89c0871ec5811ad"
+ },
+ "hydromorphone_oral 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|10.0 mg/day|50"
+  ],
+  "ome": "50.0",
+  "doses": "18.8 15.0 5.2 37.5 12.5 10.0 1.5 25.0 375 268 250 163",
+  "patchRec": " 計算值 18.8 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "747fa3b6fe6292064704034bfe63c971f73be34286b1bf9186bbd945bbec04f6"
+ },
+ "hydromorphone_oral 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|15.6 mg/day|77.75"
+  ],
+  "ome": "77.8",
+  "doses": "29.2 23.3 8.1 58.3 19.4 15.6 2.3 38.9 583 417 389 254",
+  "patchRec": " 計算值 29.2 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "e138a609da0fb1001d45e39b10997236d7115cc50cd46f47d4f71e82ac610681"
+ },
+ "hydromorphone_oral 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|30.0 mg/day|150"
+  ],
+  "ome": "150.0",
+  "doses": "56.3 45.0 15.6 112.5 37.5 30.0 4.5 75.0 1125 804 750 489",
+  "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "14697bc8df3245c6984c3ee0d5e877d7bd1c333ec54066fa8c33f6730bdd6d0b"
+ },
+ "hydromorphone_oral 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|33.3 mg/day|166.6665"
+  ],
+  "ome": "166.7",
+  "doses": "62.5 50.0 17.4 125.0 41.7 33.3 5.0 83.3 1250 893 833 543",
+  "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "d7f06ec29c65f036b5025e0f743a499c7335950002656bd2aa9127424a8b5c43"
+ },
+ "hydromorphone_oral 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|100.0 mg/day|500"
+  ],
+  "ome": "500.0",
+  "doses": "187.5 150.0 52.1 375.0 125.0 100.0 15.0 250.0 3750 2679 2500 1630",
+  "patchRec": " 計算值 187.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "d904934f5fe1d08fe929475ef9bdf6c80ba0a1f4809b9e992d20052ed10813ab"
+ },
+ "hydromorphone_oral 333.333×1": {
+  "error": "單項 OME 過高（1667 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "1eac27184ec55ee3b61f0f2b0c75bbb9bf5ef8e1b379581d22699015206ee8eb"
+ },
+ "hydromorphone_oral 1000×1": {
+  "error": "單項 OME 過高（5000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "46b559d1a0411ba38a3f7385db93ebfae8f428ba49cb8f62b169390db6987310"
+ },
+ "hydromorphone_oral 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_oral -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_oral ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_oral abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_oral 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "hydromorphone_oral 10000×1": {
+  "error": "單項 OME 過高（50000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "8f0a46691d13f9598f7a25d722fdca823f17386e67f704fca448af6fcb17df9b"
+ },
+ "hydromorphone_oral 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|5 mg × 4 = 20.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 75.0 25.0 20.0 3.0 50.0 750 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "2f8da09b8299cc49deacba95bb0e1923262ec24f273959a7be4bd0cb6ab282d3"
+ },
+ "hydromorphone_oral 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_oral|2.5 mg × 6 = 15.0 mg/day|75"
+  ],
+  "ome": "75.0",
+  "doses": "28.1 22.5 7.8 56.3 18.8 15.0 2.3 37.5 563 402 375 245",
+  "patchRec": " 計算值 28.1 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "1ef850dd44cdb0c6fd31c4ef350a20dcef5cd540dc0100bbea327d6e45f4427a"
+ },
+ "hydromorphone_iv_sc 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|0.0 mg/day|0.25"
+  ],
+  "ome": "0.3",
+  "doses": "0.1 0.1 0.0 0.2 0.1 0.0 0.0 0.1 2 1 1 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "fd57614593a05dceabac7f601ecbc875053ff4973f31f59cc3af7677acc1f4b6"
+ },
+ "hydromorphone_iv_sc 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|0.0 mg/day|1"
+  ],
+  "ome": "1.0",
+  "doses": "0.4 0.3 0.1 0.8 0.3 0.2 0.0 0.5 8 5 5 3",
+  "patchRec": " 計算值 0.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e173a52e78afb81edb7d4b44f6a54183889a6821bfb1624128106b6237c3b60b"
+ },
+ "hydromorphone_iv_sc 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|0.5 mg/day|12.5"
+  ],
+  "ome": "12.5",
+  "doses": "4.7 3.8 1.3 9.4 3.1 1.9 0.5 6.3 94 67 63 41",
+  "patchRec": " 計算值 4.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "3430364226b353c08c7f6e877ebbd30e0c6a7f73c4dd93a3deb77d1d6ade5bbf"
+ },
+ "hydromorphone_iv_sc 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|1.0 mg/day|25"
+  ],
+  "ome": "25.0",
+  "doses": "9.4 7.5 2.6 18.8 6.3 3.8 1.0 12.5 188 134 125 82",
+  "patchRec": " 計算值 9.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "8ca48ca2fbbef27b76d09c56f3e2fe91e9258e62a1908986c03e609969ceaa3a"
+ },
+ "hydromorphone_iv_sc 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|2.5 mg/day|62.5"
+  ],
+  "ome": "62.5",
+  "doses": "23.4 18.8 6.5 46.9 15.6 9.4 2.5 31.3 469 335 313 204",
+  "patchRec": " 計算值 23.4 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "07cdeb0b27cc73f417335aae95df2824c67cd937b104f943e9562f63be92ea18"
+ },
+ "hydromorphone_iv_sc 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|7.5 mg/day|187.5"
+  ],
+  "ome": "187.5",
+  "doses": "70.3 56.3 19.5 140.6 46.9 28.1 7.5 93.8 1406 1004 938 611",
+  "patchRec": " 計算值 70.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "524d27ae546385e72670c443edccb5af30023def37af1f6d9b2184cbce00cdde"
+ },
+ "hydromorphone_iv_sc 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|10.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "93.8 75.0 26.0 187.5 62.5 37.5 10.0 125.0 1875 1339 1250 815",
+  "patchRec": " 計算值 93.8 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
+  "sha256": "55264a7487a312773d30b4ff3a5ae52a26c3dd25ee4ae0c1e88e58e2a9512c20"
+ },
+ "hydromorphone_iv_sc 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|15.6 mg/day|388.75"
+  ],
+  "ome": "388.8",
+  "doses": "145.8 116.6 40.5 291.6 97.2 58.3 15.6 194.4 2916 2083 1944 1268",
+  "patchRec": " 計算值 145.8 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "876db8554129be0881eab1beeb21e66ece5c388ade5249185e6f3c79e19ce8e8"
+ },
+ "hydromorphone_iv_sc 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|30.0 mg/day|750"
+  ],
+  "ome": "750.0",
+  "doses": "281.3 225.0 78.1 562.5 187.5 112.5 30.0 375.0 5625 4018 3750 2446",
+  "patchRec": " 計算值 281.3 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "28c1a5e11ed5d6f19a65aae33d4e386d0384b0350c094c43554df75d43283f84"
+ },
+ "hydromorphone_iv_sc 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|33.3 mg/day|833.3325"
+  ],
+  "ome": "833.3",
+  "doses": "312.5 250.0 86.8 625.0 208.3 125.0 33.3 416.7 6250 4464 4167 2717",
+  "patchRec": " 計算值 312.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "7e1af08540c2a99065de2d75f600bde9d902734c99c958969ea8de970ea1a85e"
+ },
+ "hydromorphone_iv_sc 100×1": {
+  "error": "單項 OME 過高（2500 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "303386545e7d84258347af8ecf97111e271379c8eb26b905250cd06f67e0e721"
+ },
+ "hydromorphone_iv_sc 333.333×1": {
+  "error": "單項 OME 過高（8333 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "5628c975342bfd29146182dfcdadf369a38ac24eab2b94bf81b5e2233624241f"
+ },
+ "hydromorphone_iv_sc 1000×1": {
+  "error": "單項 OME 過高（25000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "df28c81bfb1bf6d868f9399c98a754a9bdf3a07eace514775181cb787ed2513d"
+ },
+ "hydromorphone_iv_sc 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_iv_sc -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_iv_sc ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_iv_sc abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "hydromorphone_iv_sc 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "hydromorphone_iv_sc 10000×1": {
+  "error": "單項 OME 過高（250000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "668e7351ac97466476cbbc75b81c8b2113d7a4db0c13dcb1602bb01397c61dba"
+ },
+ "hydromorphone_iv_sc 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|5 mg × 4 = 20.0 mg/day|500"
+  ],
+  "ome": "500.0",
+  "doses": "187.5 150.0 52.1 375.0 125.0 75.0 20.0 250.0 3750 2679 2500 1630",
+  "patchRec": " 計算值 187.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "00b6f63fc5748d803628b67d5b426baa511af821947521320cdb9d83ee75d0ae"
+ },
+ "hydromorphone_iv_sc 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|2.5 mg × 6 = 15.0 mg/day|375"
+  ],
+  "ome": "375.0",
+  "doses": "140.6 112.5 39.1 281.3 93.8 56.3 15.0 187.5 2813 2009 1875 1223",
+  "patchRec": " 計算值 140.6 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "e2bf1607b418ac587f62f1a1bad891184415c07df4609f0b6e99f93566c59135"
+ },
+ "oxycodone_oral 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|0.0 mg/day|0.015"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "414348dcf01c8fb4abd9af419dfb846fc8d25fe285b147439ed7c63d259d6323"
+ },
+ "oxycodone_oral 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|0.0 mg/day|0.06"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "6612fd445f7d946772e9e286688f4ac5dc6d73806e2b7bec2ace0745fdb0a2bf"
+ },
+ "oxycodone_oral 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|0.5 mg/day|0.75"
+  ],
+  "ome": "0.8",
+  "doses": "0.3 0.2 0.1 0.6 0.2 0.1 0.0 0.5 6 4 4 2",
+  "patchRec": " 計算值 0.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "d688b6ea1e684fbe033b009ce7e1ff12c64dd7c0daaa1577636c23b4f3f42a0a"
+ },
+ "oxycodone_oral 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|1.0 mg/day|1.5"
+  ],
+  "ome": "1.5",
+  "doses": "0.6 0.4 0.2 1.1 0.4 0.2 0.0 1.0 11 8 8 5",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "2c4a8dfa18084673d96972b33b16f5f53f7d0b27bbd0f0bf215557c8ba8a5555"
+ },
+ "oxycodone_oral 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|2.5 mg/day|3.75"
+  ],
+  "ome": "3.8",
+  "doses": "1.4 1.1 0.4 2.8 0.9 0.6 0.1 2.5 28 20 19 12",
+  "patchRec": " 計算值 1.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e0e865000d03e1d360739a477a2cb243232dec0270c9abd37c09c9d9951adf09"
+ },
+ "oxycodone_oral 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|7.5 mg/day|11.25"
+  ],
+  "ome": "11.3",
+  "doses": "4.2 3.4 1.2 8.4 2.8 1.7 0.3 7.5 84 60 56 37",
+  "patchRec": " 計算值 4.2 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "02b29ae11bbad7ad84182c310aa2e74a5c3e1642aee749b2769906d5b18e801a"
+ },
+ "oxycodone_oral 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|10.0 mg/day|15"
+  ],
+  "ome": "15.0",
+  "doses": "5.6 4.5 1.6 11.3 3.8 2.3 0.4 10.0 113 80 75 49",
+  "patchRec": " 計算值 5.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "3cd4870bc2c44e23f755698d01f4805c0242365b4f41019fc66e4bb00b624fe6"
+ },
+ "oxycodone_oral 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|15.6 mg/day|23.325000000000003"
+  ],
+  "ome": "23.3",
+  "doses": "8.7 7.0 2.4 17.5 5.8 3.5 0.7 15.6 175 125 117 76",
+  "patchRec": " 計算值 8.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "2cb0192e5570245d53dd78618bbcb8296b7ef9772ef3048cf08417a62cac40b7"
+ },
+ "oxycodone_oral 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|30.0 mg/day|45"
+  ],
+  "ome": "45.0",
+  "doses": "16.9 13.5 4.7 33.8 11.3 6.8 1.4 30.0 338 241 225 147",
+  "patchRec": " 計算值 16.9 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "9ae2ed7e022f2f61da96cd0a636bc93ce382b52fe1628e90ca1c3088be62fe42"
+ },
+ "oxycodone_oral 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|33.3 mg/day|49.99995"
+  ],
+  "ome": "50.0",
+  "doses": "18.7 15.0 5.2 37.5 12.5 7.5 1.5 33.3 375 268 250 163",
+  "patchRec": " 計算值 18.7 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "6e279b7147aae28f9f92fe53ca271f52f7338f1a2ae471de46001d72ff42a1f2"
+ },
+ "oxycodone_oral 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|100.0 mg/day|150"
+  ],
+  "ome": "150.0",
+  "doses": "56.3 45.0 15.6 112.5 37.5 22.5 4.5 100.0 1125 804 750 489",
+  "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "4dce0d33a28f2ef2a149e79599b31d3bd5869814fd0eb86c95b3eb3098d8be3a"
+ },
+ "oxycodone_oral 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|333.3 mg/day|499.9995"
+  ],
+  "ome": "500.0",
+  "doses": "187.5 150.0 52.1 375.0 125.0 75.0 15.0 333.3 3750 2679 2500 1630",
+  "patchRec": " 計算值 187.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "b24b9faed48af81b275a723e857c6f46f5e951bc3c1dbf5c664d13a6735972a6"
+ },
+ "oxycodone_oral 1000×1": {
+  "error": "單項 OME 過高（1500 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "21e91f4b72f3da9707d0c939aa851d68355a1242d2daef642505968ea240bed6"
+ },
+ "oxycodone_oral 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "oxycodone_oral -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "oxycodone_oral ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "oxycodone_oral abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "oxycodone_oral 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "oxycodone_oral 10000×1": {
+  "error": "單項 OME 過高（15000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "f5edb0e8023ab17cb07ef130d75505d5f2912c0a34e4ce7c31698fd96c9368a8"
+ },
+ "oxycodone_oral 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|5 mg × 4 = 20.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 22.5 7.5 4.5 0.9 20.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "60738d6350e964a6c8b69b1d37eba81a40b9ff2b79753a2705a4c2fa6d56a81b"
+ },
+ "oxycodone_oral 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|2.5 mg × 6 = 15.0 mg/day|22.5"
+  ],
+  "ome": "22.5",
+  "doses": "8.4 6.8 2.3 16.9 5.6 3.4 0.7 15.0 169 121 113 73",
+  "patchRec": " 計算值 8.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "10ee5af5f202f782ea5fc4a9fcdd2e40e1fe6c800af493425b80e8b8f65a04ad"
+ },
+ "tramadol_oral 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|0.0 mg/day|0.001"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "18f9fc5e0a019d85ed94846c1b2102c0e35a1a21f0db68af60d6a5292528e989"
+ },
+ "tramadol_oral 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|0.0 mg/day|0.004"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "913e71146ce488c98df81af8d1697d4edfdd3a4b60585474488ae571116afdcf"
+ },
+ "tramadol_oral 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|0.5 mg/day|0.05"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 1 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "834d2508b8663419605611c7843827ae61fdb34d3070ce6bee263ea7c8d295cb"
+ },
+ "tramadol_oral 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|1.0 mg/day|0.1"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.1 0.0 0.0 0.0 0.1 1 1 1 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "56b904fa4339289705ce332214b8be2424a9571ba981b69fba7f2cfcb4bb9dd6"
+ },
+ "tramadol_oral 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|2.5 mg/day|0.25"
+  ],
+  "ome": "0.3",
+  "doses": "0.1 0.1 0.0 0.2 0.1 0.0 0.0 0.1 3 1 1 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "c2f7cb981895bbd976740aa9c53f34ee0a67b49ff272a32c6c41c6eb28834715"
+ },
+ "tramadol_oral 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|7.5 mg/day|0.75"
+  ],
+  "ome": "0.8",
+  "doses": "0.3 0.2 0.1 0.6 0.2 0.1 0.0 0.4 8 4 4 2",
+  "patchRec": " 計算值 0.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "ba02096c58cc5ba637cbc448dba78194069751f77f3663afb67642b0897e643d"
+ },
+ "tramadol_oral 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|10.0 mg/day|1"
+  ],
+  "ome": "1.0",
+  "doses": "0.4 0.3 0.1 0.8 0.3 0.2 0.0 0.5 10 5 5 3",
+  "patchRec": " 計算值 0.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "bd740e6b6de51a26b4ba75ac9596bcd6d632bd746bc682df4a8721bce6bbf1fc"
+ },
+ "tramadol_oral 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|15.6 mg/day|1.5550000000000002"
+  ],
+  "ome": "1.6",
+  "doses": "0.6 0.5 0.2 1.2 0.4 0.2 0.0 0.8 16 8 8 5",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "1d2b3a39d691b7478cc306d632e06c151d1e1f5075edfeb7ab9ef86c0a4fe34a"
+ },
+ "tramadol_oral 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|30.0 mg/day|3"
+  ],
+  "ome": "3.0",
+  "doses": "1.1 0.9 0.3 2.3 0.8 0.4 0.1 1.5 30 16 15 10",
+  "patchRec": " 計算值 1.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "bcec1ca51007d8129526aa5bbf6294ef4736bf620b4236aa318e0a58803584dd"
+ },
+ "tramadol_oral 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|33.3 mg/day|3.33333"
+  ],
+  "ome": "3.3",
+  "doses": "1.2 1.0 0.3 2.5 0.8 0.5 0.1 1.7 33 18 17 11",
+  "patchRec": " 計算值 1.2 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f372631f58efc773db977799b52ca16c42fd99b47372795e32dcd7bb887b77ad"
+ },
+ "tramadol_oral 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|100.0 mg/day|10"
+  ],
+  "ome": "10.0",
+  "doses": "3.8 3.0 1.0 7.5 2.5 1.5 0.3 5.0 100 54 50 33",
+  "patchRec": " 計算值 3.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "09ffedf329ddbbe4256ceae1d01f576d5382577421b473f05666d40c9fdb34c3"
+ },
+ "tramadol_oral 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|333.3 mg/day|33.3333"
+  ],
+  "ome": "33.3",
+  "doses": "12.5 10.0 3.5 25.0 8.3 5.0 1.0 16.7 333 179 167 109",
+  "patchRec": " 計算值 12.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "97bf7e2af0f316c13326f8a0210fe3d844c35e29cee9ef9186f8b3c49ab74b41"
+ },
+ "tramadol_oral 1000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|1000.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 75.0 25.0 15.0 3.0 50.0 1000 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "07ebcebed40aac426a51bd85d5def7d00088f814b6dead7dc380a7956052ba17"
+ },
+ "tramadol_oral 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_oral -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_oral ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_oral abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_oral 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "tramadol_oral 10000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|10000.0 mg/day|1000"
+  ],
+  "ome": "1000.0",
+  "doses": "375.0 300.0 104.2 750.0 250.0 150.0 30.0 500.0 10000 5357 5000 3261",
+  "patchRec": " 計算值 375.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "d8fa6dee513538c82a0173f9025065830789b6d5f6210218fe0cab2ce155dde1"
+ },
+ "tramadol_oral 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|5 mg × 4 = 20.0 mg/day|2"
+  ],
+  "ome": "2.0",
+  "doses": "0.8 0.6 0.2 1.5 0.5 0.3 0.1 1.0 20 11 10 7",
+  "patchRec": " 計算值 0.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "58f665cc9d291541641ef66e7351a9c46a5acecb4a607075b63d0a6e7f17c60d"
+ },
+ "tramadol_oral 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_oral|2.5 mg × 6 = 15.0 mg/day|1.5"
+  ],
+  "ome": "1.5",
+  "doses": "0.6 0.4 0.2 1.1 0.4 0.2 0.0 0.8 15 8 8 5",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "250a496b643558766557f669000388fbc8f9b54c452d5dcc79d9105f11f62943"
+ },
+ "tramadol_iv 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|0.0 mg/day|0.0014000000000000002"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "db7bb1e5fdfede3eacdc0bf09cdc33a1a6ca62ffa75097dbfed90723e6c0a53f"
+ },
+ "tramadol_iv 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|0.0 mg/day|0.005600000000000001"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "c0f7dc6b37bb88f96c72a6a242d49fca5889c11fec5731dff4e6f636ddcfab74"
+ },
+ "tramadol_iv 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|0.5 mg/day|0.07"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.1 0.0 0.0 0.0 0.0 1 1 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f36d0cc39f12f0168d6588d80bf168ba6b7eedd30aa07ea3fdab777db95427ab"
+ },
+ "tramadol_iv 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|1.0 mg/day|0.14"
+  ],
+  "ome": "0.1",
+  "doses": "0.1 0.0 0.0 0.1 0.0 0.0 0.0 0.1 1 1 1 0",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e2db7744e756dd9471d7cd092a58c6859e59256807de027db25101effd3e3e97"
+ },
+ "tramadol_iv 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|2.5 mg/day|0.35000000000000003"
+  ],
+  "ome": "0.4",
+  "doses": "0.1 0.1 0.0 0.3 0.1 0.1 0.0 0.2 3 3 2 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "ead0a3ddfb5c0e6065257a65378d29bb6c7cc780607e58dd6591face95d83f6c"
+ },
+ "tramadol_iv 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|7.5 mg/day|1.05"
+  ],
+  "ome": "1.1",
+  "doses": "0.4 0.3 0.1 0.8 0.3 0.2 0.0 0.5 8 8 5 3",
+  "patchRec": " 計算值 0.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "dcb520ec7dd4e2fbe641a0dcbd882e65397314383374e93a8a7d1d0b60a0b061"
+ },
+ "tramadol_iv 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|10.0 mg/day|1.4000000000000001"
+  ],
+  "ome": "1.4",
+  "doses": "0.5 0.4 0.1 1.1 0.4 0.2 0.0 0.7 11 10 7 5",
+  "patchRec": " 計算值 0.5 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "2d8138821b71c58dbcaf234aee12bbb48df723230192a71f6b15bdb27517c535"
+ },
+ "tramadol_iv 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|15.6 mg/day|2.1770000000000005"
+  ],
+  "ome": "2.2",
+  "doses": "0.8 0.7 0.2 1.6 0.5 0.3 0.1 1.1 16 16 11 7",
+  "patchRec": " 計算值 0.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "cfa632cb4f3e15b9c2133b1eeba2a05b74634517831f551c8ecce5697b5cec9b"
+ },
+ "tramadol_iv 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|30.0 mg/day|4.2"
+  ],
+  "ome": "4.2",
+  "doses": "1.6 1.3 0.4 3.2 1.1 0.6 0.1 2.1 32 30 21 14",
+  "patchRec": " 計算值 1.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "7768f64dbdf320cb513e0ad6d1caceaf2d4d83a4f83c396fde588fe3a0485c21"
+ },
+ "tramadol_iv 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|33.3 mg/day|4.6666620000000005"
+  ],
+  "ome": "4.7",
+  "doses": "1.7 1.4 0.5 3.5 1.2 0.7 0.1 2.3 35 33 23 15",
+  "patchRec": " 計算值 1.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "d6d43ead5816b9c19a9eb27b6915c506ee80b283030c96452ced9b60722bdc54"
+ },
+ "tramadol_iv 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|100.0 mg/day|14.000000000000002"
+  ],
+  "ome": "14.0",
+  "doses": "5.3 4.2 1.5 10.5 3.5 2.1 0.4 7.0 105 100 70 46",
+  "patchRec": " 計算值 5.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "6fb65357d00ea0f22cc8a9ae50a8a673f350996771c2116ba7144970410d0037"
+ },
+ "tramadol_iv 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|333.3 mg/day|46.66662000000001"
+  ],
+  "ome": "46.7",
+  "doses": "17.5 14.0 4.9 35.0 11.7 7.0 1.4 23.3 350 333 233 152",
+  "patchRec": " 計算值 17.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "42dd53c690914f207385f4f4b3427f61c22b98519f867e92c40fc3d912ab408d"
+ },
+ "tramadol_iv 1000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|1000.0 mg/day|140"
+  ],
+  "ome": "140.0",
+  "doses": "52.5 42.0 14.6 105.0 35.0 21.0 4.2 70.0 1050 1000 700 457",
+  "patchRec": " 計算值 52.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "c0aad6d06cf40297460fd4f430ddc49de7cbd61922d26e376857d22d2bb0e579"
+ },
+ "tramadol_iv 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_iv -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_iv ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_iv abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "tramadol_iv 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "tramadol_iv 10000×1": {
+  "error": "單項 OME 過高（1400 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "b7fbafedb3086dd6762f9b9807bd5e32cf789886bf776656b8ff17d1c10a3e32"
+ },
+ "tramadol_iv 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|5 mg × 4 = 20.0 mg/day|2.8000000000000003"
+  ],
+  "ome": "2.8",
+  "doses": "1.1 0.8 0.3 2.1 0.7 0.4 0.1 1.4 21 20 14 9",
+  "patchRec": " 計算值 1.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "47bae07be47c14ea4e1d1c3c74b1e7a81dc3b0baf918e66b7d4fa35c54ce130c"
+ },
+ "tramadol_iv 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "tramadol_iv|2.5 mg × 6 = 15.0 mg/day|2.1"
+  ],
+  "ome": "2.1",
+  "doses": "0.8 0.6 0.2 1.6 0.5 0.3 0.1 1.1 16 15 11 7",
+  "patchRec": " 計算值 0.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "4de7f8b13dbf1a14d5229a5e02e7be7177a4cb153cb79105acdcd3148bb45596"
+ },
+ "codeine_oral 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|0.0 mg/day|0.0015"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e558d679db9e40d64af43274550fcbeba9f98907c174f78b4b52d1e49bf7dd18"
+ },
+ "codeine_oral 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|0.0 mg/day|0.006"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "9bbc40ecabb4a1f49a58f5c923b7cabca2045cf08743e1fe02b259f3e55ee026"
+ },
+ "codeine_oral 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|0.5 mg/day|0.075"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.1 0.0 0.0 0.0 0.0 1 0 1 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "faa621db6ffc98eea2659723d7066bb3380bdb038e4129cae4a23fac49497f74"
+ },
+ "codeine_oral 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|1.0 mg/day|0.15"
+  ],
+  "ome": "0.1",
+  "doses": "0.1 0.0 0.0 0.1 0.0 0.0 0.0 0.1 1 1 1 0",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f7308406057803e16e6d6748e777391554b6d69ec429cab6cac6c42f4876ae31"
+ },
+ "codeine_oral 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|2.5 mg/day|0.375"
+  ],
+  "ome": "0.4",
+  "doses": "0.1 0.1 0.0 0.3 0.1 0.1 0.0 0.2 3 2 3 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "2c2a9b86063393006f49dc6004b249458f7aa2088b415eb2faa99fda9485d4b1"
+ },
+ "codeine_oral 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|7.5 mg/day|1.125"
+  ],
+  "ome": "1.1",
+  "doses": "0.4 0.3 0.1 0.8 0.3 0.2 0.0 0.6 8 6 8 4",
+  "patchRec": " 計算值 0.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "ddedc6b803c9b87ee3c6cf14d23415a396ad6b24d8cbcf9ec4a4d8cf9ca02782"
+ },
+ "codeine_oral 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|10.0 mg/day|1.5"
+  ],
+  "ome": "1.5",
+  "doses": "0.6 0.4 0.2 1.1 0.4 0.2 0.0 0.8 11 8 10 5",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "048570b629b62154fb87dfea79ea126a90460e84111590333144fbdb6851e3fd"
+ },
+ "codeine_oral 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|15.6 mg/day|2.3325"
+  ],
+  "ome": "2.3",
+  "doses": "0.9 0.7 0.2 1.7 0.6 0.3 0.1 1.2 17 12 16 8",
+  "patchRec": " 計算值 0.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "841125db686f1be3d00b83f36da5b0446c1b5bfb7b588960b9ead77593e7bd42"
+ },
+ "codeine_oral 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|30.0 mg/day|4.5"
+  ],
+  "ome": "4.5",
+  "doses": "1.7 1.4 0.5 3.4 1.1 0.7 0.1 2.3 34 24 30 15",
+  "patchRec": " 計算值 1.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "1fde21689ae83d3fad0bf70f178c5c36a139ba24ff951249d42a2ce39bbaddd3"
+ },
+ "codeine_oral 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|33.3 mg/day|4.999995"
+  ],
+  "ome": "5.0",
+  "doses": "1.9 1.5 0.5 3.7 1.2 0.7 0.1 2.5 37 27 33 16",
+  "patchRec": " 計算值 1.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "cc24d9e2516a0a433c781339d88fb777c2bb6f49b307201d9c929ba75e8c3674"
+ },
+ "codeine_oral 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|100.0 mg/day|15"
+  ],
+  "ome": "15.0",
+  "doses": "5.6 4.5 1.6 11.3 3.8 2.3 0.4 7.5 113 80 100 49",
+  "patchRec": " 計算值 5.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "1d514716e6dfacd56245ff6cc0006787dae855e41e319187c4992115c7c2a185"
+ },
+ "codeine_oral 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|333.3 mg/day|49.999950000000005"
+  ],
+  "ome": "50.0",
+  "doses": "18.7 15.0 5.2 37.5 12.5 7.5 1.5 25.0 375 268 333 163",
+  "patchRec": " 計算值 18.7 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "9d54d52e684a4715b922878c0589b7b9bd133b3747c1dc664f7a4f195876d186"
+ },
+ "codeine_oral 1000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|1000.0 mg/day|150"
+  ],
+  "ome": "150.0",
+  "doses": "56.3 45.0 15.6 112.5 37.5 22.5 4.5 75.0 1125 804 1000 489",
+  "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "7a161ba671da9c63eea82e202f89d4e9b9dc48b2e336c5f8e1aedb106c13f4d3"
+ },
+ "codeine_oral 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_oral -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_oral ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_oral abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_oral 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "codeine_oral 10000×1": {
+  "error": "單項 OME 過高（1500 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "21e91f4b72f3da9707d0c939aa851d68355a1242d2daef642505968ea240bed6"
+ },
+ "codeine_oral 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|5 mg × 4 = 20.0 mg/day|3"
+  ],
+  "ome": "3.0",
+  "doses": "1.1 0.9 0.3 2.3 0.8 0.4 0.1 1.5 23 16 20 10",
+  "patchRec": " 計算值 1.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e3d1ff05a1b3edff92b50f76f0dacc84fe3f441df05e51409f7b56cd75eecf58"
+ },
+ "codeine_oral 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_oral|2.5 mg × 6 = 15.0 mg/day|2.25"
+  ],
+  "ome": "2.3",
+  "doses": "0.8 0.7 0.2 1.7 0.6 0.3 0.1 1.1 17 12 15 7",
+  "patchRec": " 計算值 0.8 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "32bf21a04c433de193c046e6d69d31f4aa8347e9ff9df16c45686d7b018d3890"
+ },
+ "codeine_im 0.01×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|0.0 mg/day|0.0023"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "3882184b996ebff79c4d26be25deb5a881ef2d9a0ddaa6ba34632107708af851"
+ },
+ "codeine_im 0.04×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|0.0 mg/day|0.0092"
+  ],
+  "ome": "0.0",
+  "doses": "0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 0",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "08449a22c2c7172c9b1c005383406e43978fe97b81d6970efc32b0ea9092fd86"
+ },
+ "codeine_im 0.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|0.5 mg/day|0.115"
+  ],
+  "ome": "0.1",
+  "doses": "0.0 0.0 0.0 0.1 0.0 0.0 0.0 0.1 1 1 1 1",
+  "patchRec": " 計算值 0.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "d89fc74587822c3c1c2f1d5a99fadd91da78c6e5477e0e3c71a3aba0650d9d10"
+ },
+ "codeine_im 1×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|1.0 mg/day|0.23"
+  ],
+  "ome": "0.2",
+  "doses": "0.1 0.1 0.0 0.2 0.1 0.0 0.0 0.1 2 1 1 1",
+  "patchRec": " 計算值 0.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f294c5193bc0d4cabb19efa3e1578b64ded9928f75fb477b4e63db603c96f666"
+ },
+ "codeine_im 2.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|2.5 mg/day|0.5750000000000001"
+  ],
+  "ome": "0.6",
+  "doses": "0.2 0.2 0.1 0.4 0.1 0.1 0.0 0.3 4 3 3 3",
+  "patchRec": " 計算值 0.2 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "244e33c66d6c5e5aee059bae67138539752804fca38a65e15457625a35a42348"
+ },
+ "codeine_im 7.5×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|7.5 mg/day|1.725"
+  ],
+  "ome": "1.7",
+  "doses": "0.6 0.5 0.2 1.3 0.4 0.3 0.1 0.9 13 9 9 8",
+  "patchRec": " 計算值 0.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "e2f16fbed12b1c9f596e1a8e20dbec5c78b8c1c41f38602428700dc6c11e55b9"
+ },
+ "codeine_im 10×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|10.0 mg/day|2.3000000000000003"
+  ],
+  "ome": "2.3",
+  "doses": "0.9 0.7 0.2 1.7 0.6 0.3 0.1 1.2 17 12 12 10",
+  "patchRec": " 計算值 0.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "69c5e459719dc4be0311c4ca30299f989bba24ce6bb2f2f27dfebeb845c13611"
+ },
+ "codeine_im 15.55×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|15.6 mg/day|3.5765000000000002"
+  ],
+  "ome": "3.6",
+  "doses": "1.3 1.1 0.4 2.7 0.9 0.5 0.1 1.8 27 19 18 16",
+  "patchRec": " 計算值 1.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "b139ad151e58a62003404ba0cfc9ce1eb1d35e77a63d91a47b3ca65b059b63c7"
+ },
+ "codeine_im 30×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|30.0 mg/day|6.9"
+  ],
+  "ome": "6.9",
+  "doses": "2.6 2.1 0.7 5.2 1.7 1.0 0.2 3.5 52 37 35 30",
+  "patchRec": " 計算值 2.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "83ca5dddc8c7c651dbe93c2c2ab22cf128ba1f8ccfe67dc04ac60413b8c72573"
+ },
+ "codeine_im 33.3333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|33.3 mg/day|7.666659000000001"
+  ],
+  "ome": "7.7",
+  "doses": "2.9 2.3 0.8 5.7 1.9 1.1 0.2 3.8 57 41 38 33",
+  "patchRec": " 計算值 2.9 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "cdd4cc208f90e69d074770248855fd46c99ddce448752a19c0f1e559c1726a48"
+ },
+ "codeine_im 100×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|100.0 mg/day|23"
+  ],
+  "ome": "23.0",
+  "doses": "8.6 6.9 2.4 17.3 5.8 3.4 0.7 11.5 173 123 115 100",
+  "patchRec": " 計算值 8.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "0fad535cec3f6676672d9b58760d11d62029e1af22f22de318be19489a1c2e74"
+ },
+ "codeine_im 333.333×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|333.3 mg/day|76.66659000000001"
+  ],
+  "ome": "76.7",
+  "doses": "28.7 23.0 8.0 57.5 19.2 11.5 2.3 38.3 575 411 383 333",
+  "patchRec": " 計算值 28.7 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "19093a5e394b773c2fef99ad0dbdc292b5f8be2976c9ba22265d82e8dfca36ab"
+ },
+ "codeine_im 1000×1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|1000.0 mg/day|230"
+  ],
+  "ome": "230.0",
+  "doses": "86.3 69.0 24.0 172.5 57.5 34.5 6.9 115.0 1725 1232 1150 1000",
+  "patchRec": " 計算值 86.3 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
+  "sha256": "46a2bf896b90fb6d0d70a70da9f859221a2279628d0bb4ec2ca77e8bddfb3560"
+ },
+ "codeine_im 0×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_im -5×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_im ×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_im abc×1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "codeine_im 1e400×1": {
+  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+ },
+ "codeine_im 10000×1": {
+  "error": "單項 OME 過高（2300 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "e18a047f55b482e18fbc78b81f8e071d37d0d942e3a6f0ff385606f020e452cf"
+ },
+ "codeine_im 5×4": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|5 mg × 4 = 20.0 mg/day|4.6000000000000005"
+  ],
+  "ome": "4.6",
+  "doses": "1.7 1.4 0.5 3.5 1.2 0.7 0.1 2.3 35 25 23 20",
+  "patchRec": " 計算值 1.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f8f5704eef560609b83480b2e349baf214805acf1e29b847e62d66664a09b61a"
+ },
+ "codeine_im 2.5×6": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "codeine_im|2.5 mg × 6 = 15.0 mg/day|3.45"
+  ],
+  "ome": "3.5",
+  "doses": "1.3 1.0 0.4 2.6 0.9 0.5 0.1 1.7 26 18 17 15",
+  "patchRec": " 計算值 1.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "2f1fe04457c28d906bb0a197ff603e08d84c195dbd7b1e5e700ac14cccfa90cd"
+ },
+ "fentanyl_patch 12": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|12 mcg/h|24"
+  ],
+  "ome": "24.0",
+  "doses": "12.0 7.2 2.5 18.0 6.0 3.6 0.7 12.0 180 129 120 78",
+  "patchRec": null,
+  "sha256": "0a8896b7f9d4a5bb0197cb967ec9c400f16d16e8ee5e927cf7dccfb6afe7dc63"
+ },
+ "fentanyl_patch 25": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|25 mcg/h|50"
+  ],
+  "ome": "50.0",
+  "doses": "25.0 15.0 5.2 37.5 12.5 7.5 1.5 25.0 375 268 250 163",
+  "patchRec": null,
+  "sha256": "5e26ec90d39a4c14ee7a897ea8ac7e0a7ed71fb6fc8887fa5aa264c2d0f44569"
+ },
+ "fentanyl_patch 37": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|37 mcg/h|74"
+  ],
+  "ome": "74.0",
+  "doses": "37.0 22.2 7.7 55.5 18.5 11.1 2.2 37.0 555 396 370 241",
+  "patchRec": null,
+  "sha256": "c2510e65aa62d04383e3d71efdd39d8f25312ca88b0062e149be0c634e9d8611"
+ },
+ "fentanyl_patch 50": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 30.0 10.4 75.0 25.0 15.0 3.0 50.0 750 536 500 326",
+  "patchRec": null,
+  "sha256": "b6f295cb5be837314884b623603a6a9d2264fdd4ae3090cbfce4ac74feb2736c"
+ },
+ "fentanyl_patch 62": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|62 mcg/h|124"
+  ],
+  "ome": "124.0",
+  "doses": "62.0 37.2 12.9 93.0 31.0 18.6 3.7 62.0 930 664 620 404",
+  "patchRec": null,
+  "sha256": "6b7d709dc7f1af8bfe9370bb610038f86aabc277ea29c9f71bb478303e3564b9"
+ },
+ "fentanyl_patch 75": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|75 mcg/h|150"
+  ],
+  "ome": "150.0",
+  "doses": "75.0 45.0 15.6 112.5 37.5 22.5 4.5 75.0 1125 804 750 489",
+  "patchRec": null,
+  "sha256": "e18c214dbfefc556a25bbca41b07a1303b1ed8570c73389233b05e798c868680"
+ },
+ "fentanyl_patch 87": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|87 mcg/h|174"
+  ],
+  "ome": "174.0",
+  "doses": "87.0 52.2 18.1 130.5 43.5 26.1 5.2 87.0 1305 932 870 567",
+  "patchRec": null,
+  "sha256": "7b8d6ee968957d9e802926d5ca48c8380793765484ff62b76e7e6fced1c50bdc"
+ },
+ "fentanyl_patch 100": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|100 mcg/h|200"
+  ],
+  "ome": "200.0",
+  "doses": "100.0 60.0 20.8 150.0 50.0 30.0 6.0 100.0 1500 1071 1000 652",
+  "patchRec": null,
+  "sha256": "a3ce8d6c2d97fabe0ffddabc5475044431e9b1d0674fb16755d5aed769450d85"
+ },
+ "fentanyl_patch 125": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|125 mcg/h|250"
+  ],
+  "ome": "250.0",
+  "doses": "125.0 75.0 26.0 187.5 62.5 37.5 7.5 125.0 1875 1339 1250 815",
+  "patchRec": null,
+  "sha256": "d2994fea6e72a405f9e0e3f483028073e62fcb231d9623f9b9764e2b9419b1b6"
+ },
+ "fentanyl_patch 150": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|150 mcg/h|300"
+  ],
+  "ome": "300.0",
+  "doses": "150.0 90.0 31.3 225.0 75.0 45.0 9.0 150.0 2250 1607 1500 978",
+  "patchRec": null,
+  "sha256": "0f41b6cf597833ced2caa2ff451b8afd6e5dd5a2df23a11346df0f9c812133be"
+ },
+ "fentanyl_patch blank": {
+  "error": "請從下拉選單選擇有效的貼片劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "af3b4338a866f151f7f08ef006843c6a869dfc3d4b2f1b2e88eadb3f7efb1a58"
+ },
+ "buprenorphine_td 5": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "buprenorphine_td|5 mcg/h|12.5"
+  ],
+  "ome": "12.5",
+  "doses": "4.7 5.0 1.3 9.4 3.1 1.9 0.4 6.3 94 67 63 41",
+  "patchRec": " 計算值 4.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "9d5495193c5edaf28f423bf91a89666c17a202f082a120ca3415154e13f0f239"
+ },
+ "buprenorphine_td 10": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "buprenorphine_td|10 mcg/h|25"
+  ],
+  "ome": "25.0",
+  "doses": "9.4 10.0 2.6 18.8 6.3 3.8 0.8 12.5 188 134 125 82",
+  "patchRec": " 計算值 9.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "fcdaa3538ed7aa1b2deb6897600f63751b4e0f032cc481f174629867c4fa3fd2"
+ },
+ "buprenorphine_td 20": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "buprenorphine_td|20 mcg/h|50"
+  ],
+  "ome": "50.0",
+  "doses": "18.8 20.0 5.2 37.5 12.5 7.5 1.5 25.0 375 268 250 163",
+  "patchRec": " 計算值 18.8 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "141cd02ad01b28e3edf120b19ee4fc0d2b97bd3474cb213e2b003f71bbdde5e7"
+ },
+ "fentanyl_iv 0.1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|0.1 mcg/hr 持續輸注|0.7200000000000001"
+  ],
+  "ome": "0.7",
+  "doses": "0.3 0.2 0.1 0.5 0.2 0.1 0.0 0.4 5 4 4 2",
+  "patchRec": " 計算值 0.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "643ead6be7cae7ce860e47c13ab84572486977d49969b169f795eb878aa73f56"
+ },
+ "fentanyl_iv 1": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|1 mcg/hr 持續輸注|7.2"
+  ],
+  "ome": "7.2",
+  "doses": "2.7 2.2 1.0 5.4 1.8 1.1 0.2 3.6 54 39 36 23",
+  "patchRec": " 計算值 2.7 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "ba7b19ef56186a3bac87a33b1e50fded7fe3438879c6829459a9c70a5ecfe538"
+ },
+ "fentanyl_iv 12.5": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|12.5 mcg/hr 持續輸注|90"
+  ],
+  "ome": "90.0",
+  "doses": "33.8 27.0 12.5 67.5 22.5 13.5 2.7 45.0 675 482 450 293",
+  "patchRec": " 計算值 33.8 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "b1ac1943cbcd145f7d1389482a7daf801359f00e138715214288631659522dcf"
+ },
+ "fentanyl_iv 25": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|25 mcg/hr 持續輸注|180"
+  ],
+  "ome": "180.0",
+  "doses": "67.5 54.0 25.0 135.0 45.0 27.0 5.4 90.0 1350 964 900 587",
+  "patchRec": " 計算值 67.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "966be086c67e425d79f3a5c9b588b107e74cb10b66a454690db2ca61bb459e26"
+ },
+ "fentanyl_iv 100": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|100 mcg/hr 持續輸注|720"
+  ],
+  "ome": "720.0",
+  "doses": "270.0 216.0 100.0 540.0 180.0 108.0 21.6 360.0 5400 3857 3600 2348",
+  "patchRec": " 計算值 270.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "125a3808bdc73476d7cdc6173db2598cf33571d46677508fa9a98ee0f19d6237"
+ },
+ "fentanyl_iv 138.9": {
+  "error": "單項 OME 過高（1000 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "3f128afb93c3a6e50b385804733f5c186250df97a6fc3efa10e9f8a71ededc32"
+ },
+ "fentanyl_iv 139": {
+  "error": "單項 OME 過高（1001 mg）。請確認輸入數值是否正確。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "bee83655c48b224b7df0ef05d6cd88dd14de7f788a780ebd40b322232013783e"
+ },
+ "fentanyl_iv 0": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "fentanyl_iv -1": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "fentanyl_iv ": {
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
+ },
+ "morphine_oral 30 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "15.0 12.0 4.2 30.0 10.0 6.0 1.2 20.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "5953163252c5a189fbcbb663798e369f19a4391fdad15b6f33b4e8e2afd1b3dc"
+ },
+ "morphine_oral 60 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "30.0 24.0 8.3 60.0 20.0 12.0 2.4 40.0 600 429 400 261",
+  "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "15c8ce41eea931480a7c81faea549ddfe838473037f5bedccb43a6289e4269ad"
+ },
+ "oxycodone_oral 40 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "30.0 24.0 8.3 60.0 20.0 12.0 2.4 40.0 600 429 400 261",
+  "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "e7103e017041261a9cb0f7cbc72fe48ee614aa3c849937e714829a850af4f422"
+ },
+ "fentanyl_patch 50 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 40.0 13.9 100.0 33.3 20.0 4.0 66.7 1000 714 667 435",
+  "patchRec": null,
+  "sha256": "4d73a063c715066be1e292f273b3c68697106277edea5bd7ba5692faeaab2a05"
+ },
+ "hydromorphone_iv_sc 4 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 40.0 13.9 100.0 33.3 20.0 4.0 66.7 1000 714 667 435",
+  "patchRec": " 計算值 50.0 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "fca2eef0ed0bd7bd3ae1bfe1f47fdb0f9c08b1eff41cda69f199c1508d89cb90"
+ },
+ "morphine_oral 250 tol0 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "125.0 100.0 34.7 250.0 83.3 50.0 10.0 166.7 2500 1786 1667 1087",
+  "patchRec": " 計算值 125.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "d1f59b388f6cd7b6d09583d745de1cfbe7d8e5eee57ec12e975e4fbd45c44d89"
+ },
+ "morphine_oral 30 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "15.0 12.0 4.2 30.0 10.0 6.0 1.2 20.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "5953163252c5a189fbcbb663798e369f19a4391fdad15b6f33b4e8e2afd1b3dc"
+ },
+ "morphine_oral 60 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "30.0 24.0 8.3 60.0 20.0 12.0 2.4 40.0 600 429 400 261",
+  "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "eda8ba0998ef5b57a2f35ca85afc10eccc1c2dacaccb022ce701dbac72fc44ce"
+ },
+ "oxycodone_oral 40 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "30.0 24.0 8.3 60.0 20.0 12.0 2.4 40.0 600 429 400 261",
+  "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "6bdc0c037ff74346bf862845666540ef1d857470079e4173e7e95daebbac13de"
+ },
+ "fentanyl_patch 50 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 40.0 13.9 100.0 33.3 20.0 4.0 66.7 1000 714 667 435",
+  "patchRec": null,
+  "sha256": "1ec67fabf007b1276409046aa57018e33f0a45c32415ef1ea5fc6f28efa21b5b"
+ },
+ "hydromorphone_iv_sc 4 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 40.0 13.9 100.0 33.3 20.0 4.0 66.7 1000 714 667 435",
+  "patchRec": " 計算值 50.0 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "9c5a06d8053928c5355da353a4901e1e20015e5838105517ecadf16b3dc35893"
+ },
+ "morphine_oral 250 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "125.0 100.0 34.7 250.0 83.3 50.0 10.0 166.7 2500 1786 1667 1087",
+  "patchRec": " 計算值 125.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "e2cac55effad7e5b6b00ea1db772aa41ba42d4464aa05f37c5126f0092bf6f96"
+ },
+ "morphine_oral 30 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 30.0 7.5 4.5 0.9 15.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f51a4ed67f38eb04ecfe239ae1644d64f3d764eed36e82e9d3e4e2279ba99c4c"
+ },
+ "morphine_oral 60 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "22.5 18.0 6.3 60.0 15.0 9.0 1.8 30.0 450 321 300 196",
+  "patchRec": " 計算值 22.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "79dd3ea32ab752d2200d1c720ac026c29060f0a586a622a39c5b380258472fcc"
+ },
+ "oxycodone_oral 40 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "22.5 18.0 6.3 45.0 15.0 9.0 1.8 40.0 450 321 300 196",
+  "patchRec": " 計算值 22.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "50a9f574ca002e53421a7dfaf7490d54ca0363ab0bd423e12af98215fe780a43"
+ },
+ "fentanyl_patch 50 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 30.0 10.4 75.0 25.0 15.0 3.0 50.0 750 536 500 326",
+  "patchRec": null,
+  "sha256": "b6f295cb5be837314884b623603a6a9d2264fdd4ae3090cbfce4ac74feb2736c"
+ },
+ "hydromorphone_iv_sc 4 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 75.0 25.0 15.0 4.0 50.0 750 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "84f00c184b60467f9427c0a9455f10bd439c699a02b30ddd7fdcc24a0815c242"
+ },
+ "morphine_oral 250 tol25 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "93.8 75.0 26.0 250.0 62.5 37.5 7.5 125.0 1875 1339 1250 815",
+  "patchRec": " 計算值 93.8 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
+  "sha256": "ad7a1a63bcadb2af66d2b3ee755d0c2ebb9379b45a19a602554622b13ec41222"
+ },
+ "morphine_oral 30 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 30.0 7.5 4.5 0.9 15.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f51a4ed67f38eb04ecfe239ae1644d64f3d764eed36e82e9d3e4e2279ba99c4c"
+ },
+ "morphine_oral 60 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "22.5 18.0 6.3 60.0 15.0 9.0 1.8 30.0 450 321 300 196",
+  "patchRec": " 計算值 22.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "5813fb005f2df1bcfbf0c3e168cf83d125eeae51270373b75f56f018274d8608"
+ },
+ "oxycodone_oral 40 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "22.5 18.0 6.3 45.0 15.0 9.0 1.8 40.0 450 321 300 196",
+  "patchRec": " 計算值 22.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "79e382b7b203ad89d4adf5672dd399f43afbbc459bc3ebeb5a197f7f13a3ce51"
+ },
+ "fentanyl_patch 50 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 30.0 10.4 75.0 25.0 15.0 3.0 50.0 750 536 500 326",
+  "patchRec": null,
+  "sha256": "f3c40c1e3bb794b7a23a4232548deb37022d2481174ff9c7cd3daeeade07ea13"
+ },
+ "hydromorphone_iv_sc 4 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "37.5 30.0 10.4 75.0 25.0 15.0 4.0 50.0 750 536 500 326",
+  "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "3abd10959e9f50179f222d9ced27ab18252cca0504d38bcfac9482b611805c82"
+ },
+ "morphine_oral 250 tol25 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "93.8 75.0 26.0 250.0 62.5 37.5 7.5 125.0 1875 1339 1250 815",
+  "patchRec": " 計算值 93.8 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
+  "sha256": "95de26074770eb5779c43034f3bda957a9079a25cc0c65f8bc1c6321412a782f"
+ },
+ "morphine_oral 30 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "7.5 6.0 2.1 30.0 5.0 3.0 0.6 10.0 150 107 100 65",
+  "patchRec": " 計算值 7.5 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f6f8b5380ef59de73595441fd6814a4b1f501a879df85300214e1f8ab90309d2"
+ },
+ "morphine_oral 60 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "15.0 12.0 4.2 60.0 10.0 6.0 1.2 20.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "3fc2a36ef0e1e582c72473e3474b1281bd269c455ca2e5b2a204f31257dc8e8b"
+ },
+ "oxycodone_oral 40 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "15.0 12.0 4.2 30.0 10.0 6.0 1.2 40.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "e45572ddb1871330e5b2fc8a9013eb5f89b2a1428e2925d1d25ab73ce388349b"
+ },
+ "fentanyl_patch 50 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 20.0 6.9 50.0 16.7 10.0 2.0 33.3 500 357 333 217",
+  "patchRec": null,
+  "sha256": "16b3a86e403777e54ce7ee7c0f15be4b1f606202fb18bf1ccbb6696e67cab41d"
+ },
+ "hydromorphone_iv_sc 4 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "25.0 20.0 6.9 50.0 16.7 10.0 4.0 33.3 500 357 333 217",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "8626ab93e2d3356e51d7b733856d3149d57602a75f534b1a303dd029cf2f3a8e"
+ },
+ "morphine_oral 250 tol50 cancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "62.5 50.0 17.4 250.0 41.7 25.0 5.0 83.3 1250 893 833 543",
+  "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "29357586eb5205fca1be2c1d93ffcc3b564ea9da40f1740f8b4e3f7f34f7053f"
+ },
+ "morphine_oral 30 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "7.5 6.0 2.1 30.0 5.0 3.0 0.6 10.0 150 107 100 65",
+  "patchRec": " 計算值 7.5 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "f6f8b5380ef59de73595441fd6814a4b1f501a879df85300214e1f8ab90309d2"
+ },
+ "morphine_oral 60 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|60.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "15.0 12.0 4.2 60.0 10.0 6.0 1.2 20.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "b0a9963d71d86234bac934411d4e11e020e8c8013a49d7f968efa79bb930111f"
+ },
+ "oxycodone_oral 40 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|40.0 mg/day|60"
+  ],
+  "ome": "60.0",
+  "doses": "15.0 12.0 4.2 30.0 10.0 6.0 1.2 40.0 300 214 200 130",
+  "patchRec": " 計算值 15.0 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
+  "sha256": "a9b095266c05c13925126d91d62c1a9ea8e962388047c1d072b4fa77af8f4a12"
+ },
+ "fentanyl_patch 50 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100"
+  ],
+  "ome": "100.0",
+  "doses": "50.0 20.0 6.9 50.0 16.7 10.0 2.0 33.3 500 357 333 217",
+  "patchRec": null,
+  "sha256": "a3edc170be99927045a7dc7ee6b0b725cb616435b30308afcff429a52fa7fd23"
+ },
+ "hydromorphone_iv_sc 4 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "hydromorphone_iv_sc|4.0 mg/day|100"
+  ],
+  "ome": "100.0",
+  "doses": "25.0 20.0 6.9 50.0 16.7 10.0 4.0 33.3 500 357 333 217",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "99d19c59ebab2a9608d3c2e189d71cd6d7367c497fcfadc10014103504befb4f"
+ },
+ "morphine_oral 250 tol50 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|250.0 mg/day|250"
+  ],
+  "ome": "250.0",
+  "doses": "62.5 50.0 17.4 250.0 41.7 25.0 5.0 83.3 1250 893 833 543",
+  "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "31deeb2ecf6d89c74d5cec3200362cc1af167fef7254b6c5432b19e75aabeda6"
+ },
+ "multi morphine+oxy": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30 mg × 2 = 60.0 mg/day|60",
+   "oxycodone_oral|10 mg × 4 = 40.0 mg/day|60"
+  ],
+  "ome": "120.0",
+  "doses": "45.0 36.0 12.5 90.0 30.0 18.0 3.6 60.0 900 643 600 391",
+  "patchRec": " 計算值 45.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "e2baa37adddf0d5b73a70d6ccf9bd4e061531c61ac7b4c58957c6748906b5174"
+ },
+ "multi patch+morphine": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|25 mcg/h|50",
+   "morphine_oral|10 mg × 6 = 60.0 mg/day|60"
+  ],
+  "ome": "110.0",
+  "doses": "41.3 33.0 11.5 82.5 27.5 16.5 3.3 55.0 825 589 550 359",
+  "patchRec": " 計算值 41.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "b36994bf25a20775d996f58aafa56b2e18ccffdc69c735baf6c2cdca98ddf589"
+ },
+ "multi same drug twice": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|30 mg × 2 = 60.0 mg/day|60",
+   "morphine_oral|10.0 mg/day|10"
+  ],
+  "ome": "70.0",
+  "doses": "26.3 21.0 7.3 52.5 17.5 10.5 2.1 35.0 525 375 350 228",
+  "patchRec": " 計算值 26.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
+  "sha256": "b298ba9c8a8310be7eea1ce4c52cc260e72a2811ed04c95b6f126c33c5683706"
+ },
+ "multi same patch twice": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|50 mcg/h|100",
+   "fentanyl_patch|25 mcg/h|50"
+  ],
+  "ome": "150.0",
+  "doses": "56.3 45.0 15.6 112.5 37.5 22.5 4.5 75.0 1125 804 750 489",
+  "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "4841d311682978ef869fae674f8c90e92451aa5f203c9c3e9002ffefc121071e"
+ },
+ "multi total >1000": {
+  "error": "總 OME 過高（1100 mg/day）。請確認輸入數值是否正確。",
+  "resultVisible": true,
+  "list": [
+   "morphine_oral|900.0 mg/day|900",
+   "morphine_oral|200.0 mg/day|200"
+  ],
+  "ome": "900.0",
+  "doses": "337.5 270.0 93.8 900.0 225.0 135.0 27.0 450.0 6750 4821 4500 2935",
+  "patchRec": " 計算值 337.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
+  "sha256": "927f8ce8ccd2455e0536e96febae78445dfc7edc7d948cae518ca5e3eee29bdf"
+ },
+ "multi then remove": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|20.0 mg/day|30"
+  ],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 22.5 7.5 4.5 0.9 20.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "0fad9ab9b2a5bc7754a0a98411db53d90d3ca1ed244e2e8bf6b1b3ba0c557381"
+ },
+ "remove last": {
+  "error": null,
+  "resultVisible": false,
+  "list": [],
+  "ome": "30.0",
+  "doses": "11.3 9.0 3.1 30.0 7.5 4.5 0.9 15.0 225 161 150 98",
+  "patchRec": " 計算值 11.3 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "7196e2a7b54c8e8e979dff967caad981522a1c073597249c0d05b62b6552bcd2"
+ },
+ "switch drug keeps dose": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|25 mcg/hr 持續輸注|180"
+  ],
+  "ome": "180.0",
+  "doses": "67.5 54.0 25.0 135.0 45.0 27.0 5.4 90.0 1350 964 900 587",
+  "patchRec": " 計算值 67.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
+  "sha256": "966be086c67e425d79f3a5c9b588b107e74cb10b66a454690db2ca61bb459e26"
+ },
+ "switch oral to oral keeps dose": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "oxycodone_oral|10.0 mg/day|15"
+  ],
+  "ome": "15.0",
+  "doses": "5.6 4.5 1.6 11.3 3.8 2.3 0.4 10.0 113 80 75 49",
+  "patchRec": " 計算值 5.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
+  "sha256": "3cd4870bc2c44e23f755698d01f4805c0242365b4f41019fc66e4bb00b624fe6"
+ },
+ "no drug selected": {
+  "error": "請先選擇藥物。",
+  "resultVisible": true,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "993f7d7ba7cf86b584d3efb13014945f56e99119861a79a6f0f794e71f0f3cb8"
+ },
+ "__refTable": ""
+}
