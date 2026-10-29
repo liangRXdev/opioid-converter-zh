@@ -1,10 +1,15 @@
-const PREFIX = 'opioid-converter-';
-const CACHE = `${PREFIX}v1.4.0`;
+// 前綴必須含完整 repo 名稱：同 origin 上若有 opioid-converter-en 等相近名稱的工具，
+// 只用 'opioid-converter-' 會把對方的快取當成自己的舊版刪掉。
+const PREFIX = 'opioid-converter-zh-';
+const CACHE = `${PREFIX}v1.4.1`;
+// 改名前本工具使用的舊快取名（opioid-converter-v1.4.0 等），升級時一併清除
+const LEGACY_CACHE = /^opioid-converter-v\d/;
 
 const PRECACHE = [
   '/opioid-converter-zh/',
   '/opioid-converter-zh/index.html',
   '/opioid-converter-zh/manifest.json',
+  '/opioid-converter-zh/js/calc.js',
   '/opioid-converter-zh/icons/icon-192.png',
   '/opioid-converter-zh/icons/icon-512.png',
 ];
@@ -25,7 +30,7 @@ self.addEventListener('activate', e => {
     // origin 共用的——少了前綴守衛，這裡的 activate 會把鄰居工具的離線快取一起刪光。
     caches.keys().then(keys =>
       Promise.all(
-        keys.filter(k => k.startsWith(PREFIX) && k !== CACHE).map(k => caches.delete(k))
+        keys.filter(k => (k.startsWith(PREFIX) || LEGACY_CACHE.test(k)) && k !== CACHE).map(k => caches.delete(k))
       )
     )
   );
