@@ -26,6 +26,21 @@
     codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.23,fromOME: ome => ome / 0.23, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）；IM 等效劑量 130 mg（≠ 口服 200 mg，Micromedex 2025）' },
   };
 
+  // CDC 2022 MME 係數（僅供非癌症情境的風險評估，不用於換算劑量）
+  // 出處：Dowell D, et al. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022.
+  //       MMWR Recomm Rep 2022;71(3):1–95. Table「Morphine milligram equivalent doses for commonly prescribed
+  //       opioids for pain management」。注意事項 1：除 fentanyl（mcg/hr）外皆為 mg/day；
+  //       注意事項 3：不得以 MME 決定換藥劑量；注意事項 6：表格不含 buprenorphine。
+  // 只收錄工具內已有、且 CDC 表有列的口服藥品與貼片（工具未提供 hydrocodone / oxymorphone / tapentadol）。
+  const CDC_MME_FACTORS = {
+    morphine_oral: 1.0,
+    hydromorphone_oral: 5.0,
+    oxycodone_oral: 1.5,
+    tramadol_oral: 0.2,
+    codeine_oral: 0.15,
+    fentanyl_patch: 2.4, // mcg/hr
+  };
+
   const PATCH_SIZES = [12, 25, 50, 75, 100]; // fentanyl patch sizes for reference table
   const BUP_PATCH_SIZES = [5, 10, 20];       // Norspan® mcg/h
   const FENTANYL_PATCH_OPTIONS = [
@@ -96,6 +111,22 @@
     if (ome > MAX_OME) return { error: `單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。` };
 
     return { key, label: drug.label, doseLabel, ome, dose: totalDose };
+  }
+
+  // CDC 2022 風險評估 MME：CDC 表有列者用 CDC 係數 × 每日劑量（貼片為 mcg/hr）；
+  // 未列者（IV/SC/IM、Fentanyl IV、Tramadol IV/IM、Codeine IM、Buprenorphine 貼片）沿用 toOME 計入以免漏算，並列入 unlisted
+  function cdcRiskMME(list) {
+    let mme = 0;
+    const unlisted = [];
+    list.forEach(i => {
+      const k = CDC_MME_FACTORS[i.key];
+      if (k !== undefined) mme += i.dose * k;
+      else {
+        mme += i.ome;
+        if (!unlisted.includes(i.label)) unlisted.push(i.label);
+      }
+    });
+    return { mme, unlisted };
   }
 
   // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
@@ -232,9 +263,9 @@
   }
 
   const api = {
-    DRUGS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
+    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, cdcRiskMME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 
