@@ -750,6 +750,8 @@ function addDrug() {
   const rawDose = drug.isPatch ? document.getElementById('selPatchDose').value : document.getElementById('inpDose').value;
   const entry = OpioidCalc.parseEntry(key, rawDose, document.getElementById('inpFreq').value);
   if (entry.error) { showError(entry.error); return; }
+  const totalErr = OpioidCalc.totalOMEError(drugList, entry);
+  if (totalErr) { showError(totalErr); return; }
 
   drugList.push(entry);
   renderDrugList();
@@ -809,7 +811,7 @@ function calculate() {
   const crossTolFactor = OpioidCalc.crossTolFactor(crossTolPct);
   const totalOME = OpioidCalc.totalOME(drugList);
 
-  if (totalOME > MAX_OME) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); return; }
+  if (totalOME > MAX_OME) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); hideResult(); return; }
 
   // OME 顯示
   document.getElementById('omeValue').textContent = totalOME.toFixed(1);

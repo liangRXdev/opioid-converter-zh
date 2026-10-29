@@ -94,6 +94,12 @@
     return { key, label: drug.label, doseLabel, ome };
   }
 
+  // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
+  function totalOMEError(list, entry) {
+    const total = totalOME(list.concat(entry));
+    return total > MAX_OME ? `總 OME 過高（${total.toFixed(0)} mg/day）。請確認輸入數值是否正確。` : null;
+  }
+
   function sourceInfo(list) {
     const sourceKeys = new Set(list.map(i => i.key));
     return { sourceKeys, singleSource: list.length === 1 };
@@ -168,7 +174,7 @@
 
   const api = {
     DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
-    crossTolFactor, totalOME, parseEntry, sourceInfo, conversions, formatDose,
+    crossTolFactor, totalOME, totalOMEError, parseEntry, sourceInfo, conversions, formatDose,
     patchRecommendation, breakthroughRange, buildSummary,
   };
 

@@ -2658,13 +2658,12 @@
   "error": "總 OME 過高（1100 mg/day）。請確認輸入數值是否正確。",
   "resultVisible": true,
   "list": [
-   "morphine_oral|900.0 mg/day|900",
-   "morphine_oral|200.0 mg/day|200"
+   "morphine_oral|900.0 mg/day|900"
   ],
   "ome": "900.0",
   "doses": "337.5 270.0 93.8 900.0 225.0 135.0 27.0 450.0 6750 4821 4500 2935",
   "patchRec": " 計算值 337.5 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
-  "sha256": "927f8ce8ccd2455e0536e96febae78445dfc7edc7d948cae518ca5e3eee29bdf"
+  "sha256": "e34a3c52203dd352ae134d01ed9ce1b681d6dabad8971b67416880b0e6405299"
  },
  "multi then remove": {
   "error": null,
