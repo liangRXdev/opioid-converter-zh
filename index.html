@@ -653,7 +653,7 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.4.3 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.4 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -668,7 +668,7 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.3 | Fentanyl IV 穩態 ×2.88、IV→貼片 1:1（NCCN 2026）
+// v1.4.4 | 貼片建議：規格相符只建議單一劑量、> 100 mcg/h 組合貼片
 // ============================================================
 
 const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
@@ -866,10 +866,10 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
+  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, match, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
-  if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
-  else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
+  if (match)                patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議 <strong>${match.label}</strong>（與規格相符）。`;
+  else if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower.label}</strong>（保守）或 <strong>${higher.label}</strong>（積極）。`;
   else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
   if (ivDirect)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
   else if (ivMixed) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;

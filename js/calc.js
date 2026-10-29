@@ -149,6 +149,38 @@
     return (drug.isPatch || !drug.isWeak) ? fmt(dose, 1) : fmt(dose, 0);
   }
 
+  // 目標與可用劑量的比對容差（mcg/h）：吸收浮點誤差（如 72/2.88 = 24.999…），
+  // |target − 劑量| ≤ 此值即視為與規格相符，只建議該劑量
+  const PATCH_MATCH_TOL = 0.05;
+
+  // > 100 mcg/h 的組合：100×n + r（n ≥ 1），r 取自此清單；≤ 100 仍只用 PATCH_SIZES（不改既有輸出）
+  const PATCH_COMBO_REMAINDERS = [0, 12, 25, 50, 75];
+
+  // 可用貼片劑量（遞增）：PATCH_SIZES，再接 > 100 的組合直到第一個 > target 者。
+  // 不另設上限，上限由 MAX_OME 決定。
+  function availablePatches(target) {
+    const out = PATCH_SIZES.map(dose => ({ dose, label: `${dose} mcg/h` }));
+    for (let n = 1; out[out.length - 1].dose <= target + PATCH_MATCH_TOL; n++) {
+      for (const r of PATCH_COMBO_REMAINDERS) {
+        const dose = 100 * n + r;
+        if (dose <= 100) continue;
+        const parts = Array(n).fill(100).concat(r ? [r] : []);
+        out.push({ dose, label: `${dose} mcg/h（${parts.join('+')}）` });
+      }
+    }
+    return out;
+  }
+
+  // 依目標 mcg/h 選規格：相符 → match；否則 lower（≤ 目標最大，保守）/ higher（> 目標最小，積極）
+  function recommendPatch(target) {
+    const avail = availablePatches(target);
+    const match = avail.find(p => Math.abs(target - p.dose) <= PATCH_MATCH_TOL);
+    if (match) return { match, lower: undefined, higher: undefined };
+    const lower  = avail.filter(p => p.dose <= target).slice(-1)[0];
+    const higher = avail.find(p => p.dose > target);
+    return { match: undefined, lower, higher };
+  }
+
   // Fentanyl 貼片建議規格
   function patchRecommendation(list, crossTolPct) {
     const { sourceKeys, singleSource } = sourceInfo(list);
@@ -156,9 +188,7 @@
     const { ivDirect, ivMixed, ivTotal } = ivPatchMode(list);
     const patchFactor = onlyFentanyl ? 1 : crossTolFactor(crossTolPct);
     const target = ivDirect ? ivTotal : DRUGS.fentanyl_patch.fromOME(totalOME(list)) * patchFactor;
-    const lower  = PATCH_SIZES.filter(s => s <= target).slice(-1)[0];
-    const higher = PATCH_SIZES.filter(s => s > target)[0];
-    return { onlyFentanyl, ivDirect, ivMixed, target, lower, higher };
+    return { onlyFentanyl, ivDirect, ivMixed, target, ...recommendPatch(target) };
   }
 
   // Breakthrough dose：總 OME × 10–20%
@@ -202,10 +232,10 @@
   }
 
   const api = {
-    DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
+    DRUGS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
     crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
-    patchRecommendation, breakthroughRange, buildSummary,
+    recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 
   if (typeof module === 'object' && module.exports) module.exports = api;

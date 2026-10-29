@@ -20,7 +20,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | **Renal caution flags** | Each result card shows a 🫘 renal-failure risk label (avoid / caution / safe, Micromedex 2025) |
 | **Incomplete cross-tolerance reduction** | Three options: no reduction / reduce 25% / reduce 50% (standard opioid-rotation practice) |
 | **Breakthrough dose** | Automatically computes the PRN rescue dose (total OME × 10–20%, converted to morphine / hydromorphone / oxycodone) |
-| **Fentanyl patch strength suggestion** | Recommends the nearest patch strength from the result (conservative / aggressive options) |
+| **Fentanyl patch strength suggestion** | Recommends the nearest patch strength from the result (conservative / aggressive options; a single strength when the target matches; combinations above 100 mcg/h) |
 | **Copy conversion summary** | One-click copy of a plain-text conversion report for pasting into notes or handoff records |
 | **Patch dose reference table** | Lists each drug's daily dose corresponding to each fentanyl patch strength (including buprenorphine) |
 | **Guideline ratio comparison** | Side-by-side comparison of UpToDate / NCCN 2026 / Reddy 2015 / Duragesic PI |
@@ -155,6 +155,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.4 | 2026-10-29 | Patch recommendation: a single strength when the target matches it (±0.05 mcg/h); targets > 100 mcg/h use 100×n + r combinations with their composition shown; the "highest common strength" cap is removed |
 | v1.4.3 | 2026-10-29 | Fentanyl IV now uses the NCCN steady-state ratio ×2.88 (was ×7.2); fentanyl IV-only sources convert to patch 1:1 with infusion taper guidance (NCCN PAIN-G 13); js/calc.js extraction and node --test suite (PR #1) |
 | v1.4.2 | 2026-05-22 | Added tramadol IV/IM (×0.14, derived; flagged as unsupported by major guidelines) |
 | v1.4.1 | 2026-05-22 | PWA support: manifest.json, service worker, OME Calc icon (#FD7E14) |
