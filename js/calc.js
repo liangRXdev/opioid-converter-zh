@@ -10,7 +10,11 @@
   const DRUGS = {
     fentanyl_patch:        { label: 'Fentanyl 貼片', route: 'transdermal', unit: 'mcg/h',   toOME: d => d * 2,   fromOME: ome => ome / 2,   isPatch: true },
     buprenorphine_td:      { label: 'Buprenorphine 貼片', route: 'transdermal', unit: 'mcg/h', toOME: d => d * 2.5, fromOME: ome => ome / 2.5, isPatch: true, isBupPatch: true },
-    fentanyl_iv:           { label: 'Fentanyl IV 持續輸注', route: 'IV', unit: 'mcg/hr',    toOME: d => d * 7.2, fromOME: ome => ome / 7.2,  isIVInfusion: true },
+    // Fentanyl IV 持續輸注（穩態）— NCCN Adult Cancer Pain v1.2026 Table 2 註 c（穩態）：
+    //   重複給藥（steady-state）時 10 mg IV morphine ≈ 250 mcg IV fentanyl（單次給藥為 100 mcg，不適用持續輸注）
+    //   1 mcg/h × 24 h = 24 mcg/day；250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine
+    //   → 24 × 30/250 = 2.88 mg OME/day per mcg/h
+    fentanyl_iv:           { label: 'Fentanyl IV 持續輸注', route: 'IV', unit: 'mcg/hr',    toOME: d => d * 2.88, fromOME: ome => ome / 2.88, isIVInfusion: true },
     morphine_oral:         { label: 'Morphine 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 1,   fromOME: ome => ome / 1 },
     morphine_iv_sc:        { label: 'Morphine IV/SC', route: 'IV/SC',       unit: 'mg/day',  toOME: d => d * 3,   fromOME: ome => ome / 3 },
     hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },

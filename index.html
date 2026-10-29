@@ -649,7 +649,7 @@ select:focus, input[type="number"]:focus {
     <br>
     換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25（UpToDate；NCCN 2026 ×20）·
     Oxycodone oral ×1.5 · Tramadol oral ×0.1 · Tramadol IV/IM ×0.14 [推算] · Codeine oral ×0.15 · Codeine IM ×0.23 ·
-    Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×7.2（mcg/hr 換算 mg OME/day）
+    Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×2.88（mcg/hr 換算 mg OME/day；NCCN 2026 Table 2 註 c 穩態比）
   </footer>
 </div>
 
@@ -847,7 +847,7 @@ function calculate() {
     if (dk === 'tramadol_iv'   && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×5（6 mg=30 MME）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
     if (dk === 'hydromorphone_iv_sc')  warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×25（1.2 mg=30 MME）；NCCN 2026 採 ×20（1.5 mg），差異 20%</div>`;
-    if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×7.2（1 mcg/hr × 24h × 0.3 生體可用率）</div>`;
+    if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×2.88（穩態：250 mcg IV fentanyl ≈ 10 mg IV morphine，NCCN 2026 Table 2 註 c）</div>`;
     if (dk === 'buprenorphine_td') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">Norspan® 規格：5 / 10 / 20 mcg/h；換算因子 ×2.5（20 mcg/h = 50 mg OME）</div>`;
     if (RENAL_FLAGS[dk]) {
       const rf = RENAL_FLAGS[dk];
