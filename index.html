@@ -649,11 +649,11 @@ select:focus, input[type="number"]:focus {
     <br>
     換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25（UpToDate；NCCN 2026 ×20）·
     Oxycodone oral ×1.5 · Tramadol oral ×0.1 · Tramadol IV/IM ×0.14 [推算] · Codeine oral ×0.15 · Codeine IM ×0.23 ·
-    Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×7.2（mcg/hr 換算 mg OME/day）
+    Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×2.88（mcg/hr 換算 mg OME/day；NCCN 2026 Table 2 註 c 穩態比）
   </footer>
 </div>
 
-<div class="version-badge">v1.4.2 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.3 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -668,7 +668,7 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.0 | Cancer/non-cancer context, renal flags, Buprenorphine TD, IV Fentanyl
+// v1.4.3 | Fentanyl IV 穩態 ×2.88、IV→貼片 1:1（NCCN 2026）
 // ============================================================
 
 const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
@@ -834,7 +834,7 @@ function calculate() {
   const grid = document.getElementById('resultGrid');
   grid.innerHTML = '';
 
-  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, adjDose, display: doseDisplay }) => {
+  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, ivDirect, adjDose, display: doseDisplay }) => {
     const card = document.createElement('div');
     card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
 
@@ -842,12 +842,13 @@ function calculate() {
     if (d.warn) warnHtml = `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.3rem;">${d.warn}</div>`;
     if (isSource && singleSource)   warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 來源藥物（未減量）</div>`;
     if (isSource && !singleSource)  warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 目前用藥之一</div>`;
+    if (ivDirect) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ IV→貼片 1:1（NCCN PAIN-G 13），未減量</div>`;
     if (dk === 'codeine_oral'  && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_iv'   && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×5（6 mg=30 MME）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
     if (dk === 'hydromorphone_iv_sc')  warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×25（1.2 mg=30 MME）；NCCN 2026 採 ×20（1.5 mg），差異 20%</div>`;
-    if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×7.2（1 mcg/hr × 24h × 0.3 生體可用率）</div>`;
+    if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×2.88（穩態：250 mcg IV fentanyl ≈ 10 mg IV morphine，NCCN 2026 Table 2 註 c）</div>`;
     if (dk === 'buprenorphine_td') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">Norspan® 規格：5 / 10 / 20 mcg/h；換算因子 ×2.5（20 mcg/h = 50 mg OME）</div>`;
     if (RENAL_FLAGS[dk]) {
       const rf = RENAL_FLAGS[dk];
@@ -865,11 +866,13 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const { onlyFentanyl, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
+  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
   if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
   else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
   else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
+  if (ivDirect)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
+  else if (ivMixed) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 

@@ -33,7 +33,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 |------|------|------------|------|
 | Fentanyl patch (TDF) | Transdermal | ÷2 (mcg/h → mg OME/day) | UpToDate / NCCN 2026 ÷2 formula |
 | Buprenorphine patch (Norspan®) | Transdermal | ×2.5 (20 mcg/h = 50 mg OME) | Strengths: 5 / 10 / 20 mcg/h |
-| Fentanyl continuous IV infusion | IV infusion | ×7.2 (mcg/hr → mg OME/day) | 1 mcg/hr × 24 h × 0.3 bioavailability |
+| Fentanyl continuous IV infusion | IV infusion | ×2.88 (mcg/hr → mg OME/day) | NCCN 2026 Table 2 note c (steady state); IV → patch 1:1 (PAIN-G 13) |
 | Morphine | Oral | ×1 (reference) | — |
 | Morphine | IV / SC | ×3 | — |
 | Hydromorphone | Oral | ×5 | UpToDate 2026; NCCN 2026 uses ×4, a 25% difference (see notes) |
@@ -84,9 +84,11 @@ This tool uses the **×2.5 formula** (20 mcg/h = 50 mg OME/day):
 
 ### Fentanyl continuous IV infusion conversion
 
-Factor **×7.2** (1 mcg/hr continuous infusion ≈ 7.2 mg OME/day):
+Factor **×2.88** (1 mcg/hr continuous infusion ≈ 2.88 mg OME/day; NCCN Adult Cancer Pain v1.2026 Table 2 note c, steady state):
 
-Basis: 1 mcg/hr × 24 hr/day × 0.3 (approximate oral-morphine equivalence of IV fentanyl) = 7.2 mg OME/day
+Basis: 1 mcg/hr × 24 h = 24 mcg/day; at steady state 250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine → 24 × 30/250 = 2.88 mg OME/day (the single-dose 100 mcg ≈ 10 mg ratio does not apply to infusions).
+
+**IV → patch**: when fentanyl IV is the only source, convert 1:1 (mcg/h) per NCCN PAIN-G 13 with no cross-tolerance reduction; halve the basal rate 6 h after patch placement and stop it at 12 h (or stop at 6 h).
 
 > This is a commonly used clinical approximation. IV fentanyl pharmacokinetics vary widely between individuals; actual conversion should be combined with sedation-depth assessment (e.g. CPOT / NRS).
 
@@ -153,6 +155,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.3 | 2026-10-29 | Fentanyl IV now uses the NCCN steady-state ratio ×2.88 (was ×7.2); fentanyl IV-only sources convert to patch 1:1 with infusion taper guidance (NCCN PAIN-G 13); js/calc.js extraction and node --test suite (PR #1) |
 | v1.4.2 | 2026-05-22 | Added tramadol IV/IM (×0.14, derived; flagged as unsupported by major guidelines) |
 | v1.4.1 | 2026-05-22 | PWA support: manifest.json, service worker, OME Calc icon (#FD7E14) |
 | v1.4.0 | 2026-05-22 | Scenario switch (cancer NCCN 2026 / non-cancer CDC 2022); renal flags; added buprenorphine patch (Norspan®); added fentanyl continuous IV infusion |

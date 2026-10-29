@@ -39,6 +39,10 @@ function scenarios() {
   push('multi patch+morphine', [{ key: 'fentanyl_patch', dose: 25 }, { key: 'morphine_oral', dose: 10, freq: 6 }]);
   push('multi same drug twice', [{ key: 'morphine_oral', dose: 30, freq: 2 }, { key: 'morphine_oral', dose: 10, freq: 1 }]);
   push('multi same patch twice', [{ key: 'fentanyl_patch', dose: 50 }, { key: 'fentanyl_patch', dose: 25 }]);
+  push('multi fentanyl_iv + morphine', [{ key: 'fentanyl_iv', dose: 25 }, { key: 'morphine_oral', dose: 30, freq: 1 }]);
+  push('multi fentanyl_iv twice', [{ key: 'fentanyl_iv', dose: 20 }, { key: 'fentanyl_iv', dose: 5 }]);
+  push('fentanyl_iv 25 tol0 noncancer', [{ key: 'fentanyl_iv', dose: 25 }], { crossTol: '0', context: 'noncancer' });
+  push('fentanyl_iv 25 tol50', [{ key: 'fentanyl_iv', dose: 25 }], { crossTol: '50' });
   push('multi total >1000', [{ key: 'morphine_oral', dose: 900, freq: 1 }, { key: 'morphine_oral', dose: 200, freq: 1 }]);
   push('multi then remove', [{ key: 'morphine_oral', dose: 30, freq: 1 }, { key: 'oxycodone_oral', dose: 20, freq: 1 }, { remove: 0 }]);
   push('remove last', [{ key: 'morphine_oral', dose: 30, freq: 1 }, { remove: 0 }]);

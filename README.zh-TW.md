@@ -33,7 +33,7 @@
 |------|------|------------|------|
 | Fentanyl 貼片（TDF）| Transdermal | ÷2（mcg/h → mg OME/day）| UpToDate / NCCN 2026 ÷2 公式 |
 | Buprenorphine 貼片（Norspan®）| Transdermal | ×2.5（20 mcg/h = 50 mg OME）| 規格：5 / 10 / 20 mcg/h |
-| Fentanyl IV 持續輸注 | IV Infusion | ×7.2（mcg/hr → mg OME/day）| 1 mcg/hr × 24h × 0.3 生體可用率 |
+| Fentanyl IV 持續輸注 | IV Infusion | ×2.88（mcg/hr → mg OME/day）| NCCN 2026 Table 2 註 c（穩態比）；轉貼片採 1:1（PAIN-G 13）|
 | Morphine | 口服 | ×1（基準）| — |
 | Morphine | IV / SC | ×3 | — |
 | Hydromorphone | 口服 | ×5 | UpToDate 2026；NCCN 2026 採 ×4，差異 25%（見注意事項）|
@@ -84,9 +84,11 @@
 
 ### Fentanyl IV 持續輸注換算說明
 
-換算因子 **×7.2**（1 mcg/hr 持續輸注 ≈ 7.2 mg OME/day）：
+換算因子 **×2.88**（1 mcg/hr 持續輸注 ≈ 2.88 mg OME/day；NCCN Adult Cancer Pain v1.2026 Table 2 註 c，穩態）：
 
-計算依據：1 mcg/hr × 24 hr/day × 0.3（IV fentanyl 對應口服嗎啡等效近似值）= 7.2 mg OME/day
+計算依據：1 mcg/hr × 24 h = 24 mcg/day；穩態下 250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine → 24 × 30/250 = 2.88 mg OME/day（單次給藥比 100 mcg ≈ 10 mg 不適用持續輸注）。
+
+**IV → 貼片**：來源僅有 Fentanyl IV 時，依 NCCN PAIN-G 13 直接 1:1（mcg/h），不套交叉耐受減量；貼上後 6 小時輸注速率減半、12 小時停止（或 6 小時直接停止）。
 
 > 此為臨床常用近似值，IV fentanyl 個體間藥代動力學差異大，實際換算需結合鎮靜深度評估（如 CPOT / NRS）。
 
@@ -153,6 +155,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.3 | 2026-10-29 | Fentanyl IV 改用 NCCN 穩態比 ×2.88（原 ×7.2）；來源僅 Fentanyl IV 時貼片 1:1 直接換算並提示停輸注時程（NCCN PAIN-G 13）；js/calc.js 抽出與 node --test 測試（PR #1）|
 | v1.4.2 | 2026-05-22 | 新增 Tramadol IV/IM（×0.14，推算值；標記無主要指引支持）|
 | v1.4.1 | 2026-05-22 | PWA 支援：manifest.json、Service Worker、OME Calc 圖示（#FD7E14）|
 | v1.4.0 | 2026-05-22 | 情境切換（癌症 NCCN 2026 / 非癌症 CDC 2022）；腎功能提示標籤；新增 Buprenorphine 貼片（Norspan®）；新增 Fentanyl IV 持續輸注 |
