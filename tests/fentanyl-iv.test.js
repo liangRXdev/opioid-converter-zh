@@ -43,11 +43,11 @@ test('#1 UI 文字不再出現 ×7.2', () => {
 test('#2 IV→貼片 1:1：25 mcg/hr、減 25% → 貼片目標 25（不減量），結果格與摘要一致，顯示停輸注提示', () => {
   const pr = C.patchRecommendation([C.parseEntry('fentanyl_iv', '25', '1')], 25);
   assert.equal(pr.target, 25);
-  assert.equal(pr.lower, 25);
+  assert.equal(pr.match.dose, 25); // 目標等於規格 → 只建議 25（fix/patch-recommendation #1）
   assert.equal(pr.ivDirect, true);
   const { st, copy } = run([{ key: 'fentanyl_iv', dose: 25 }]);
   assert.equal(cardDose(card(st, 'Fentanyl 貼片')), '25.0');
-  assert.match(st.patchRec, /計算值 25\.0 mcg\/h → 建議選 <strong>25 mcg\/h<\/strong>/);
+  assert.match(st.patchRec, /計算值 25\.0 mcg\/h → 建議 <strong>25 mcg\/h<\/strong>（與規格相符）/);
   assert.ok(st.patchRec.includes(NCCN_HINT), st.patchRec);
   assert.match(copy, /Fentanyl 貼片：25\.0 mcg\/h/);
 });

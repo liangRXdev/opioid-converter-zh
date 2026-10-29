@@ -866,10 +866,11 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
+  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, match, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
-  if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
-  else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
+  if (match)                patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議 <strong>${match.label}</strong>（與規格相符）。`;
+  else if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower.label}</strong>（保守）或 <strong>${higher.label}</strong>（積極）。`;
+  else if (lower)           patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower.label}</strong>（已達最高常用規格）。`;
   else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
   if (ivDirect)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
   else if (ivMixed) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;
