@@ -25,9 +25,9 @@
   const PATCH_SIZES = [12, 25, 50, 75, 100]; // fentanyl patch sizes for reference table
   const BUP_PATCH_SIZES = [5, 10, 20];       // Norspan® mcg/h
   const FENTANYL_PATCH_OPTIONS = [
-    [12, '12 mcg/h (或12.5)'], [25, '25 mcg/h'], [37, '37.5 mcg/h (25+12.5)'],
-    [50, '50 mcg/h'], [62, '62.5 mcg/h (50+12.5)'], [75, '75 mcg/h'],
-    [87, '87.5 mcg/h (75+12.5)'], [100, '100 mcg/h'], [125, '125 mcg/h'], [150, '150 mcg/h'],
+    [12, '12 mcg/h (或12.5)'], [25, '25 mcg/h'], [37.5, '37.5 mcg/h (25+12.5)'],
+    [50, '50 mcg/h'], [62.5, '62.5 mcg/h (50+12.5)'], [75, '75 mcg/h'],
+    [87.5, '87.5 mcg/h (75+12.5)'], [100, '100 mcg/h'], [125, '125 mcg/h'], [150, '150 mcg/h'],
   ];
 
   // 單項與總 OME 的防呆上限（mg/day）

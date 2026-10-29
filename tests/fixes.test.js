@@ -67,3 +67,19 @@ test('F5 複製摘要以未四捨五入的總 OME 計算，與畫面結果一致
   assert.match(morphineCard, /<div class="drug-dose">18\.9<\/div>/);
   assert.match(app.copy(), /Morphine 口服：18\.9 mg\/day/);
 });
+
+test('F6 Fentanyl 貼片組合規格（37.5 / 62.5 / 87.5）的數值與標示一致', () => {
+  const { staticSelectOptions } = require('./helpers/harness');
+  const app = loadApp();
+  app.select('fentanyl_patch');
+  const dynamic = app.el('selPatchDose').children.map(o => ({ value: String(o.value), text: o.textContent }));
+  const fixed = staticSelectOptions(app.html, 'selPatchDose').filter(o => o.value);
+  for (const opts of [dynamic, fixed]) {
+    for (const { value, text } of opts) {
+      const labelled = parseFloat(text); // 標示的第一個數字
+      if (/\(\d+\+12\.5\)/.test(text)) assert.equal(Number(value), labelled, `${text} → value ${value}`);
+    }
+  }
+  app.add({ key: 'fentanyl_patch', dose: '37.5' });
+  assert.deepEqual(app.state().list, ['fentanyl_patch|37.5 mcg/h|75']);
+});

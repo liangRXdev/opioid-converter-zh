@@ -1991,6 +1991,17 @@
   "patchRec": null,
   "sha256": "c2510e65aa62d04383e3d71efdd39d8f25312ca88b0062e149be0c634e9d8611"
  },
+ "fentanyl_patch 37.5": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|37.5 mcg/h|75"
+  ],
+  "ome": "75.0",
+  "doses": "37.5 22.5 7.8 56.3 18.8 11.3 2.3 37.5 563 402 375 245",
+  "patchRec": null,
+  "sha256": "14011d3229516e5e07938c2e4a16611fcb2c0a8f82ed0e018eaab6577160a31c"
+ },
  "fentanyl_patch 50": {
   "error": null,
   "resultVisible": true,
@@ -2013,6 +2024,17 @@
   "patchRec": null,
   "sha256": "6b7d709dc7f1af8bfe9370bb610038f86aabc277ea29c9f71bb478303e3564b9"
  },
+ "fentanyl_patch 62.5": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|62.5 mcg/h|125"
+  ],
+  "ome": "125.0",
+  "doses": "62.5 37.5 13.0 93.8 31.3 18.8 3.8 62.5 938 670 625 408",
+  "patchRec": null,
+  "sha256": "777de83928d888ce1cca1426a641ae16ffafade89293e1e3c64f98c4da1ae68c"
+ },
  "fentanyl_patch 75": {
   "error": null,
   "resultVisible": true,
@@ -2034,6 +2056,17 @@
   "doses": "87.0 52.2 18.1 130.5 43.5 26.1 5.2 87.0 1305 932 870 567",
   "patchRec": null,
   "sha256": "7b8d6ee968957d9e802926d5ca48c8380793765484ff62b76e7e6fced1c50bdc"
+ },
+ "fentanyl_patch 87.5": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_patch|87.5 mcg/h|175"
+  ],
+  "ome": "175.0",
+  "doses": "87.5 52.5 18.2 131.3 43.8 26.3 5.3 87.5 1313 937 875 571",
+  "patchRec": null,
+  "sha256": "a0265d40e15b36ab6e17c63bb83099f3fca99019b2067127eb3307bc3a3bfa42"
  },
  "fentanyl_patch 100": {
   "error": null,

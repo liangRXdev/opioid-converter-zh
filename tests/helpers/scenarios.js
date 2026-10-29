@@ -7,7 +7,7 @@ const ORAL_LIKE = [
   'oxycodone_oral', 'tramadol_oral', 'tramadol_iv', 'codeine_oral', 'codeine_im',
 ];
 const DOSES = [0.01, 0.04, 0.5, 1, 2.5, 7.5, 10, 15.55, 30, 33.3333, 100, 333.333, 1000, 0, -5, '', 'abc', '1e400', 10000];
-const FENT_PATCH = [12, 25, 37, 50, 62, 75, 87, 100, 125, 150];
+const FENT_PATCH = [12, 25, 37, 37.5, 50, 62, 62.5, 75, 87, 87.5, 100, 125, 150];
 const BUP_PATCH = [5, 10, 20];
 const IV_RATES = [0.1, 1, 12.5, 25, 100, 138.9, 139, 0, -1, ''];
 
