@@ -671,7 +671,7 @@ if ('serviceWorker' in navigator) {
 // v1.4.0 | Cancer/non-cancer context, renal flags, Buprenorphine TD, IV Fentanyl
 // ============================================================
 
-const { DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
+const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
 
 let drugList = []; // { key, label, doseLabel, ome }
 
@@ -776,13 +776,13 @@ function renderDrugList() {
       <div class="dl-info">
         <div class="dl-name">${item.label}</div>
         <div class="dl-dose">${item.doseLabel}</div>
-        <div class="dl-ome">→ ${item.ome.toFixed(1)} MME</div>
+        <div class="dl-ome">→ ${fmt(item.ome, 1)} MME</div>
       </div>
       <button class="dl-del" onclick="removeDrug(${idx})" title="移除此藥">×</button>`;
     itemsEl.appendChild(div);
   });
   const total = OpioidCalc.totalOME(drugList);
-  totalEl.textContent = `總計 OME：${total.toFixed(1)} mg/24h`;
+  totalEl.textContent = `總計 OME：${fmt(total, 1)} mg/24h`;
 }
 
 function removeDrug(idx) {
@@ -814,7 +814,7 @@ function calculate() {
   if (totalOME > MAX_OME) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); hideResult(); return; }
 
   // OME 顯示
-  document.getElementById('omeValue').textContent = totalOME.toFixed(1);
+  document.getElementById('omeValue').textContent = fmt(totalOME, 1);
   document.getElementById('omeNote').textContent = drugList.length === 1
     ? `來源：${drugList[0].label} ${drugList[0].doseLabel} → OME`
     : `來源：${drugList.length} 種藥物加總`;
@@ -865,9 +865,9 @@ function calculate() {
   // Fentanyl 貼片建議
   const { onlyFentanyl, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
-  if (lower && higher) patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
-  else if (lower)       patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
-  else                  patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
+  if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
+  else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
+  else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 
@@ -899,10 +899,10 @@ function calculate() {
 
   // Breakthrough dose
   const { min: btMin, max: btMax } = OpioidCalc.breakthroughRange(totalOME);
-  let btHtml = `<div class="bt-row" style="margin-bottom:0.4rem;">OME ${totalOME.toFixed(1)} mg × 10–20% = <strong>${btMin.toFixed(1)}–${btMax.toFixed(1)} mg OME</strong></div>`;
+  let btHtml = `<div class="bt-row" style="margin-bottom:0.4rem;">OME ${fmt(totalOME, 1)} mg × 10–20% = <strong>${fmt(btMin, 1)}–${fmt(btMax, 1)} mg OME</strong></div>`;
   [['morphine_oral','Morphine 口服'],['hydromorphone_oral','Hydromorphone 口服'],['oxycodone_oral','Oxycodone 口服']].forEach(([k, lbl]) => {
     const d = DRUGS[k];
-    btHtml += `<div class="bt-row">• ${lbl}：${d.fromOME(btMin).toFixed(1)}–${d.fromOME(btMax).toFixed(1)} mg  Q4H PRN</div>`;
+    btHtml += `<div class="bt-row">• ${lbl}：${fmt(d.fromOME(btMin), 1)}–${fmt(d.fromOME(btMax), 1)} mg  Q4H PRN</div>`;
   });
   btHtml += `<div style="font-size:0.7rem; color:#2E7D5A; margin-top:0.4rem;">* 以總 OME 計算，不套用交叉耐受減量（BT dose 用於相同藥物補救）</div>`;
   document.getElementById('btContent').innerHTML = btHtml;

@@ -38,3 +38,24 @@ test('F3 同一藥物分多筆輸入（如 SR + IR）視為單一來源，來源
   assert.equal(C.patchRecommendation(patches, 25).onlyFentanyl, true);
   assert.match(C.buildSummary(list, 70, 25, 'T'), /Morphine 口服：70\.0 mg\/day（來源，未減量）/);
 });
+
+test('F4 小劑量不會被四捨五入成 0（顯示有效位數）', () => {
+  assert.equal(C.fmt(0.03, 1), '0.030');
+  assert.equal(C.fmt(0.4, 0), '0.40');
+  assert.equal(C.fmt(0.06, 1), '0.060', '不得放大成 0.1');
+  assert.equal(C.fmt(0.25, 1), '0.25');
+  assert.equal(C.fmt(0, 1), '0.0');
+  assert.equal(C.fmt(1, 1), '1.0');
+  assert.equal(C.fmt(12.345, 1), '12.3', '一般值維持原小數位');
+  // 端到端：Morphine 口服 0.04 mg → 所有顯示值不得為 0
+  const app = loadApp();
+  app.add({ key: 'morphine_oral', dose: 0.04, freq: 1 });
+  const st = app.state();
+  const doses = st.grid.map(h => /<div class="drug-dose">([^<]*)</.exec(h)[1]);
+  for (const d of doses) assert.ok(Number(d) > 0, `dose ${d}`);
+  assert.ok(Number(st.ome) > 0, `ome ${st.ome}`);
+  assert.ok(!/(^|[^\d.])0\.0 mg\/day/.test(st.list[0]), st.list[0]);
+  assert.doesNotMatch(st.bt, /[^\d.]0\.0–0\.0/);
+  assert.doesNotMatch(st.patchRec, /計算值 0\.0 /);
+  assert.doesNotMatch(app.copy(), /：0\.0 mg|：0\.0–0\.0| 0\.0 MME/);
+});

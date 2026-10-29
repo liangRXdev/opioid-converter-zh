@@ -84,7 +84,7 @@
       doseInput = parseFloat(rawDose);
       if (!Number.isFinite(doseInput) || doseInput <= 0) return { error: '請輸入有效的正數劑量。' };
       const td = doseInput * freq;
-      doseLabel = freq > 1 ? `${doseInput} mg × ${freq} = ${td.toFixed(1)} mg/day` : `${td.toFixed(1)} mg/day`;
+      doseLabel = freq > 1 ? `${doseInput} mg × ${freq} = ${fmt(td, 1)} mg/day` : `${fmt(td, 1)} mg/day`;
     }
 
     const totalDose = (drug.isPatch || drug.isIVInfusion) ? doseInput : doseInput * freq;
@@ -120,8 +120,14 @@
     });
   }
 
+  // toFixed 的安全版：0 < v < 1 時固定小數位會捨成 0 或相對誤差過大（0.06 → 0.1，+67%），
+  // 改以 2 位有效數字顯示；v ≥ 1 維持原小數位
+  function fmt(v, digits) {
+    return (v > 0 && v < 1) ? v.toPrecision(2) : v.toFixed(digits);
+  }
+
   function formatDose(drug, dose) {
-    return (drug.isPatch || !drug.isWeak) ? dose.toFixed(1) : dose.toFixed(0);
+    return (drug.isPatch || !drug.isWeak) ? fmt(dose, 1) : fmt(dose, 0);
   }
 
   // Fentanyl 貼片建議規格
@@ -147,8 +153,8 @@
 
     let txt = `═══ Opioid MME 換算摘要 ═══\n${now}\n\n`;
     txt += `【目前用藥】\n`;
-    list.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${item.ome.toFixed(1)} MME\n`; });
-    txt += `  總計：${ome.toFixed(1)} mg OME/24h\n\n`;
+    list.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${fmt(item.ome, 1)} MME\n`; });
+    txt += `  總計：${fmt(ome, 1)} mg OME/24h\n\n`;
 
     if (crossTolPct > 0) txt += `【跨藥物減量】減量 ${crossTolPct}%（換算因子 ×${factor.toFixed(2)}）\n\n`;
 
@@ -157,16 +163,16 @@
       const d = DRUGS[dk];
       const isSource = sourceKeys.has(dk);
       const adj = (isSource && singleSource) ? d.fromOME(ome) : d.fromOME(ome) * factor;
-      const val = d.isPatch ? `${adj.toFixed(1)} mcg/h` : `${adj.toFixed(1)} mg/day`;
+      const val = d.isPatch ? `${fmt(adj, 1)} mcg/h` : `${fmt(adj, 1)} mg/day`;
       txt += `  • ${d.label}：${val}${isSource && singleSource ? '（來源，未減量）' : ''}\n`;
     });
 
     txt += `\n【Breakthrough Dose（PRN q1–4h）】\n`;
     const bt = breakthroughRange(ome);
-    txt += `  OME × 10–20% = ${bt.min.toFixed(1)}–${bt.max.toFixed(1)} mg\n`;
+    txt += `  OME × 10–20% = ${fmt(bt.min, 1)}–${fmt(bt.max, 1)} mg\n`;
     [['morphine_oral', 'Morphine 口服'], ['hydromorphone_oral', 'Hydromorphone 口服']].forEach(([k, lbl]) => {
       const d = DRUGS[k];
-      txt += `  • ${lbl}：${d.fromOME(bt.min).toFixed(1)}–${d.fromOME(bt.max).toFixed(1)} mg  Q4H PRN\n`;
+      txt += `  • ${lbl}：${fmt(d.fromOME(bt.min), 1)}–${fmt(d.fromOME(bt.max), 1)} mg  Q4H PRN\n`;
     });
 
     txt += `\n⚠ 本工具僅供臨床輔助參考，不取代臨床判斷。\n（UpToDate 2026 Graphic 111216 / NCCN 2026 v1）`;
@@ -175,7 +181,7 @@
 
   const api = {
     DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
-    crossTolFactor, totalOME, totalOMEError, parseEntry, sourceInfo, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, conversions, formatDose,
     patchRecommendation, breakthroughRange, buildSummary,
   };
 
