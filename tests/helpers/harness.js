@@ -110,7 +110,7 @@ function loadApp(opts = {}) {
     drugList() { return JSON.parse(run('JSON.stringify(drugList)')); },
     state() {
       const vis = id => el(id).style.display !== 'none';
-      return {
+      const st = {
         error: vis('errMsg') ? el('errMsg').textContent : null,
         resultVisible: vis('resultPanel'),
         list: this.drugList().map(i => `${i.key}|${i.doseLabel}|${i.ome}`),
@@ -125,6 +125,10 @@ function loadApp(opts = {}) {
         caution: vis('highDoseWarnMedium'),
         bt: el('btContent').innerHTML,
       };
+      // 僅在顯示時加入（非癌症 CDC 2022 欄位）：癌症情境的狀態 JSON 與加入前逐位相同
+      if (vis('cdcMme') && el('cdcMme').innerHTML) st.cdcMme = el('cdcMme').innerHTML;
+      if (vis('highDoseWarnMedium') && el('highDoseWarnMedium').innerHTML) st.cautionText = el('highDoseWarnMedium').innerHTML;
+      return st;
     },
     copy() { run('copyResult()'); return clipboard.last; },
   };

@@ -14,7 +14,7 @@ const RATIOS = {
   hydromorphone_oral:  [5,    'UpToDate 2026（NCCN 2026 ×4）'],
   hydromorphone_iv_sc: [25,   'UpToDate 2026（NCCN 2026 ×20）'],
   oxycodone_oral:      [1.5,  'README：全來源一致'],
-  tramadol_oral:       [0.1,  'Micromedex 2025（CDC 2022 為 0.2）→ 待決'],
+  tramadol_oral:       [0.1,  'Micromedex 2025（CDC 2022 MME 表 0.2 僅用於 cdcRiskMME 風險評估）'],
   tramadol_iv:         [0.14, '推算值（oral ×0.1 ÷ BA 0.70），無主要指引 → 待決'],
   codeine_oral:        [0.15, 'footer / README，無單獨出處標示'],
   codeine_im:          [0.23, 'Micromedex 2025（IM 130 mg ≈ 30 OME）'],

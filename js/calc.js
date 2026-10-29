@@ -20,10 +20,27 @@
     hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
     hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
     oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
+    // Tramadol 口服換算係數 0.1：Micromedex 2025（300 mg ≈ 30 MME）。CDC 2022 MME 表為 0.2，
+    // 僅用於 CDC_MME_FACTORS 的非癌症風險評估，不用於換算。
     tramadol_oral:         { label: 'Tramadol 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.1,  fromOME: ome => ome / 0.1,  isWeak: true, warn: '⚠ 前驅藥（CYP2D6 活化）；最大劑量 400 mg/day；腎衰竭需調整（Micromedex 2025）' },
     tramadol_iv:           { label: 'Tramadol IV/IM', route: 'IV/IM',       unit: 'mg/day',  toOME: d => d * 0.14, fromOME: ome => ome / 0.14, isWeak: true, warn: '⚠ [推算值] 換算因子 ×0.14（單次給藥 oral BA ≈70%，Grond 2004）；長期服藥後 oral BA 升至 90–100%，慢性輪換情境下 IV/IM 與口服差異縮小；UpToDate/NCCN 均無明確 IV 換算因子；CYP2D6 個體差異大，結果僅供估算參考' },
     codeine_oral:          { label: 'Codeine 口服',   route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true },
     codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.23,fromOME: ome => ome / 0.23, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）；IM 等效劑量 130 mg（≠ 口服 200 mg，Micromedex 2025）' },
+  };
+
+  // CDC 2022 MME 係數（僅供非癌症情境的風險評估，不用於換算劑量）
+  // 出處：Dowell D, et al. CDC Clinical Practice Guideline for Prescribing Opioids for Pain — United States, 2022.
+  //       MMWR Recomm Rep 2022;71(3):1–95. Table「Morphine milligram equivalent doses for commonly prescribed
+  //       opioids for pain management」。注意事項 1：除 fentanyl（mcg/hr）外皆為 mg/day；
+  //       注意事項 3：不得以 MME 決定換藥劑量；注意事項 6：表格不含 buprenorphine。
+  // 只收錄工具內已有、且 CDC 表有列的口服藥品與貼片（工具未提供 hydrocodone / oxymorphone / tapentadol）。
+  const CDC_MME_FACTORS = {
+    morphine_oral: 1.0,
+    hydromorphone_oral: 5.0,
+    oxycodone_oral: 1.5,
+    tramadol_oral: 0.2,
+    codeine_oral: 0.15,
+    fentanyl_patch: 2.4, // mcg/hr
   };
 
   const PATCH_SIZES = [12, 25, 50, 75, 100]; // fentanyl patch sizes for reference table
@@ -96,6 +113,32 @@
     if (ome > MAX_OME) return { error: `單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。` };
 
     return { key, label: drug.label, doseLabel, ome, dose: totalDose };
+  }
+
+  // CDC 2022 風險評估 MME：CDC 表有列者用 CDC 係數 × 每日劑量（貼片為 mcg/hr）；
+  // 未列者（IV/SC/IM、Fentanyl IV、Tramadol IV/IM、Codeine IM）沿用 toOME 計入以免漏算，並列入 unlisted
+  // Buprenorphine 不計入，列入 excluded（CDC 2022 Recommendation 4 正文："Buprenorphine should not be counted
+  // in the total MME/day in calculations because of its partial agonist properties ... ceiling effect on respiratory depression."）
+  function cdcRiskMME(list) {
+    let mme = 0;
+    const unlisted = [];
+    const excluded = [];
+    list.forEach(i => {
+      const k = CDC_MME_FACTORS[i.key];
+      if (DRUGS[i.key] && DRUGS[i.key].isBupPatch) {
+        if (!excluded.includes(i.label)) excluded.push(i.label);
+      } else if (k !== undefined) mme += i.dose * k;
+      else {
+        mme += i.ome;
+        if (!unlisted.includes(i.label)) unlisted.push(i.label);
+      }
+    });
+    return { mme, unlisted, excluded };
+  }
+
+  // 非癌症情境結果區與複製摘要共用的 MME 行
+  function cdcMmeLine(mme) {
+    return `CDC 2022 MME（風險評估）：${fmt(mme, 1)} mg/day — 僅供風險評估，不用於換算劑量（CDC 2022 表格注意事項 3）`;
   }
 
   // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
@@ -197,7 +240,8 @@
   }
 
   // 複製用純文字摘要
-  function buildSummary(list, ome, crossTolPct, now) {
+  // context === 'noncancer' 時加入 CDC 2022 MME 行；其他情境輸出不變
+  function buildSummary(list, ome, crossTolPct, now, context) {
     const factor = crossTolFactor(crossTolPct);
     const { sourceKeys, singleSource } = sourceInfo(list);
     const { ivDirect, ivTotal } = ivPatchMode(list);
@@ -205,7 +249,9 @@
     let txt = `═══ Opioid MME 換算摘要 ═══\n${now}\n\n`;
     txt += `【目前用藥】\n`;
     list.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${fmt(item.ome, 1)} MME\n`; });
-    txt += `  總計：${fmt(ome, 1)} mg OME/24h\n\n`;
+    txt += `  總計：${fmt(ome, 1)} mg OME/24h\n`;
+    if (context === 'noncancer') txt += `  ${cdcMmeLine(cdcRiskMME(list).mme)}\n`;
+    txt += `\n`;
 
     if (crossTolPct > 0) txt += `【跨藥物減量】減量 ${crossTolPct}%（換算因子 ×${factor.toFixed(2)}）\n\n`;
 
@@ -232,9 +278,9 @@
   }
 
   const api = {
-    DRUGS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
+    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 

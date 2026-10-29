@@ -547,11 +547,13 @@ select:focus, input[type="number"]:focus {
         <span id="patchRecText"></span>
       </div>
 
+      <!-- CDC 2022 MME（非癌症情境風險評估，text set by JS） -->
+      <div id="cdcMme" class="feedback-box feedback-info mt-2" style="display:none;"></div>
       <!-- High dose warning (context-aware, text set by JS) -->
       <div id="highDoseWarn" class="feedback-box feedback-danger mt-2" style="display:none;"></div>
       <!-- Medium dose caution (non-cancer CDC 2022 ≥50 MME) -->
       <div id="highDoseWarnMedium" class="feedback-box feedback-caution mt-2" style="display:none;">
-        <strong>⚠ 劑量注意（CDC 2022）：</strong> OME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。
+        <strong>⚠ 劑量注意（CDC 2022）：</strong> MME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。
       </div>
 
       <!-- Breakthrough dose -->
@@ -572,7 +574,7 @@ select:focus, input[type="number"]:focus {
     <div class="tool-card" style="border-radius: 0 0 10px 10px; overflow-x: auto;">
       <div class="section-title">Fentanyl 貼片標準劑量對照表</div>
       <p style="font-size:0.8rem; color: var(--text-muted); margin-bottom:1rem;">
-        以 Fentanyl 貼片強度為基準，對應各藥物每日劑量。來源：UpToDate (NCCN/CDC 2022) + Reddy et al. 2015 (Cancer)。
+        以 Fentanyl 貼片強度為基準，對應各藥物每日劑量。來源：UpToDate Graphic 111216（NCCN 2026）+ Reddy et al. 2015 (Cancer)。
         <span class="source-tag">OME ÷ 2 rule</span>
         <br>換算前請統一以 OME 為中間值。表中數值為等效起始劑量，轉換時建議減 25–50%。
       </p>
@@ -643,17 +645,17 @@ select:focus, input[type="number"]:focus {
 
   <!-- GUIDELINE FOOTER -->
   <footer class="guideline-footer">
-    參考指引：UpToDate Opioid Conversion Table (NCCN 2026 · CDC 2022) ·
+    參考指引：UpToDate Opioid Conversion Table (NCCN 2026) · CDC 2022（非癌症 MME 風險評估）·
     Reddy A et al. Cancer 2016;122:149-56 ·
     EAPC Guidelines 2012 · Palliative Care Formulary 6th ed.
     <br>
     換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25（UpToDate；NCCN 2026 ×20）·
-    Oxycodone oral ×1.5 · Tramadol oral ×0.1 · Tramadol IV/IM ×0.14 [推算] · Codeine oral ×0.15 · Codeine IM ×0.23 ·
+    Oxycodone oral ×1.5 · Tramadol oral ×0.1（Micromedex 2025）· Tramadol IV/IM ×0.14 [推算] · Codeine oral ×0.15 · Codeine IM ×0.23 ·
     Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×2.88（mcg/hr 換算 mg OME/day；NCCN 2026 Table 2 註 c 穩態比）
   </footer>
 </div>
 
-<div class="version-badge">v1.4.4 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.5 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -668,7 +670,7 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.4 | 貼片建議：規格相符只建議單一劑量、> 100 mcg/h 組合貼片
+// v1.4.5 | 非癌症情境 CDC 2022 MME 風險評估（不影響換算）
 // ============================================================
 
 const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
@@ -879,7 +881,9 @@ function calculate() {
   const clinicCtx = document.getElementById('clinicContext').value;
   const warnEl = document.getElementById('highDoseWarn');
   const cautionEl = document.getElementById('highDoseWarnMedium');
+  const cdcEl = document.getElementById('cdcMme');
   if (clinicCtx === 'cancer') {
+    cdcEl.style.display = 'none';
     cautionEl.style.display = 'none';
     if (totalOME > 200) {
       warnEl.innerHTML = '<strong>⚠ 高劑量警示（NCCN 2026）：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。建議加強監測，考慮疼痛科或安寧療護會診。';
@@ -888,12 +892,19 @@ function calculate() {
       warnEl.style.display = 'none';
     }
   } else {
-    // CDC 2022 non-cancer: ≥90 = danger, 50–89 = caution
-    if (totalOME >= 90) {
-      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> OME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
+    // CDC 2022 non-cancer：以 CDC 2022 MME（風險評估）判斷，≥90 = danger, 50–89 = caution；換算仍用 OME
+    const { mme, unlisted, excluded } = OpioidCalc.cdcRiskMME(drugList);
+    let cdcHtml = OpioidCalc.cdcMmeLine(mme);
+    if (unlisted.length) cdcHtml += `<br>CDC 表未列：${unlisted.join('、')}，以本工具換算係數計入`;
+    if (excluded.length) cdcHtml += `<br>${excluded.join('、')}不計入 MME（CDC 2022：部分促效劑，呼吸抑制有天花板效應）`;
+    cdcEl.innerHTML = cdcHtml;
+    cdcEl.style.display = '';
+    cautionEl.innerHTML = '<strong>⚠ 劑量注意（CDC 2022）：</strong> MME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。';
+    if (mme >= 90) {
+      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> MME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
       warnEl.style.display = '';
       cautionEl.style.display = 'none';
-    } else if (totalOME >= 50) {
+    } else if (mme >= 50) {
       warnEl.style.display = 'none';
       cautionEl.style.display = '';
     } else {
@@ -942,7 +953,7 @@ function copyResult() {
 
   const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
   const now = new Date().toLocaleString('zh-TW', { hour12: false });
-  const txt = OpioidCalc.buildSummary(drugList, ome, crossTolPct, now);
+  const txt = OpioidCalc.buildSummary(drugList, ome, crossTolPct, now, document.getElementById('clinicContext').value);
 
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.querySelector('.btn-copy');

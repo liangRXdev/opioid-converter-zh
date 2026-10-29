@@ -39,7 +39,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | Hydromorphone | Oral | ×5 | UpToDate 2026; NCCN 2026 uses ×4, a 25% difference (see notes) |
 | Hydromorphone | IV / SC | ×25 | UpToDate 2026; NCCN 2026 uses ×20 |
 | Oxycodone | Oral | ×1.5 | Consistent across all sources |
-| Tramadol | Oral | ×0.1 | Prodrug (CYP2D6); max 400 mg/day |
+| Tramadol | Oral | ×0.1 | Micromedex 2025; prodrug (CYP2D6); max 400 mg/day. CDC 2022 MME factor 0.2 is used only for non-cancer risk MME |
 | Tramadol | IV/IM | ×0.14 ⚠ | **Derived value** (oral ×0.1 ÷ bioavailability 0.70); not supported by any major guideline, estimate only |
 | Codeine | Oral | ×0.15 | — |
 | Codeine | IM | ×0.23 | IM equianalgesic dose 130 mg ≠ oral 200 mg; routine IM use is no longer recommended clinically |
@@ -109,8 +109,8 @@ Basis: 1 mcg/hr × 24 h = 24 mcg/day; at steady state 250 mcg IV fentanyl ≈ 10
 | Scenario | Warning level | Threshold | Suggested action |
 |------|---------|------|---------|
 | **Cancer pain** (NCCN 2026) | 🔴 High-dose warning | OME > 200 mg/day | Pain service / palliative care consult |
-| **Chronic non-cancer pain** (CDC 2022) | 🟡 Caution | OME ≥ 50 mg/day | Reassess treatment goals and risk–benefit |
-| **Chronic non-cancer pain** (CDC 2022) | 🔴 High-dose warning | OME ≥ 90 mg/day | Strongly consider gradual tapering and multimodal analgesia |
+| **Chronic non-cancer pain** (CDC 2022) | 🟡 Caution | MME ≥ 50 mg/day (CDC 2022 factors) | Reassess treatment goals and risk–benefit |
+| **Chronic non-cancer pain** (CDC 2022) | 🔴 High-dose warning | MME ≥ 90 mg/day (CDC 2022 factors) | Strongly consider gradual tapering and multimodal analgesia |
 
 ### Tramadol oral vs IV/IM conversion
 
@@ -155,6 +155,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.5 | 2026-10-29 | Non-cancer scenario adds CDC 2022 risk MME: 50/90 warnings use CDC 2022 factors; drugs not in the CDC table use the tool factors and are flagged; conversions unchanged. Conversion-factor sources separated from CDC |
 | v1.4.4 | 2026-10-29 | Patch recommendation: a single strength when the target matches it (±0.05 mcg/h); targets > 100 mcg/h use 100×n + r combinations with their composition shown; the "highest common strength" cap is removed |
 | v1.4.3 | 2026-10-29 | Fentanyl IV now uses the NCCN steady-state ratio ×2.88 (was ×7.2); fentanyl IV-only sources convert to patch 1:1 with infusion taper guidance (NCCN PAIN-G 13); js/calc.js extraction and node --test suite (PR #1) |
 | v1.4.2 | 2026-05-22 | Added tramadol IV/IM (×0.14, derived; flagged as unsupported by major guidelines) |
