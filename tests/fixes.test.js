@@ -27,3 +27,14 @@ test('F2 總 OME 超過上限時不加入清單，結果面板不殘留與清單
   assert.equal(st.listTotal, '總計 OME：900.0 mg/24h');
   assert.equal(st.ome, '900.0');
 });
+
+test('F3 同一藥物分多筆輸入（如 SR + IR）視為單一來源，來源藥物不減量', () => {
+  const list = [C.parseEntry('morphine_oral', '30', '2'), C.parseEntry('morphine_oral', '10', '1')];
+  const rows = C.conversions(list, 25);
+  assert.equal(rows.find(r => r.key === 'morphine_oral').adjDose, 70);
+  assert.equal(rows.find(r => r.key === 'oxycodone_oral').adjDose, 70 / 1.5 * 0.75);
+  // 兩片 fentanyl 貼片（50 + 25）：不顯示「改貼片」建議
+  const patches = [C.parseEntry('fentanyl_patch', '50', '1'), C.parseEntry('fentanyl_patch', '25', '1')];
+  assert.equal(C.patchRecommendation(patches, 25).onlyFentanyl, true);
+  assert.match(C.buildSummary(list, 70, 25, 'T'), /Morphine 口服：70\.0 mg\/day（來源，未減量）/);
+});

@@ -2638,9 +2638,9 @@
    "morphine_oral|10.0 mg/day|10"
   ],
   "ome": "70.0",
-  "doses": "26.3 21.0 7.3 52.5 17.5 10.5 2.1 35.0 525 375 350 228",
+  "doses": "26.3 21.0 7.3 70.0 17.5 10.5 2.1 35.0 525 375 350 228",
   "patchRec": " 計算值 26.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "b298ba9c8a8310be7eea1ce4c52cc260e72a2811ed04c95b6f126c33c5683706"
+  "sha256": "5dedd79344e63ca309a894addf6f4e54787bd61d5c64cffc055c461ac2943ebc"
  },
  "multi same patch twice": {
   "error": null,
@@ -2650,9 +2650,9 @@
    "fentanyl_patch|25 mcg/h|50"
   ],
   "ome": "150.0",
-  "doses": "56.3 45.0 15.6 112.5 37.5 22.5 4.5 75.0 1125 804 750 489",
-  "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "4841d311682978ef869fae674f8c90e92451aa5f203c9c3e9002ffefc121071e"
+  "doses": "75.0 45.0 15.6 112.5 37.5 22.5 4.5 75.0 1125 804 750 489",
+  "patchRec": null,
+  "sha256": "a39ae8293ebb7a51d61db0f1f09b85b573f710de753a9ca47006ded5eab9548a"
  },
  "multi total >1000": {
   "error": "總 OME 過高（1100 mg/day）。請確認輸入數值是否正確。",

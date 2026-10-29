@@ -102,7 +102,8 @@
 
   function sourceInfo(list) {
     const sourceKeys = new Set(list.map(i => i.key));
-    return { sourceKeys, singleSource: list.length === 1 };
+    // 以「不同藥物/途徑數」判斷：同藥同途徑分多筆（SR + IR、貼片組合）仍屬單一來源
+    return { sourceKeys, singleSource: sourceKeys.size === 1 };
   }
 
   // 各藥物換算劑量（依 DRUG_DISPLAY_ORDER）；單一來源藥物不減量，其餘套用交叉耐受減量
