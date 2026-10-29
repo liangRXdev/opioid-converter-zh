@@ -931,8 +931,9 @@ function resetForm() {
 }
 
 function copyResult() {
-  const ome = parseFloat(document.getElementById('omeValue').textContent);
-  if (isNaN(ome) || drugList.length === 0) return;
+  if (drugList.length === 0) return;
+  // 以清單重算總 OME（勿讀畫面上已四捨五入的 omeValue）
+  const ome = OpioidCalc.totalOME(drugList);
 
   const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
   const now = new Date().toLocaleString('zh-TW', { hour12: false });
