@@ -129,6 +129,11 @@
     return { mme, unlisted };
   }
 
+  // 非癌症情境結果區與複製摘要共用的 MME 行
+  function cdcMmeLine(mme) {
+    return `CDC 2022 MME（風險評估）：${fmt(mme, 1)} mg/day — 僅供風險評估，不用於換算劑量（CDC 2022 表格注意事項 3）`;
+  }
+
   // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
   function totalOMEError(list, entry) {
     const total = totalOME(list.concat(entry));
@@ -228,7 +233,8 @@
   }
 
   // 複製用純文字摘要
-  function buildSummary(list, ome, crossTolPct, now) {
+  // context === 'noncancer' 時加入 CDC 2022 MME 行；其他情境輸出不變
+  function buildSummary(list, ome, crossTolPct, now, context) {
     const factor = crossTolFactor(crossTolPct);
     const { sourceKeys, singleSource } = sourceInfo(list);
     const { ivDirect, ivTotal } = ivPatchMode(list);
@@ -236,7 +242,9 @@
     let txt = `═══ Opioid MME 換算摘要 ═══\n${now}\n\n`;
     txt += `【目前用藥】\n`;
     list.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${fmt(item.ome, 1)} MME\n`; });
-    txt += `  總計：${fmt(ome, 1)} mg OME/24h\n\n`;
+    txt += `  總計：${fmt(ome, 1)} mg OME/24h\n`;
+    if (context === 'noncancer') txt += `  ${cdcMmeLine(cdcRiskMME(list).mme)}\n`;
+    txt += `\n`;
 
     if (crossTolPct > 0) txt += `【跨藥物減量】減量 ${crossTolPct}%（換算因子 ×${factor.toFixed(2)}）\n\n`;
 
@@ -265,7 +273,7 @@
   const api = {
     DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, cdcRiskMME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 

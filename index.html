@@ -547,11 +547,13 @@ select:focus, input[type="number"]:focus {
         <span id="patchRecText"></span>
       </div>
 
+      <!-- CDC 2022 MME（非癌症情境風險評估，text set by JS） -->
+      <div id="cdcMme" class="feedback-box feedback-info mt-2" style="display:none;"></div>
       <!-- High dose warning (context-aware, text set by JS) -->
       <div id="highDoseWarn" class="feedback-box feedback-danger mt-2" style="display:none;"></div>
       <!-- Medium dose caution (non-cancer CDC 2022 ≥50 MME) -->
       <div id="highDoseWarnMedium" class="feedback-box feedback-caution mt-2" style="display:none;">
-        <strong>⚠ 劑量注意（CDC 2022）：</strong> OME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。
+        <strong>⚠ 劑量注意（CDC 2022）：</strong> MME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。
       </div>
 
       <!-- Breakthrough dose -->
@@ -879,7 +881,9 @@ function calculate() {
   const clinicCtx = document.getElementById('clinicContext').value;
   const warnEl = document.getElementById('highDoseWarn');
   const cautionEl = document.getElementById('highDoseWarnMedium');
+  const cdcEl = document.getElementById('cdcMme');
   if (clinicCtx === 'cancer') {
+    cdcEl.style.display = 'none';
     cautionEl.style.display = 'none';
     if (totalOME > 200) {
       warnEl.innerHTML = '<strong>⚠ 高劑量警示（NCCN 2026）：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。建議加強監測，考慮疼痛科或安寧療護會診。';
@@ -888,12 +892,19 @@ function calculate() {
       warnEl.style.display = 'none';
     }
   } else {
-    // CDC 2022 non-cancer: ≥90 = danger, 50–89 = caution
-    if (totalOME >= 90) {
-      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> OME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
+    // CDC 2022 non-cancer：以 CDC 2022 MME（風險評估）判斷，≥90 = danger, 50–89 = caution；換算仍用 OME
+    const { mme, unlisted } = OpioidCalc.cdcRiskMME(drugList);
+    let cdcHtml = OpioidCalc.cdcMmeLine(mme);
+    if (unlisted.length) cdcHtml += `<br>CDC 表未列：${unlisted.join('、')}，以本工具換算係數計入`;
+    if (drugList.some(i => i.key === 'buprenorphine_td')) cdcHtml += '<br>CDC 2022 表不含 buprenorphine（部分促效劑）';
+    cdcEl.innerHTML = cdcHtml;
+    cdcEl.style.display = '';
+    cautionEl.innerHTML = '<strong>⚠ 劑量注意（CDC 2022）：</strong> MME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。';
+    if (mme >= 90) {
+      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> MME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
       warnEl.style.display = '';
       cautionEl.style.display = 'none';
-    } else if (totalOME >= 50) {
+    } else if (mme >= 50) {
       warnEl.style.display = 'none';
       cautionEl.style.display = '';
     } else {
@@ -942,7 +953,7 @@ function copyResult() {
 
   const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
   const now = new Date().toLocaleString('zh-TW', { hour12: false });
-  const txt = OpioidCalc.buildSummary(drugList, ome, crossTolPct, now);
+  const txt = OpioidCalc.buildSummary(drugList, ome, crossTolPct, now, document.getElementById('clinicContext').value);
 
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.querySelector('.btn-copy');
