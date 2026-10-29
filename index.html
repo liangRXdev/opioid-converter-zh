@@ -834,7 +834,7 @@ function calculate() {
   const grid = document.getElementById('resultGrid');
   grid.innerHTML = '';
 
-  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, adjDose, display: doseDisplay }) => {
+  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, ivDirect, adjDose, display: doseDisplay }) => {
     const card = document.createElement('div');
     card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
 
@@ -842,6 +842,7 @@ function calculate() {
     if (d.warn) warnHtml = `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.3rem;">${d.warn}</div>`;
     if (isSource && singleSource)   warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 來源藥物（未減量）</div>`;
     if (isSource && !singleSource)  warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 目前用藥之一</div>`;
+    if (ivDirect) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ IV→貼片 1:1（NCCN PAIN-G 13），未減量</div>`;
     if (dk === 'codeine_oral'  && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_iv'   && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
@@ -865,11 +866,13 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const { onlyFentanyl, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
+  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
   if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
   else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
   else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
+  if (ivDirect)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
+  else if (ivMixed) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 

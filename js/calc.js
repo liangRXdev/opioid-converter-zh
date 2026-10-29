@@ -95,7 +95,7 @@
     const ome = drug.toOME(totalDose);
     if (ome > MAX_OME) return { error: `單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。` };
 
-    return { key, label: drug.label, doseLabel, ome };
+    return { key, label: drug.label, doseLabel, ome, dose: totalDose };
   }
 
   // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
@@ -110,17 +110,32 @@
     return { sourceKeys, singleSource: sourceKeys.size === 1 };
   }
 
+  // NCCN Adult Cancer Pain v1.2026 PAIN-G 13：持續輸注 fentanyl → 貼片 straight 1:1（mcg/h）
+  const IV_PATCH_HINT = '依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。';
+  const IV_MIXED_HINT = '混合來源，未套用 IV→貼片 1:1';
+
+  // 來源僅 fentanyl_iv（可多筆）→ 貼片 1:1、不減量；含 fentanyl_iv 的混合來源 → 維持 OME 路徑
+  // 反向（貼片→IV）NCCN 未規定，不另設規則
+  function ivPatchMode(list) {
+    const { sourceKeys, singleSource } = sourceInfo(list);
+    const hasIV = sourceKeys.has('fentanyl_iv');
+    const ivTotal = list.filter(i => i.key === 'fentanyl_iv').reduce((s, i) => s + i.dose, 0);
+    return { ivDirect: hasIV && singleSource, ivMixed: hasIV && !singleSource, ivTotal };
+  }
+
   // 各藥物換算劑量（依 DRUG_DISPLAY_ORDER）；單一來源藥物不減量，其餘套用交叉耐受減量
   function conversions(list, crossTolPct) {
     const factor = crossTolFactor(crossTolPct);
     const ome = totalOME(list);
     const { sourceKeys, singleSource } = sourceInfo(list);
+    const { ivDirect: ivMode, ivTotal } = ivPatchMode(list);
     return DRUG_DISPLAY_ORDER.map(key => {
       const drug = DRUGS[key];
       const isSource = sourceKeys.has(key);
-      const rawDose = drug.fromOME(ome);
-      const adjDose = (isSource && singleSource) ? rawDose : rawDose * factor;
-      return { key, drug, isSource, singleSource, rawDose, adjDose, display: formatDose(drug, adjDose) };
+      const ivDirect = ivMode && key === 'fentanyl_patch';
+      const rawDose = ivDirect ? ivTotal : drug.fromOME(ome);
+      const adjDose = (ivDirect || (isSource && singleSource)) ? rawDose : rawDose * factor;
+      return { key, drug, isSource, singleSource, ivDirect, rawDose, adjDose, display: formatDose(drug, adjDose) };
     });
   }
 
@@ -138,11 +153,12 @@
   function patchRecommendation(list, crossTolPct) {
     const { sourceKeys, singleSource } = sourceInfo(list);
     const onlyFentanyl = sourceKeys.has('fentanyl_patch') && singleSource;
+    const { ivDirect, ivMixed, ivTotal } = ivPatchMode(list);
     const patchFactor = onlyFentanyl ? 1 : crossTolFactor(crossTolPct);
-    const target = DRUGS.fentanyl_patch.fromOME(totalOME(list)) * patchFactor;
+    const target = ivDirect ? ivTotal : DRUGS.fentanyl_patch.fromOME(totalOME(list)) * patchFactor;
     const lower  = PATCH_SIZES.filter(s => s <= target).slice(-1)[0];
     const higher = PATCH_SIZES.filter(s => s > target)[0];
-    return { onlyFentanyl, target, lower, higher };
+    return { onlyFentanyl, ivDirect, ivMixed, target, lower, higher };
   }
 
   // Breakthrough dose：總 OME × 10–20%
@@ -154,6 +170,7 @@
   function buildSummary(list, ome, crossTolPct, now) {
     const factor = crossTolFactor(crossTolPct);
     const { sourceKeys, singleSource } = sourceInfo(list);
+    const { ivDirect, ivTotal } = ivPatchMode(list);
 
     let txt = `═══ Opioid MME 換算摘要 ═══\n${now}\n\n`;
     txt += `【目前用藥】\n`;
@@ -166,9 +183,10 @@
     ['morphine_oral', 'hydromorphone_oral', 'oxycodone_oral', 'fentanyl_patch'].forEach(dk => {
       const d = DRUGS[dk];
       const isSource = sourceKeys.has(dk);
-      const adj = (isSource && singleSource) ? d.fromOME(ome) : d.fromOME(ome) * factor;
+      const iv = ivDirect && dk === 'fentanyl_patch';
+      const adj = iv ? ivTotal : (isSource && singleSource) ? d.fromOME(ome) : d.fromOME(ome) * factor;
       const val = d.isPatch ? `${fmt(adj, 1)} mcg/h` : `${fmt(adj, 1)} mg/day`;
-      txt += `  • ${d.label}：${val}${isSource && singleSource ? '（來源，未減量）' : ''}\n`;
+      txt += `  • ${d.label}：${val}${isSource && singleSource ? '（來源，未減量）' : ''}${iv ? '（IV→貼片 1:1，未減量）' : ''}\n`;
     });
 
     txt += `\n【Breakthrough Dose（PRN q1–4h）】\n`;
@@ -185,7 +203,8 @@
 
   const api = {
     DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
-    crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, conversions, formatDose,
+    IV_PATCH_HINT, IV_MIXED_HINT,
+    crossTolFactor, fmt, totalOME, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
     patchRecommendation, breakthroughRange, buildSummary,
   };
 

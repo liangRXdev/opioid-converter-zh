@@ -2150,9 +2150,9 @@
    "fentanyl_iv|0.1 mcg/hr 持續輸注|0.288"
   ],
   "ome": "0.29",
-  "doses": "0.11 0.086 0.10 0.22 0.072 0.043 0.0086 0.14 2 2 1 0.94",
-  "patchRec": " 計算值 0.11 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
-  "sha256": "c2fc0fe0ec1f32978347943b767592d8677adb0b05a989950f630738199d767e"
+  "doses": "0.10 0.086 0.10 0.22 0.072 0.043 0.0086 0.14 2 2 1 0.94",
+  "patchRec": " 計算值 0.10 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "893f220e42d30590ac0bb9fa07f24c59836669127bea3627227f12f71282ae24"
  },
  "fentanyl_iv 1": {
   "error": null,
@@ -2161,9 +2161,9 @@
    "fentanyl_iv|1 mcg/hr 持續輸注|2.88"
   ],
   "ome": "2.9",
-  "doses": "1.1 0.86 1.0 2.2 0.72 0.43 0.086 1.4 22 15 14 9",
-  "patchRec": " 計算值 1.1 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
-  "sha256": "90569fad4040b43c019b1db66e77f4fc078fdb63ef975ecbaabe8e72ccecec71"
+  "doses": "1.0 0.86 1.0 2.2 0.72 0.43 0.086 1.4 22 15 14 9",
+  "patchRec": " 計算值 1.0 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "a169c900e4fefe23d29d0f501dee30d68f44f4a860e26f4ce7c0af161144b621"
  },
  "fentanyl_iv 12.5": {
   "error": null,
@@ -2172,9 +2172,9 @@
    "fentanyl_iv|12.5 mcg/hr 持續輸注|36"
   ],
   "ome": "36.0",
-  "doses": "13.5 10.8 12.5 27.0 9.0 5.4 1.1 18.0 270 193 180 117",
-  "patchRec": " 計算值 13.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
-  "sha256": "13611b08d0ccd725d3d26265751296334aad0ce726a44809cc7ecdd1191fac02"
+  "doses": "12.5 10.8 12.5 27.0 9.0 5.4 1.1 18.0 270 193 180 117",
+  "patchRec": " 計算值 12.5 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "0978a0497e97eae87c192a24fd1ccb53a6705082c2fd47fb17bf70f741b4a6fd"
  },
  "fentanyl_iv 25": {
   "error": null,
@@ -2183,9 +2183,9 @@
    "fentanyl_iv|25 mcg/hr 持續輸注|72"
   ],
   "ome": "72.0",
-  "doses": "27.0 21.6 25.0 54.0 18.0 10.8 2.2 36.0 540 386 360 235",
-  "patchRec": " 計算值 27.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "c49af46fab7751fae740b909a4f59a887b83f7770334b72d5059d877bf7c8b6f"
+  "doses": "25.0 21.6 25.0 54.0 18.0 10.8 2.2 36.0 540 386 360 235",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "b6bdf51959a7e39d55ac2b304807c25664bac6d243e33fd4bb3fcb8a3ee08d89"
  },
  "fentanyl_iv 100": {
   "error": null,
@@ -2194,9 +2194,9 @@
    "fentanyl_iv|100 mcg/hr 持續輸注|288"
   ],
   "ome": "288.0",
-  "doses": "108.0 86.4 100.0 216.0 72.0 43.2 8.6 144.0 2160 1543 1440 939",
-  "patchRec": " 計算值 108.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
-  "sha256": "857d20f5a2439e8697eef24a31f4c5934d267be1c9ab6d55b55d4bf2303cfe2e"
+  "doses": "100.0 86.4 100.0 216.0 72.0 43.2 8.6 144.0 2160 1543 1440 939",
+  "patchRec": " 計算值 100.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "cb11864ce8ecff0ba0fcb7faaae55a77f98ce2cf3acda001776d7c333e5c8ac0"
  },
  "fentanyl_iv 138.9": {
   "error": null,
@@ -2205,9 +2205,9 @@
    "fentanyl_iv|138.9 mcg/hr 持續輸注|400.032"
   ],
   "ome": "400.0",
-  "doses": "150.0 120.0 138.9 300.0 100.0 60.0 12.0 200.0 3000 2143 2000 1304",
-  "patchRec": " 計算值 150.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
-  "sha256": "fcdd9be6ac399cd7cd8eac48e4318331f82e96e36af7dcb1179bf115a46f9b31"
+  "doses": "138.9 120.0 138.9 300.0 100.0 60.0 12.0 200.0 3000 2143 2000 1304",
+  "patchRec": " 計算值 138.9 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "42544e48abbbf71e520a1edaf8dd06369860f062f308598d30a488485d229524"
  },
  "fentanyl_iv 139": {
   "error": null,
@@ -2216,9 +2216,9 @@
    "fentanyl_iv|139 mcg/hr 持續輸注|400.32"
   ],
   "ome": "400.3",
-  "doses": "150.1 120.1 139.0 300.2 100.1 60.0 12.0 200.2 3002 2145 2002 1305",
-  "patchRec": " 計算值 150.1 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。",
-  "sha256": "774c8e7055d58637e3f1ad17cd210e7f8515fb8e49392925e815aa84699b582f"
+  "doses": "139.0 120.1 139.0 300.2 100.1 60.0 12.0 200.2 3002 2145 2002 1305",
+  "patchRec": " 計算值 139.0 mcg/h → 建議選 <strong>100 mcg/h</strong>（已達最高常用規格）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "35394aa309e95ed6cf651531f8bf2bbc37c8482b6826dcb34477bccde89384c2"
  },
  "fentanyl_iv 0": {
   "error": "請輸入有效的正數劑量。",
@@ -2690,6 +2690,52 @@
   "doses": "75.0 45.0 39.1 112.5 37.5 22.5 4.5 75.0 1125 804 750 489",
   "patchRec": null,
   "sha256": "1b7545a30cc586d3c6e572f14b5d91a27b0e75a94b5c5d86468b6b6521feffbd"
+ },
+ "multi fentanyl_iv + morphine": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|25 mcg/hr 持續輸注|72",
+   "morphine_oral|30.0 mg/day|30"
+  ],
+  "ome": "102.0",
+  "doses": "38.3 30.6 26.6 76.5 25.5 15.3 3.1 51.0 765 546 510 333",
+  "patchRec": " 計算值 38.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>混合來源，未套用 IV→貼片 1:1",
+  "sha256": "47cbfff03a53ad746eb3b62818bbec285c1167fa50b99aa0453435874ea17e61"
+ },
+ "multi fentanyl_iv twice": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|20 mcg/hr 持續輸注|57.599999999999994",
+   "fentanyl_iv|5 mcg/hr 持續輸注|14.399999999999999"
+  ],
+  "ome": "72.0",
+  "doses": "25.0 21.6 25.0 54.0 18.0 10.8 2.2 36.0 540 386 360 235",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "176f6aeee4dc6ef83a996aa91b5368e30c5af789583d587e09e6ce77aa8a9053"
+ },
+ "fentanyl_iv 25 tol0 noncancer": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|25 mcg/hr 持續輸注|72"
+  ],
+  "ome": "72.0",
+  "doses": "25.0 28.8 25.0 72.0 24.0 14.4 2.9 48.0 720 514 480 313",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "34e0d5103fc092e8b0568943ffdf3e188b80ef03aac052e4e3deffe1c6147c79"
+ },
+ "fentanyl_iv 25 tol50": {
+  "error": null,
+  "resultVisible": true,
+  "list": [
+   "fentanyl_iv|25 mcg/hr 持續輸注|72"
+  ],
+  "ome": "72.0",
+  "doses": "25.0 14.4 25.0 36.0 12.0 7.2 1.4 24.0 360 257 240 157",
+  "patchRec": " 計算值 25.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
+  "sha256": "3afb2ae15b0a5ed150b6950640a7aa8b351d55b96b1f2a686b52e28dc4d12b2d"
  },
  "multi total >1000": {
   "error": "總 OME 過高（1100 mg/day）。請確認輸入數值是否正確。",
