@@ -142,7 +142,8 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 ## 技術說明
 
-- **架構**：純靜態 HTML（單檔案），無需後端，無資料上傳
+- **架構**：純靜態 HTML，無需後端，無資料上傳；換算邏輯在 `js/calc.js`（純函式，瀏覽器以 `<script>` 載入，Node 可 `require`）
+- **測試**：`node --test`（零相依；characterization golden 僅在刻意改變輸出時以 `node tests/update-golden.js` 重產）
 - **相依套件**：Bootstrap 5.3.2（CDN）、Noto Sans TC / JetBrains Mono（Google Fonts CDN）
 - **部署**：GitHub Pages（`main` branch root）
 
