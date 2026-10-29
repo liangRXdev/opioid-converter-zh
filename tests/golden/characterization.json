@@ -2719,26 +2719,22 @@
   "sha256": "9df4c683bcb6cff6012231ada2852e24ed480cc4ad44dfca723e9a3573916b31"
  },
  "switch drug keeps dose": {
-  "error": null,
-  "resultVisible": true,
-  "list": [
-   "fentanyl_iv|25 mcg/hr 持續輸注|180"
-  ],
-  "ome": "180.0",
-  "doses": "67.5 54.0 25.0 135.0 45.0 27.0 5.4 90.0 1350 964 900 587",
-  "patchRec": " 計算值 67.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "966be086c67e425d79f3a5c9b588b107e74cb10b66a454690db2ca61bb459e26"
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "switch oral to oral keeps dose": {
-  "error": null,
-  "resultVisible": true,
-  "list": [
-   "oxycodone_oral|10.0 mg/day|15"
-  ],
-  "ome": "15.0",
-  "doses": "5.6 4.5 1.6 11.3 3.8 2.3 0.45 10.0 113 80 75 49",
-  "patchRec": " 計算值 5.6 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
-  "sha256": "9421a7ee37a0a65881e85e36f855dd6458bfefd1ff017e6d458717d88df50756"
+  "error": "請輸入有效的正數劑量。",
+  "resultVisible": false,
+  "list": [],
+  "ome": "",
+  "doses": "",
+  "patchRec": "",
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "no drug selected": {
   "error": "請先選擇藥物。",

@@ -83,3 +83,14 @@ test('F6 Fentanyl 貼片組合規格（37.5 / 62.5 / 87.5）的數值與標示�
   app.add({ key: 'fentanyl_patch', dose: '37.5' });
   assert.deepEqual(app.state().list, ['fentanyl_patch|37.5 mcg/h|75']);
 });
+
+test('F7 切換藥物（單位不同）時清除已輸入劑量，避免 mg 被當 mcg/hr 解讀', () => {
+  const app = loadApp();
+  app.select('morphine_oral');
+  app.el('inpDose').value = '25'; // 25 mg
+  app.select('fentanyl_iv');      // 單位改為 mcg/hr
+  assert.equal(app.el('inpDose').value, '');
+  app.run('addDrug()');
+  assert.equal(app.drugList().length, 0, '不得以 25 mcg/hr（OME 180）加入');
+  assert.equal(app.state().error, '請輸入有效的正數劑量。');
+});

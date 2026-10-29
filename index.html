@@ -713,6 +713,8 @@ function onDrugChange() {
   const lblDose = document.getElementById('lblDose');
   const doseInput = document.getElementById('inpDose');
   const patchSelect = document.getElementById('selPatchDose');
+  // 每個選項的藥物/途徑/單位皆不同（mg vs mcg/hr），切換時清除舊輸入以免被誤解讀
+  doseInput.value = '';
 
   if (drug.isPatch) {
     lblDose.textContent = '貼片強度 (mcg/h)';
