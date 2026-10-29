@@ -142,7 +142,8 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 ## Technical Notes
 
-- **Architecture**: pure static HTML (single file), no backend, no data upload
+- **Architecture**: pure static HTML, no backend, no data upload; conversion logic lives in `js/calc.js` (pure functions, loaded via `<script>`, also `require`-able from Node)
+- **Tests**: `node --test` (zero dependencies; characterization golden regenerated with `node tests/update-golden.js` only for intentional output changes)
 - **Dependencies**: Bootstrap 5.3.2 (CDN), Noto Sans TC / JetBrains Mono (Google Fonts CDN)
 - **Deployment**: GitHub Pages (`main` branch root)
 

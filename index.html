@@ -455,11 +455,11 @@ select:focus, input[type="number"]:focus {
             <option value="">— 選擇貼片規格 —</option>
             <option value="12">12 mcg/h (或12.5)</option>
             <option value="25">25 mcg/h</option>
-            <option value="37">37.5 mcg/h (25+12.5)</option>
+            <option value="37.5">37.5 mcg/h (25+12.5)</option>
             <option value="50">50 mcg/h</option>
-            <option value="62">62.5 mcg/h (50+12.5)</option>
+            <option value="62.5">62.5 mcg/h (50+12.5)</option>
             <option value="75">75 mcg/h</option>
-            <option value="87">87.5 mcg/h (75+12.5)</option>
+            <option value="87.5">87.5 mcg/h (75+12.5)</option>
             <option value="100">100 mcg/h</option>
             <option value="125">125 mcg/h</option>
             <option value="150">150 mcg/h</option>
@@ -664,47 +664,16 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<script src="js/calc.js"></script>
 <script>
 // ============================================================
-// OPIOID CONVERSION TOOL
+// OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
 // v1.4.0 | Cancer/non-cancer context, renal flags, Buprenorphine TD, IV Fentanyl
 // ============================================================
 
+const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
+
 let drugList = []; // { key, label, doseLabel, ome }
-
-const DRUGS = {
-  fentanyl_patch:        { label: 'Fentanyl 貼片', route: 'transdermal', unit: 'mcg/h',   toOME: d => d * 2,   fromOME: ome => ome / 2,   isPatch: true },
-  buprenorphine_td:      { label: 'Buprenorphine 貼片', route: 'transdermal', unit: 'mcg/h', toOME: d => d * 2.5, fromOME: ome => ome / 2.5, isPatch: true, isBupPatch: true },
-  fentanyl_iv:           { label: 'Fentanyl IV 持續輸注', route: 'IV', unit: 'mcg/hr',    toOME: d => d * 7.2, fromOME: ome => ome / 7.2,  isIVInfusion: true },
-  morphine_oral:         { label: 'Morphine 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 1,   fromOME: ome => ome / 1 },
-  morphine_iv_sc:        { label: 'Morphine IV/SC', route: 'IV/SC',       unit: 'mg/day',  toOME: d => d * 3,   fromOME: ome => ome / 3 },
-  hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
-  hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
-  oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
-  tramadol_oral:         { label: 'Tramadol 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.1,  fromOME: ome => ome / 0.1,  isWeak: true, warn: '⚠ 前驅藥（CYP2D6 活化）；最大劑量 400 mg/day；腎衰竭需調整（Micromedex 2025）' },
-  tramadol_iv:           { label: 'Tramadol IV/IM', route: 'IV/IM',       unit: 'mg/day',  toOME: d => d * 0.14, fromOME: ome => ome / 0.14, isWeak: true, warn: '⚠ [推算值] 換算因子 ×0.14（單次給藥 oral BA ≈70%，Grond 2004）；長期服藥後 oral BA 升至 90–100%，慢性輪換情境下 IV/IM 與口服差異縮小；UpToDate/NCCN 均無明確 IV 換算因子；CYP2D6 個體差異大，結果僅供估算參考' },
-  codeine_oral:          { label: 'Codeine 口服',   route: 'oral',        unit: 'mg/day',  toOME: d => d * 0.15,fromOME: ome => ome / 0.15, isWeak: true },
-  codeine_im:            { label: 'Codeine IM',     route: 'IM',          unit: 'mg/day',  toOME: d => d * 0.23,fromOME: ome => ome / 0.23, isWeak: true, warn: '⚠ Codeine IM 不建議常規使用（組胺釋放風險）；IM 等效劑量 130 mg（≠ 口服 200 mg，Micromedex 2025）' },
-};
-
-const PATCH_SIZES = [12, 25, 50, 75, 100]; // fentanyl patch sizes for reference table
-const BUP_PATCH_SIZES = [5, 10, 20];       // Norspan® mcg/h
-
-// Renal adjustment flags (Micromedex 2025 / UpToDate 2026)
-const RENAL_FLAGS = {
-  morphine_oral:       { level: 'danger',  note: 'GFR<30：M6G 蓄積 → CNS 毒性，避免使用（Micromedex 2025）' },
-  morphine_iv_sc:      { level: 'danger',  note: 'GFR<30：M6G 蓄積 → CNS 毒性，避免使用（Micromedex 2025）' },
-  hydromorphone_oral:  { level: 'caution', note: 'GFR<30：H3G 蓄積 → 神經毒性（肌陣攣），減量並監測（Micromedex 2025）' },
-  hydromorphone_iv_sc: { level: 'caution', note: 'GFR<30：H3G 蓄積 → 神經毒性（肌陣攣），減量並監測（Micromedex 2025）' },
-  codeine_oral:        { level: 'danger',  note: 'GFR<30：活性代謝物蓄積 → CNS 毒性，應避免（Micromedex 2025）' },
-  codeine_im:          { level: 'danger',  note: 'GFR<30：活性代謝物蓄積 → CNS 毒性，應避免（Micromedex 2025）' },
-  tramadol_oral:       { level: 'caution', note: 'GFR<30：代謝物蓄積 → 癲癇閾值降低，需延長給藥間隔（Micromedex 2025）' },
-  tramadol_iv:         { level: 'caution', note: 'GFR<30：代謝物蓄積 → 癲癇閾值降低，需延長給藥間隔（Micromedex 2025）' },
-  oxycodone_oral:      { level: 'caution', note: 'GFR<30：代謝物蓄積，建議減量（Micromedex 2025）' },
-  fentanyl_patch:      { level: 'ok',      note: '腎衰竭可選：無活性代謝物蓄積（UpToDate 2026）' },
-  fentanyl_iv:         { level: 'ok',      note: '腎衰竭可選：無活性代謝物蓄積（UpToDate 2026）' },
-  buprenorphine_td:    { level: 'ok',      note: '腎衰竭首選：非腎臟清除，GFR<15 仍可使用（UpToDate 2026）' },
-};
 
 // Tab switching
 document.querySelectorAll('.nav-link[data-tab]').forEach(el => {
@@ -728,10 +697,7 @@ function populatePatchOptions(type) {
       sel.appendChild(opt);
     });
   } else {
-    [[12,'12 mcg/h (或12.5)'],[25,'25 mcg/h'],[37,'37.5 mcg/h (25+12.5)'],
-     [50,'50 mcg/h'],[62,'62.5 mcg/h (50+12.5)'],[75,'75 mcg/h'],
-     [87,'87.5 mcg/h (75+12.5)'],[100,'100 mcg/h'],[125,'125 mcg/h'],[150,'150 mcg/h']]
-    .forEach(([v,t]) => {
+    FENTANYL_PATCH_OPTIONS.forEach(([v,t]) => {
       const opt = document.createElement('option');
       opt.value = v; opt.textContent = t;
       sel.appendChild(opt);
@@ -747,6 +713,8 @@ function onDrugChange() {
   const lblDose = document.getElementById('lblDose');
   const doseInput = document.getElementById('inpDose');
   const patchSelect = document.getElementById('selPatchDose');
+  // 每個選項的藥物/途徑/單位皆不同（mg vs mcg/hr），切換時清除舊輸入以免被誤解讀
+  doseInput.value = '';
 
   if (drug.isPatch) {
     lblDose.textContent = '貼片強度 (mcg/h)';
@@ -781,29 +749,13 @@ function addDrug() {
   if (!key) { showError('請先選擇藥物。'); return; }
 
   const drug = DRUGS[key];
-  const freq = parseFloat(document.getElementById('inpFreq').value) || 1;
-  let doseInput, doseLabel;
+  const rawDose = drug.isPatch ? document.getElementById('selPatchDose').value : document.getElementById('inpDose').value;
+  const entry = OpioidCalc.parseEntry(key, rawDose, document.getElementById('inpFreq').value);
+  if (entry.error) { showError(entry.error); return; }
+  const totalErr = OpioidCalc.totalOMEError(drugList, entry);
+  if (totalErr) { showError(totalErr); return; }
 
-  if (drug.isPatch) {
-    doseInput = parseFloat(document.getElementById('selPatchDose').value);
-    if (isNaN(doseInput)) { showError('請從下拉選單選擇有效的貼片劑量。'); return; }
-    doseLabel = `${doseInput} mcg/h`;
-  } else if (drug.isIVInfusion) {
-    doseInput = parseFloat(document.getElementById('inpDose').value);
-    if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
-    doseLabel = `${doseInput} mcg/hr 持續輸注`;
-  } else {
-    doseInput = parseFloat(document.getElementById('inpDose').value);
-    if (isNaN(doseInput) || doseInput <= 0) { showError('請輸入有效的正數劑量。'); return; }
-    const td = doseInput * freq;
-    doseLabel = freq > 1 ? `${doseInput} mg × ${freq} = ${td.toFixed(1)} mg/day` : `${td.toFixed(1)} mg/day`;
-  }
-
-  const totalDose = (drug.isPatch || drug.isIVInfusion) ? doseInput : doseInput * freq;
-  const ome = drug.toOME(totalDose);
-  if (ome > 1000) { showError(`單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。`); return; }
-
-  drugList.push({ key, label: drug.label, doseLabel, ome });
+  drugList.push(entry);
   renderDrugList();
   calculate();
 
@@ -826,13 +778,13 @@ function renderDrugList() {
       <div class="dl-info">
         <div class="dl-name">${item.label}</div>
         <div class="dl-dose">${item.doseLabel}</div>
-        <div class="dl-ome">→ ${item.ome.toFixed(1)} MME</div>
+        <div class="dl-ome">→ ${fmt(item.ome, 1)} MME</div>
       </div>
       <button class="dl-del" onclick="removeDrug(${idx})" title="移除此藥">×</button>`;
     itemsEl.appendChild(div);
   });
-  const total = drugList.reduce((s, i) => s + i.ome, 0);
-  totalEl.textContent = `總計 OME：${total.toFixed(1)} mg/24h`;
+  const total = OpioidCalc.totalOME(drugList);
+  totalEl.textContent = `總計 OME：${fmt(total, 1)} mg/24h`;
 }
 
 function removeDrug(idx) {
@@ -858,13 +810,13 @@ function calculate() {
   if (drugList.length === 0) return;
 
   const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
-  const crossTolFactor = 1 - crossTolPct / 100;
-  const totalOME = drugList.reduce((s, i) => s + i.ome, 0);
+  const crossTolFactor = OpioidCalc.crossTolFactor(crossTolPct);
+  const totalOME = OpioidCalc.totalOME(drugList);
 
-  if (totalOME > 1000) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); return; }
+  if (totalOME > MAX_OME) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); hideResult(); return; }
 
   // OME 顯示
-  document.getElementById('omeValue').textContent = totalOME.toFixed(1);
+  document.getElementById('omeValue').textContent = fmt(totalOME, 1);
   document.getElementById('omeNote').textContent = drugList.length === 1
     ? `來源：${drugList[0].label} ${drugList[0].doseLabel} → OME`
     : `來源：${drugList.length} 種藥物加總`;
@@ -878,32 +830,13 @@ function calculate() {
     crossTolNote.style.display = 'none';
   }
 
-  const sourceKeys = new Set(drugList.map(i => i.key));
-  const singleSource = drugList.length === 1;
-
   // Result grid
   const grid = document.getElementById('resultGrid');
   grid.innerHTML = '';
 
-  const DRUG_DISPLAY_ORDER = [
-    'fentanyl_patch', 'buprenorphine_td', 'fentanyl_iv',
-    'morphine_oral', 'morphine_iv_sc',
-    'hydromorphone_oral', 'hydromorphone_iv_sc',
-    'oxycodone_oral',
-    'tramadol_oral', 'tramadol_iv',
-    'codeine_oral', 'codeine_im'
-  ];
-
-  DRUG_DISPLAY_ORDER.forEach(dk => {
-    const d = DRUGS[dk];
-    const isSource = sourceKeys.has(dk);
-    const rawDose = d.fromOME(totalOME);
-    const adjDose = (isSource && singleSource) ? rawDose : rawDose * crossTolFactor;
-
+  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, adjDose, display: doseDisplay }) => {
     const card = document.createElement('div');
     card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
-
-    const doseDisplay = (d.isPatch || !d.isWeak) ? adjDose.toFixed(1) : adjDose.toFixed(0);
 
     let warnHtml = '';
     if (d.warn) warnHtml = `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.3rem;">${d.warn}</div>`;
@@ -932,15 +865,11 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const onlyFentanyl = sourceKeys.has('fentanyl_patch') && singleSource;
-  const patchFactor = onlyFentanyl ? 1 : crossTolFactor;
-  const targetPatchDose = DRUGS.fentanyl_patch.fromOME(totalOME) * patchFactor;
-  const lower  = PATCH_SIZES.filter(s => s <= targetPatchDose).slice(-1)[0];
-  const higher = PATCH_SIZES.filter(s => s > targetPatchDose)[0];
+  const { onlyFentanyl, target: targetPatchDose, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
-  if (lower && higher) patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
-  else if (lower)       patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
-  else                  patchRec = `計算值 ${targetPatchDose.toFixed(1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
+  if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（保守）或 <strong>${higher} mcg/h</strong>（積極）。`;
+  else if (lower)       patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower} mcg/h</strong>（已達最高常用規格）。`;
+  else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 
@@ -971,12 +900,11 @@ function calculate() {
   }
 
   // Breakthrough dose
-  const btMin = totalOME * 0.10;
-  const btMax = totalOME * 0.20;
-  let btHtml = `<div class="bt-row" style="margin-bottom:0.4rem;">OME ${totalOME.toFixed(1)} mg × 10–20% = <strong>${btMin.toFixed(1)}–${btMax.toFixed(1)} mg OME</strong></div>`;
+  const { min: btMin, max: btMax } = OpioidCalc.breakthroughRange(totalOME);
+  let btHtml = `<div class="bt-row" style="margin-bottom:0.4rem;">OME ${fmt(totalOME, 1)} mg × 10–20% = <strong>${fmt(btMin, 1)}–${fmt(btMax, 1)} mg OME</strong></div>`;
   [['morphine_oral','Morphine 口服'],['hydromorphone_oral','Hydromorphone 口服'],['oxycodone_oral','Oxycodone 口服']].forEach(([k, lbl]) => {
     const d = DRUGS[k];
-    btHtml += `<div class="bt-row">• ${lbl}：${d.fromOME(btMin).toFixed(1)}–${d.fromOME(btMax).toFixed(1)} mg  Q4H PRN</div>`;
+    btHtml += `<div class="bt-row">• ${lbl}：${fmt(d.fromOME(btMin), 1)}–${fmt(d.fromOME(btMax), 1)} mg  Q4H PRN</div>`;
   });
   btHtml += `<div style="font-size:0.7rem; color:#2E7D5A; margin-top:0.4rem;">* 以總 OME 計算，不套用交叉耐受減量（BT dose 用於相同藥物補救）</div>`;
   document.getElementById('btContent').innerHTML = btHtml;
@@ -1005,40 +933,13 @@ function resetForm() {
 }
 
 function copyResult() {
-  const ome = parseFloat(document.getElementById('omeValue').textContent);
-  if (isNaN(ome) || drugList.length === 0) return;
+  if (drugList.length === 0) return;
+  // 以清單重算總 OME（勿讀畫面上已四捨五入的 omeValue）
+  const ome = OpioidCalc.totalOME(drugList);
 
   const crossTolPct = parseFloat(document.getElementById('crossTolSelect').value);
-  const crossTolFactor = 1 - crossTolPct / 100;
   const now = new Date().toLocaleString('zh-TW', { hour12: false });
-  const sourceKeys = new Set(drugList.map(i => i.key));
-  const singleSource = drugList.length === 1;
-
-  let txt = `═══ Opioid MME 換算摘要 ═══\n${now}\n\n`;
-  txt += `【目前用藥】\n`;
-  drugList.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${item.ome.toFixed(1)} MME\n`; });
-  txt += `  總計：${ome.toFixed(1)} mg OME/24h\n\n`;
-
-  if (crossTolPct > 0) txt += `【跨藥物減量】減量 ${crossTolPct}%（換算因子 ×${crossTolFactor.toFixed(2)}）\n\n`;
-
-  txt += `【等效換算劑量（建議起始劑量）】\n`;
-  ['morphine_oral','hydromorphone_oral','oxycodone_oral','fentanyl_patch'].forEach(dk => {
-    const d = DRUGS[dk];
-    const isSource = sourceKeys.has(dk);
-    const adj = (isSource && singleSource) ? d.fromOME(ome) : d.fromOME(ome) * crossTolFactor;
-    const val = d.isPatch ? `${adj.toFixed(1)} mcg/h` : `${adj.toFixed(1)} mg/day`;
-    txt += `  • ${d.label}：${val}${isSource && singleSource ? '（來源，未減量）' : ''}\n`;
-  });
-
-  txt += `\n【Breakthrough Dose（PRN q1–4h）】\n`;
-  const btMin = ome * 0.10, btMax = ome * 0.20;
-  txt += `  OME × 10–20% = ${btMin.toFixed(1)}–${btMax.toFixed(1)} mg\n`;
-  [['morphine_oral','Morphine 口服'],['hydromorphone_oral','Hydromorphone 口服']].forEach(([k, lbl]) => {
-    const d = DRUGS[k];
-    txt += `  • ${lbl}：${d.fromOME(btMin).toFixed(1)}–${d.fromOME(btMax).toFixed(1)} mg  Q4H PRN\n`;
-  });
-
-  txt += `\n⚠ 本工具僅供臨床輔助參考，不取代臨床判斷。\n（UpToDate 2026 Graphic 111216 / NCCN 2026 v1）`;
+  const txt = OpioidCalc.buildSummary(drugList, ome, crossTolPct, now);
 
   navigator.clipboard.writeText(txt).then(() => {
     const btn = document.querySelector('.btn-copy');
