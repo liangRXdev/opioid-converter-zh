@@ -74,15 +74,15 @@
 
     if (drug.isPatch) {
       doseInput = parseFloat(rawDose);
-      if (isNaN(doseInput)) return { error: '請從下拉選單選擇有效的貼片劑量。' };
+      if (!Number.isFinite(doseInput)) return { error: '請從下拉選單選擇有效的貼片劑量。' };
       doseLabel = `${doseInput} mcg/h`;
     } else if (drug.isIVInfusion) {
       doseInput = parseFloat(rawDose);
-      if (isNaN(doseInput) || doseInput <= 0) return { error: '請輸入有效的正數劑量。' };
+      if (!Number.isFinite(doseInput) || doseInput <= 0) return { error: '請輸入有效的正數劑量。' };
       doseLabel = `${doseInput} mcg/hr 持續輸注`;
     } else {
       doseInput = parseFloat(rawDose);
-      if (isNaN(doseInput) || doseInput <= 0) return { error: '請輸入有效的正數劑量。' };
+      if (!Number.isFinite(doseInput) || doseInput <= 0) return { error: '請輸入有效的正數劑量。' };
       const td = doseInput * freq;
       doseLabel = freq > 1 ? `${doseInput} mg × ${freq} = ${td.toFixed(1)} mg/day` : `${td.toFixed(1)} mg/day`;
     }

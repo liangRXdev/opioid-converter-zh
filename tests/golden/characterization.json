@@ -179,13 +179,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "morphine_oral 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "morphine_oral 10000×1": {
   "error": "單項 OME 過高（10000 mg）。請確認輸入數值是否正確。",
@@ -396,13 +396,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "morphine_iv_sc 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "morphine_iv_sc 10000×1": {
   "error": "單項 OME 過高（30000 mg）。請確認輸入數值是否正確。",
@@ -611,13 +611,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "hydromorphone_oral 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "hydromorphone_oral 10000×1": {
   "error": "單項 OME 過高（50000 mg）。請確認輸入數值是否正確。",
@@ -824,13 +824,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "hydromorphone_iv_sc 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "hydromorphone_iv_sc 10000×1": {
   "error": "單項 OME 過高（250000 mg）。請確認輸入數值是否正確。",
@@ -1041,13 +1041,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "oxycodone_oral 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "oxycodone_oral 10000×1": {
   "error": "單項 OME 過高（15000 mg）。請確認輸入數值是否正確。",
@@ -1260,13 +1260,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "tramadol_oral 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "tramadol_oral 10000×1": {
   "error": null,
@@ -1481,13 +1481,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "tramadol_iv 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "tramadol_iv 10000×1": {
   "error": "單項 OME 過高（1400 mg）。請確認輸入數值是否正確。",
@@ -1700,13 +1700,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "codeine_oral 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "codeine_oral 10000×1": {
   "error": "單項 OME 過高（1500 mg）。請確認輸入數值是否正確。",
@@ -1919,13 +1919,13 @@
   "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "codeine_im 1e400×1": {
-  "error": "單項 OME 過高（Infinity mg）。請確認輸入數值是否正確。",
+  "error": "請輸入有效的正數劑量。",
   "resultVisible": false,
   "list": [],
   "ome": "",
   "doses": "",
   "patchRec": "",
-  "sha256": "0fa542e3a4881e2fd87cfd0e2e0e8c46fa06d9ef9de9d847fa7ccffd75799b0b"
+  "sha256": "20c25df127229dbdb3668dce0b274dcc8cad565e34bb7a19e75fc126259cb7f9"
  },
  "codeine_im 10000×1": {
   "error": "單項 OME 過高（2300 mg）。請確認輸入數值是否正確。",
