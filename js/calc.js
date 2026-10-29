@@ -153,9 +153,22 @@
   // |target − 劑量| ≤ 此值即視為與規格相符，只建議該劑量
   const PATCH_MATCH_TOL = 0.05;
 
-  // 可用貼片劑量（遞增）
+  // > 100 mcg/h 的組合：100×n + r（n ≥ 1），r 取自此清單；≤ 100 仍只用 PATCH_SIZES（不改既有輸出）
+  const PATCH_COMBO_REMAINDERS = [0, 12, 25, 50, 75];
+
+  // 可用貼片劑量（遞增）：PATCH_SIZES，再接 > 100 的組合直到第一個 > target 者。
+  // 不另設上限，上限由 MAX_OME 決定。
   function availablePatches(target) {
-    return PATCH_SIZES.map(dose => ({ dose, label: `${dose} mcg/h` }));
+    const out = PATCH_SIZES.map(dose => ({ dose, label: `${dose} mcg/h` }));
+    for (let n = 1; out[out.length - 1].dose <= target + PATCH_MATCH_TOL; n++) {
+      for (const r of PATCH_COMBO_REMAINDERS) {
+        const dose = 100 * n + r;
+        if (dose <= 100) continue;
+        const parts = Array(n).fill(100).concat(r ? [r] : []);
+        out.push({ dose, label: `${dose} mcg/h（${parts.join('+')}）` });
+      }
+    }
+    return out;
   }
 
   // 依目標 mcg/h 選規格：相符 → match；否則 lower（≤ 目標最大，保守）/ higher（> 目標最小，積極）
