@@ -20,7 +20,7 @@
 | **腎功能注意提示** | 每張結果卡片顯示 🫘 腎衰竭風險標籤（危險 / 注意 / 安全，Micromedex 2025）|
 | **不完全交叉耐受性減量** | 不減量 / 減 25% / 減 50% 三選項（opioid rotation 標準做法）|
 | **Breakthrough Dose** | 自動計算 PRN 搶救劑量（總 OME × 10–20%，含 Morphine / Hydromorphone / Oxycodone 換算）|
-| **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項）|
+| **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項；與規格相符時只建議該劑量；> 100 mcg/h 以組合貼片建議）|
 | **複製換算摘要** | 一鍵複製純文字換算報告，可直接貼入病歷或交班記錄 |
 | **貼片劑量對照表** | 以 Fentanyl 貼片強度為基準，列出所有藥物對應每日劑量（含 Buprenorphine）|
 | **各指引換算比例比較** | UpToDate / NCCN 2026 / Reddy 2015 / Duragesic PI 並列比較 |
@@ -155,6 +155,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.4 | 2026-10-29 | 貼片建議：計算值與規格相符（±0.05 mcg/h）時只建議該劑量；> 100 mcg/h 以 100×n + r 組合貼片建議並顯示組成，移除「已達最高常用規格」|
 | v1.4.3 | 2026-10-29 | Fentanyl IV 改用 NCCN 穩態比 ×2.88（原 ×7.2）；來源僅 Fentanyl IV 時貼片 1:1 直接換算並提示停輸注時程（NCCN PAIN-G 13）；js/calc.js 抽出與 node --test 測試（PR #1）|
 | v1.4.2 | 2026-05-22 | 新增 Tramadol IV/IM（×0.14，推算值；標記無主要指引支持）|
 | v1.4.1 | 2026-05-22 | PWA 支援：manifest.json、Service Worker、OME Calc 圖示（#FD7E14）|
