@@ -38,8 +38,21 @@ test('#1 CDC 表未列者沿用 toOME 計入並列入 unlisted（Morphine IV/SC 
   assert.deepEqual(r.unlisted, ['Morphine IV/SC']);
   const all = C.cdcRiskMME([E('fentanyl_iv', 10), E('tramadol_iv', 100), E('codeine_im', 60),
     E('buprenorphine_td', 10), E('hydromorphone_iv_sc', 1), E('morphine_iv_sc', 5), E('morphine_iv_sc', 5)]);
-  assert.deepEqual(all.unlisted, ['Fentanyl IV 持續輸注', 'Tramadol IV/IM', 'Codeine IM', 'Buprenorphine 貼片', 'Hydromorphone IV/SC', 'Morphine IV/SC']);
-  close(all.mme, 28.8 + 14 + 60 * 0.23 + 25 + 25 + 30);
+  assert.deepEqual(all.unlisted, ['Fentanyl IV 持續輸注', 'Tramadol IV/IM', 'Codeine IM', 'Hydromorphone IV/SC', 'Morphine IV/SC']);
+  assert.deepEqual(all.excluded, ['Buprenorphine 貼片']);
+  close(all.mme, 28.8 + 14 + 60 * 0.23 + 25 + 30);
+});
+
+// CDC 2022 Recommendation 4 正文："Buprenorphine should not be counted in the total MME/day in calculations
+// because of its partial agonist properties at opioid receptors that confer a ceiling effect on respiratory depression."
+test('#1 Buprenorphine 不計入 CDC MME（CDC 2022 正文）', () => {
+  const only = C.cdcRiskMME([E('buprenorphine_td', 10)]);
+  close(only.mme, 0);
+  assert.deepEqual(only.unlisted, []);
+  assert.deepEqual(only.excluded, ['Buprenorphine 貼片']);
+  const mixed = C.cdcRiskMME([E('buprenorphine_td', 5), E('oxycodone_oral', 20)]);
+  close(mixed.mme, 30);
+  assert.deepEqual(mixed.excluded, ['Buprenorphine 貼片']);
 });
 
 test('#1 混合：CDC 係數與工具係數分別計入', () => {
@@ -56,7 +69,7 @@ test('#1 換算係數不變：tramadol_oral toOME 仍 0.1', () => {
 // ---- #2 非癌症情境 UI ----
 const { loadApp } = require('./helpers/harness');
 const MME_LINE = x => `CDC 2022 MME（風險評估）：${x} mg/day — 僅供風險評估，不用於換算劑量（CDC 2022 表格注意事項 3）`;
-const BUP_NOTE = 'CDC 2022 表不含 buprenorphine（部分促效劑）';
+const BUP_NOTE = 'Buprenorphine 貼片不計入 MME（CDC 2022：部分促效劑，呼吸抑制有天花板效應）';
 
 function ui(steps, context = 'noncancer', crossTol = '25') {
   const app = loadApp();
@@ -109,9 +122,10 @@ test('#2 非癌症 Morphine IV/SC 10 → MME 30，CDC 表未列註記', () => {
   assert.ok(!st.cdcMme.includes(BUP_NOTE));
 });
 
-test('#2 非癌症 Buprenorphine 貼片 10 → buprenorphine 註記', () => {
+test('#2 非癌症 Buprenorphine 貼片 10 → MME 0，不計入註記；OME 仍 25', () => {
   const { st } = ui([{ key: 'buprenorphine_td', dose: 10 }]);
-  assert.equal(st.cdcMme, `${MME_LINE('25.0')}<br>CDC 表未列：Buprenorphine 貼片，以本工具換算係數計入<br>${BUP_NOTE}`);
+  assert.equal(st.cdcMme, `${MME_LINE('0.0')}<br>${BUP_NOTE}`);
+  assert.equal(st.ome, '25.0');
 });
 
 // ---- #3 癌症情境不變 ----

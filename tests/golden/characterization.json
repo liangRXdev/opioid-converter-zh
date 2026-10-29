@@ -2790,7 +2790,7 @@
   "ome": "25.0",
   "doses": "9.4 10.0 6.5 18.8 6.3 3.8 0.75 12.5 188 134 125 82",
   "patchRec": " 計算值 9.4 mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。",
-  "sha256": "a92bed59e8818f3db0af44f8107cfd8f12b0094bc6cb16ac247fb7e6dd90c0a5"
+  "sha256": "ff2dc1b442acc8273c628c1c9e6fff42836e79c1073054eb1ee9239bed79f666"
  },
  "codeine_oral 240 noncancer": {
   "error": null,
@@ -2825,7 +2825,7 @@
   "ome": "42.5",
   "doses": "15.9 12.8 11.1 31.9 10.6 6.4 1.3 21.3 319 228 213 139",
   "patchRec": " 計算值 15.9 mcg/h → 建議選 <strong>12 mcg/h</strong>（保守）或 <strong>25 mcg/h</strong>（積極）。",
-  "sha256": "47d5162844731882ad1d529a3c8dfc6b22b982c08feac6e850ac4b96b677a346"
+  "sha256": "da5bc3d56e2381a868e8319c256e6169509d82654fc16173e23021adbd448832"
  },
  "tramadol_oral 300 cancer": {
   "error": null,

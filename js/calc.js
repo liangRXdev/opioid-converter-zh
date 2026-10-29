@@ -116,19 +116,24 @@
   }
 
   // CDC 2022 風險評估 MME：CDC 表有列者用 CDC 係數 × 每日劑量（貼片為 mcg/hr）；
-  // 未列者（IV/SC/IM、Fentanyl IV、Tramadol IV/IM、Codeine IM、Buprenorphine 貼片）沿用 toOME 計入以免漏算，並列入 unlisted
+  // 未列者（IV/SC/IM、Fentanyl IV、Tramadol IV/IM、Codeine IM）沿用 toOME 計入以免漏算，並列入 unlisted
+  // Buprenorphine 不計入，列入 excluded（CDC 2022 Recommendation 4 正文："Buprenorphine should not be counted
+  // in the total MME/day in calculations because of its partial agonist properties ... ceiling effect on respiratory depression."）
   function cdcRiskMME(list) {
     let mme = 0;
     const unlisted = [];
+    const excluded = [];
     list.forEach(i => {
       const k = CDC_MME_FACTORS[i.key];
-      if (k !== undefined) mme += i.dose * k;
+      if (DRUGS[i.key] && DRUGS[i.key].isBupPatch) {
+        if (!excluded.includes(i.label)) excluded.push(i.label);
+      } else if (k !== undefined) mme += i.dose * k;
       else {
         mme += i.ome;
         if (!unlisted.includes(i.label)) unlisted.push(i.label);
       }
     });
-    return { mme, unlisted };
+    return { mme, unlisted, excluded };
   }
 
   // 非癌症情境結果區與複製摘要共用的 MME 行
