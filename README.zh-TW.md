@@ -155,6 +155,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.3 | 2026-10-29 | Fentanyl IV 改用 NCCN 穩態比 ×2.88（原 ×7.2）；來源僅 Fentanyl IV 時貼片 1:1 直接換算並提示停輸注時程（NCCN PAIN-G 13）；js/calc.js 抽出與 node --test 測試（PR #1）|
 | v1.4.2 | 2026-05-22 | 新增 Tramadol IV/IM（×0.14，推算值；標記無主要指引支持）|
 | v1.4.1 | 2026-05-22 | PWA 支援：manifest.json、Service Worker、OME Calc 圖示（#FD7E14）|
 | v1.4.0 | 2026-05-22 | 情境切換（癌症 NCCN 2026 / 非癌症 CDC 2022）；腎功能提示標籤；新增 Buprenorphine 貼片（Norspan®）；新增 Fentanyl IV 持續輸注 |

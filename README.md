@@ -155,6 +155,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.3 | 2026-10-29 | Fentanyl IV now uses the NCCN steady-state ratio ×2.88 (was ×7.2); fentanyl IV-only sources convert to patch 1:1 with infusion taper guidance (NCCN PAIN-G 13); js/calc.js extraction and node --test suite (PR #1) |
 | v1.4.2 | 2026-05-22 | Added tramadol IV/IM (×0.14, derived; flagged as unsupported by major guidelines) |
 | v1.4.1 | 2026-05-22 | PWA support: manifest.json, service worker, OME Calc icon (#FD7E14) |
 | v1.4.0 | 2026-05-22 | Scenario switch (cancer NCCN 2026 / non-cancer CDC 2022); renal flags; added buprenorphine patch (Norspan®); added fentanyl continuous IV infusion |
