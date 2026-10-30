@@ -141,7 +141,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 - **同藥只換途徑**（如 Morphine PO ↔ IV/SC）不減量：NCCN PAIN-G 的減量限定於「between different opioids」。本工具在來源全為同一分子時自動套用（Fentanyl 除外）
 - MASCC-ASCO 2025 對「自動減量 25–50%」**未達共識**（減量後劑量缺臨床經驗、增加戒斷風險），本工具保留 0／25／50% 由使用者選擇
 - 疼痛未控制 → 從 **100%** 等效劑量起始
-- 換至 Methadone → 特例，需減量 **75–>90%**（本工具未支援 Methadone，請個別評估）
+- 換至 Methadone → 特例，一般需較計算等效劑量減量 **75–90%**（Fine 2009），且應由有經驗的疼痛／安寧專科處理（NCCN 2026；MASCC-ASCO 2025 Rec 2.6）。本工具不支援 Methadone，藥物選單與免責聲明有標示
 
 ---
 
@@ -165,6 +165,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.11 | 2026-10-30 | Service worker 離線錯誤處理（無快取的非 document 請求回 network error、背景更新失敗不產生 unhandled rejection、不攔截非 GET）；藥物選單與免責聲明標示不支援 Methadone |
 | v1.4.10 | 2026-10-30 | Codeine 口服上限 400 → 360 mg/day（美國仿單 Hikma Revised 12/2025）；非癌症 ≥ 90 MME 改標 CDC 2016 門檻；Fentanyl 貼片目標 > 500 mcg/h（超過 5 片 100 mcg/h）不給規格建議 |
 | v1.4.9 | 2026-10-30 | OME 來源說明改以藥物／途徑種類計（原以清單筆數計，SR + IR 同藥兩筆會顯示「2 種藥物」）；新增 GitHub Actions 測試與 `tests/tools/statecmp.js` |
 | v1.4.8 | 2026-10-30 | BT 說明改為與列出藥物一致並註明 MASCC 10–15%；Buprenorphine 貼片 ×2.5 標示推論出處（NCCN 2026）；NCCN 版本標示改為 v2.2026（演算法與 Table 2 未變）|

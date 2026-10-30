@@ -1,7 +1,7 @@
 // 前綴必須含完整 repo 名稱：同 origin 上若有 opioid-converter-en 等相近名稱的工具，
 // 只用 'opioid-converter-' 會把對方的快取當成自己的舊版刪掉。
 const PREFIX = 'opioid-converter-zh-';
-const CACHE = `${PREFIX}v1.4.9`;
+const CACHE = `${PREFIX}v1.4.10`;
 // 改名前本工具使用的舊快取名（opioid-converter-v1.4.0 等），升級時一併清除
 const LEGACY_CACHE = /^opioid-converter-v\d/;
 
@@ -39,26 +39,31 @@ self.addEventListener('activate', e => {
 
 // Fetch: cache-first for local; stale-while-revalidate for CDN
 self.addEventListener('fetch', e => {
+  // cache.put 不接受非 GET；交還瀏覽器處理
+  if (e.request.method !== 'GET') return;
+
   const url = e.request.url;
   const isCDN = url.includes('cdn.jsdelivr.net') ||
                 url.includes('fonts.googleapis.com') ||
                 url.includes('fonts.gstatic.com');
+  const cacheable = isCDN || url.startsWith(self.location.origin);
 
+  // 網路請求一律發出（有快取時即背景更新）；clone 須在回應交出前完成
+  let stored;
+  const network = fetch(e.request).then(res => {
+    if (res.ok && cacheable) {
+      const copy = res.clone();
+      stored = caches.open(CACHE).then(c => c.put(e.request, copy));
+    }
+    return res;
+  });
+  // 同步登記 waitUntil 延長 SW 生命週期；離線或 cache.put 失敗（如容量不足）在此吸收，不成為 unhandled rejection
+  e.waitUntil(network.then(() => stored).catch(() => {}));
+
+  // 有快取先回快取；否則走網路，離線時 document 退回 index.html，其餘回 network error（不可回 undefined）
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      const network = fetch(e.request).then(res => {
-        if (res.ok && (isCDN || url.startsWith(self.location.origin))) {
-          caches.open(CACHE).then(c => c.put(e.request, res.clone()));
-        }
-        return res;
-      });
-      // CDN: return cache immediately, update in background
-      // Local: cache-first, fallback to network
-      return cached || network.catch(() => {
-        if (e.request.destination === 'document') {
-          return caches.match('/opioid-converter-zh/index.html');
-        }
-      });
-    })
+    caches.match(e.request).then(cached => cached || network
+      .catch(() => (e.request.destination === 'document' ? caches.match('/opioid-converter-zh/index.html') : undefined))
+      .then(res => res || Response.error()))
   );
 });
