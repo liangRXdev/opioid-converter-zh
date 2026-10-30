@@ -63,7 +63,7 @@ test('F4 小劑量不會被四捨五入成 0（顯示有效位數）', () => {
 
 test('F5 複製摘要以未四捨五入的總 OME 計算，與畫面結果一致', () => {
   const app = loadApp();
-  app.add({ key: 'hydromorphone_iv_sc', dose: 1.01, freq: 1 }); // OME 25.25 → 畫面顯示 25.3
+  app.add({ key: 'hydromorphone_iv_sc', dose: 1.2625, freq: 1 }); // OME 25.25（×20）→ 畫面顯示 25.3
   const morphineCard = app.state().grid.find(h => h.includes('Morphine 口服'));
   assert.match(morphineCard, /<div class="drug-dose">18\.9<\/div>/);
   assert.match(app.copy(), /Morphine 口服：18\.9 mg\/day/);
