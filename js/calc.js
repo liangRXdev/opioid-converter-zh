@@ -63,7 +63,7 @@
     return context === 'cancer' ? MAX_OME_CANCER : MAX_OME;
   }
   // 癌症情境 OME > OME_WARN_CANCER：結果區與複製摘要共用
-  const ULTRA_HIGH_OME_TEXT = '⚠ 超高劑量（NCCN 2026 v2）：OME > 1000 mg/day。請再次確認輸入數值；NCCN 未列 opioid 劑量上限，但建議會診緩和醫療／疼痛團隊，並加強監測呼吸抑制與鎮靜。';
+  const ULTRA_HIGH_OME_TEXT = '⚠ 超高劑量（NCCN 2026）：OME > 1000 mg/day。請再次確認輸入數值；NCCN 未列 opioid 劑量上限，但建議會診緩和醫療／疼痛團隊，並加強監測呼吸抑制與鎮靜。';
 
   // Renal adjustment flags (Micromedex 2025 / UpToDate 2026)
   const RENAL_FLAGS = {
