@@ -19,6 +19,7 @@ test('F1 非有限輸入（1e400 / Infinity）以一般輸入錯誤拒絕，不�
 
 test('F2 總 OME 超過上限時不加入清單，結果面板不殘留與清單不一致的舊結果', () => {
   const app = loadApp();
+  app.el('clinicContext').value = 'noncancer'; // P8：上限 1000 僅適用非癌症
   app.add({ key: 'morphine_oral', dose: 900, freq: 1 });
   app.add({ key: 'morphine_oral', dose: 200, freq: 1 });
   const st = app.state();

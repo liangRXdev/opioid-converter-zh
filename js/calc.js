@@ -51,8 +51,19 @@
     [87.5, '87.5 mcg/h (75+12.5)'], [100, '100 mcg/h'], [125, '125 mcg/h'], [150, '150 mcg/h'],
   ];
 
-  // 單項與總 OME 的防呆上限（mg/day）
+  // 單項與總 OME 的防呆上限（mg/day），依情境：
+  //   非癌症（及未指定情境）：> 1000 拒絕
+  //   癌症：> 1000 照算並顯示超高劑量警示；> 10000 才拒絕，僅防打錯字（如多打一個 0）
+  // NCCN Adult Cancer Pain v2.2026 未列 full agonist 劑量上限，劑量依前 24h 總量調升 30–100%（PAIN-6）；
+  // 「癌症情境不設臨床上限」為依此推論，非 NCCN 原文。10000 為防呆值，無文獻出處。
   const MAX_OME = 1000;
+  const MAX_OME_CANCER = 10000;
+  const OME_WARN_CANCER = 1000;
+  function omeLimit(context) {
+    return context === 'cancer' ? MAX_OME_CANCER : MAX_OME;
+  }
+  // 癌症情境 OME > OME_WARN_CANCER：結果區與複製摘要共用
+  const ULTRA_HIGH_OME_TEXT = '⚠ 超高劑量（NCCN 2026 v2）：OME > 1000 mg/day。請再次確認輸入數值；NCCN 未列 opioid 劑量上限，但建議會診緩和醫療／疼痛團隊，並加強監測呼吸抑制與鎮靜。';
 
   // Renal adjustment flags (Micromedex 2025 / UpToDate 2026)
   const RENAL_FLAGS = {
@@ -88,7 +99,7 @@
   }
 
   // 將表單原始輸入轉為用藥清單項目；回傳 { error } 或 { key, label, doseLabel, ome }
-  function parseEntry(key, rawDose, rawFreq) {
+  function parseEntry(key, rawDose, rawFreq, context) {
     const drug = DRUGS[key];
     const freq = parseFloat(rawFreq) || 1;
     let doseInput, doseLabel;
@@ -110,7 +121,7 @@
 
     const totalDose = (drug.isPatch || drug.isIVInfusion) ? doseInput : doseInput * freq;
     const ome = drug.toOME(totalDose);
-    if (ome > MAX_OME) return { error: `單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。` };
+    if (ome > omeLimit(context)) return { error: `單項 OME 過高（${ome.toFixed(0)} mg）。請確認輸入數值是否正確。` };
 
     return { key, label: drug.label, doseLabel, ome, dose: totalDose };
   }
@@ -142,9 +153,9 @@
   }
 
   // 加入 entry 後總 OME 是否超過上限；超過回傳錯誤訊息（不得先加入清單再檢查）
-  function totalOMEError(list, entry) {
+  function totalOMEError(list, entry, context) {
     const total = totalOME(list.concat(entry));
-    return total > MAX_OME ? `總 OME 過高（${total.toFixed(0)} mg/day）。請確認輸入數值是否正確。` : null;
+    return total > omeLimit(context) ?`總 OME 過高（${total.toFixed(0)} mg/day）。請確認輸入數值是否正確。` : null;
   }
 
   function sourceInfo(list) {
@@ -200,15 +211,19 @@
   const PATCH_COMBO_REMAINDERS = [0, 12, 25, 50, 75];
 
   // 可用貼片劑量（遞增）：PATCH_SIZES，再接 > 100 的組合直到第一個 > target 者。
-  // 不另設上限，上限由 MAX_OME 決定。
+  // 不另設上限，上限由 omeLimit 決定（癌症 10000 OME → 5000 mcg/h）。
+  // n > 5 時組成改寫為 100×n + r，避免標籤列出數十片
+  const PATCH_COMBO_LIST_MAX = 5;
   function availablePatches(target) {
     const out = PATCH_SIZES.map(dose => ({ dose, label: `${dose} mcg/h` }));
     for (let n = 1; out[out.length - 1].dose <= target + PATCH_MATCH_TOL; n++) {
       for (const r of PATCH_COMBO_REMAINDERS) {
         const dose = 100 * n + r;
         if (dose <= 100) continue;
-        const parts = Array(n).fill(100).concat(r ? [r] : []);
-        out.push({ dose, label: `${dose} mcg/h（${parts.join('+')}）` });
+        const parts = n > PATCH_COMBO_LIST_MAX
+          ? `100×${n}${r ? `+${r}` : ''}`
+          : Array(n).fill(100).concat(r ? [r] : []).join('+');
+        out.push({ dose, label: `${dose} mcg/h（${parts}）` });
       }
     }
     return out;
@@ -251,6 +266,7 @@
     list.forEach(item => { txt += `  • ${item.label}  ${item.doseLabel}  →  ${fmt(item.ome, 1)} MME\n`; });
     txt += `  總計：${fmt(ome, 1)} mg OME/24h\n`;
     if (context === 'noncancer') txt += `  ${cdcMmeLine(cdcRiskMME(list).mme)}\n`;
+    if (context === 'cancer' && ome > OME_WARN_CANCER) txt += `  ${ULTRA_HIGH_OME_TEXT}\n`;
     txt += `\n`;
 
     if (crossTolPct > 0) txt += `【跨藥物減量】減量 ${crossTolPct}%（換算因子 ×${factor.toFixed(2)}）\n\n`;
@@ -278,9 +294,9 @@
   }
 
   const api = {
-    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
+    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, MAX_OME_CANCER, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 

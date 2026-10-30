@@ -26,15 +26,19 @@ for (const [name, raw] of Object.entries(REJECT)) {
   });
 }
 
-test('極端值｜極大值：Morphine 口服 10,000 mg/day 拒絕，訊息無 Infinity/NaN', () => {
-  const app = loadApp();
-  app.add({ key: 'morphine_oral', dose: 10000, freq: 1 });
-  assert.equal(app.drugList().length, 0);
-  assert.equal(app.state().error, '單項 OME 過高（10000 mg）。請確認輸入數值是否正確。');
+test('極端值｜極大值：非癌症 Morphine 口服 10,000、癌症 100,000 mg/day 拒絕，訊息無 Infinity/NaN', () => {
+  for (const [context, dose] of [['noncancer', 10000], ['cancer', 100000]]) {
+    const app = loadApp();
+    app.el('clinicContext').value = context;
+    app.add({ key: 'morphine_oral', dose, freq: 1 });
+    assert.equal(app.drugList().length, 0, context);
+    assert.equal(app.state().error, `單項 OME 過高（${dose} mg）。請確認輸入數值是否正確。`, context);
+  }
 });
 
-test('極端值｜上限邊界：OME 剛好 1000 可加入、累計超過則拒絕且不殘留', () => {
+test('極端值｜上限邊界（非癌症）：OME 剛好 1000 可加入、累計超過則拒絕且不殘留', () => {
   const app = loadApp();
+  app.el('clinicContext').value = 'noncancer';
   app.add({ key: 'morphine_oral', dose: 1000, freq: 1 });
   assert.equal(app.drugList().length, 1);
   app.add({ key: 'oxycodone_oral', dose: 0.01, freq: 1 });
