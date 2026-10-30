@@ -19,7 +19,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | **High-dose warnings** | Cancer: warning at OME > 200; non-cancer: caution at ≥ 50 / warning at ≥ 90 (CDC 2022) |
 | **Renal caution flags** | Each result card shows a 🫘 renal-failure risk label (avoid / caution / safe, Micromedex 2025) |
 | **Incomplete cross-tolerance reduction** | Three options: no reduction / reduce 25% / reduce 50% (standard opioid-rotation practice) |
-| **Breakthrough dose** | Automatically computes the PRN rescue dose (total OME × 10–20%, converted to morphine / hydromorphone / oxycodone) |
+| **Breakthrough dose** | Automatically computes the PRN rescue dose (total OME × 10–20%, NCCN 2026; MASCC-ASCO 2025 recommends starting at 10–15%), listing morphine / hydromorphone / oxycodone equivalents; prefer the short-acting form of the same agent as the long-acting opioid |
 | **Fentanyl patch strength suggestion** | Recommends the nearest patch strength from the result (conservative / aggressive options; a single strength when the target matches; combinations above 100 mcg/h) |
 | **Copy conversion summary** | One-click copy of a plain-text conversion report for pasting into notes or handoff records |
 | **Patch dose reference table** | Lists each drug's daily dose corresponding to each fentanyl patch strength (including buprenorphine) |
@@ -32,7 +32,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | Drug | Route | MME factor | Notes |
 |------|------|------------|------|
 | Fentanyl patch (TDF) | Transdermal | ÷2 (mcg/h → mg OME/day) | UpToDate / NCCN 2026 ÷2 formula |
-| Buprenorphine patch (Norspan®) | Transdermal | ×2.5 (20 mcg/h = 50 mg OME) | Strengths: 5 / 10 / 20 mcg/h |
+| Buprenorphine patch (Norspan®) | Transdermal | ×2.5 (20 mcg/h = 50 mg OME) | Strengths: 5 / 10 / 20 mcg/h; derived from NCCN 2026 "20 mcg/h ≈ TDF 25 mcg/h" × TDF ×2 (NCCN does not state ×2.5 directly) |
 | Fentanyl continuous IV infusion | IV infusion | ×2.88 (mcg/hr → mg OME/day) | NCCN 2026 Table 2 note c (steady state); IV → patch 1:1 (PAIN-G 13) |
 | Morphine | Oral | ×1 (reference) | — |
 | Morphine | IV / SC | ×3 | — |
@@ -91,7 +91,7 @@ This tool uses the **×2.5 formula** (20 mcg/h = 50 mg OME/day):
 
 ### Fentanyl continuous IV infusion conversion
 
-Factor **×2.88** (1 mcg/hr continuous infusion ≈ 2.88 mg OME/day; NCCN Adult Cancer Pain v1.2026 Table 2 note c, steady state):
+Factor **×2.88** (1 mcg/hr continuous infusion ≈ 2.88 mg OME/day; NCCN Adult Cancer Pain v2.2026 Table 2 note c, steady state):
 
 Basis: 1 mcg/hr × 24 h = 24 mcg/day; at steady state 250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine → 24 × 30/250 = 2.88 mg OME/day (the single-dose 100 mcg ≈ 10 mg ratio does not apply to infusions).
 
@@ -164,6 +164,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.8 | 2026-10-30 | Breakthrough note now matches the drugs listed and cites MASCC 10–15%; buprenorphine patch ×2.5 now cites its derivation (NCCN 2026); NCCN citations updated to v2.2026 (algorithm and Table 2 unchanged) |
 | v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20 (NCCN 2026 Table 2); oral ×5 now cites the MASCC-ASCO 2025 consensus; same-opioid route changes (morphine / hydromorphone / tramadol / codeine) skip the cross-tolerance reduction (NCCN PAIN-G) |
 | v1.4.6 | 2026-10-30 | Cancer scenario: OME > 1000 mg/day is calculated with an ultra-high-dose warning (also in the copied summary); only > 10000 is rejected as a typo guard. Non-cancer keeps rejecting > 1000. Patch combinations above 5 patches are shown as 100×n + r |
 | v1.4.5 | 2026-10-29 | Non-cancer scenario adds CDC 2022 risk MME: 50/90 warnings use CDC 2022 factors; drugs not in the CDC table use the tool factors and are flagged; conversions unchanged. Conversion-factor sources separated from CDC |

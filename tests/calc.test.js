@@ -7,7 +7,7 @@ const C = require('../js/calc.js');
 // 換算比清單（toOME 係數）＋程式內標示的出處。數值屬臨床裁決：改值須同步更新此表並附出處。
 const RATIOS = {
   fentanyl_patch:      [2,    'UpToDate Graphic 111216 / NCCN 2026（÷2，mcg/h → mg OME/day）'],
-  buprenorphine_td:    [2.5,  '程式內無文獻出處（僅註「20 mcg/h = 50 mg OME」）→ 待決'],
+  buprenorphine_td:    [2.5,  '推論：NCCN 2026「20 mcg/h ≈ TDF 25 mcg/h」× TDF ×2'],
   fentanyl_iv:         [2.88, 'NCCN 2026 Table 2 註 c（穩態：250 mcg IV fentanyl ≈ 10 mg IV morphine）'],
   morphine_oral:       [1,    '基準'],
   morphine_iv_sc:      [3,    'footer：UpToDate / NCCN 2026'],
