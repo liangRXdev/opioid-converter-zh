@@ -118,7 +118,7 @@
   "ome": "100.0",
   "doses": "37.5 30.0 26.0 100.0 33.3 15.0 3.8 50.0 750 536 500 326",
   "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "4f42a633a22634e6c65bdf3b006a8bd5dd34084e1333273eb03d0481aeeec050"
+  "sha256": "53dfb65317c120d94fb2d633c287b72a5f3b14b9aa29bbfc93435af6b3e32dbf"
  },
  "morphine_oral 333.333×1": {
   "error": null,
@@ -129,7 +129,7 @@
   "ome": "333.3",
   "doses": "125.0 100.0 86.8 333.3 111.1 50.0 12.5 166.7 2500 1786 1667 1087",
   "patchRec": " 計算值 125.0 mcg/h → 建議 <strong>125 mcg/h（100+25）</strong>（與規格相符）。",
-  "sha256": "fdee58cb3527922637a87c1190131e8d58c660794972878f0b01aca155c6936d"
+  "sha256": "7b3e34884a732a456694398beda1a8d7981ab5e3ee0531d5f3eb0658e7fab492"
  },
  "morphine_oral 1000×1": {
   "error": null,
@@ -140,7 +140,7 @@
   "ome": "1000.0",
   "doses": "375.0 300.0 260.4 1000.0 333.3 150.0 37.5 500.0 7500 5357 5000 3261",
   "patchRec": " 計算值 375.0 mcg/h → 建議 <strong>375 mcg/h（100+100+100+75）</strong>（與規格相符）。",
-  "sha256": "9171a1581e3452c255ccd09975bd03b4b97a5f47d1661cb1fc0f603dd28bd9c3"
+  "sha256": "904c665412df818ceb0485bd2ed8c7977e840b86823a1ff40dede01be7195bca"
  },
  "morphine_oral 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -195,8 +195,8 @@
   ],
   "ome": "10000.0",
   "doses": "3750.0 3000.0 2604.2 10000.0 3333.3 1500.0 375.0 5000.0 75000 53571 50000 32609",
-  "patchRec": " 計算值 3750.0 mcg/h → 建議 <strong>3750 mcg/h（100×37+50）</strong>（與規格相符）。",
-  "sha256": "0e53e7f6da0d5ea8ad13301b6c811bce23feb721ad57f67d85365ccd9a4466f5"
+  "patchRec": " 計算值 3750.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "c5dfaf0b815c5f9ac1c03ea2e2284941eb601d46a0d0b6d8c4b940b93d3fb5ab"
  },
  "morphine_oral 5×4": {
   "error": null,
@@ -317,7 +317,7 @@
   "ome": "90.0",
   "doses": "33.8 27.0 23.4 90.0 30.0 13.5 3.4 45.0 675 482 450 293",
   "patchRec": " 計算值 33.8 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "b207b494db132581de5dbb624bfd64a9ea739271f8a4da1a6906308f826a0188"
+  "sha256": "6694c2a001260a60106c84897d88cf724ad5b62e2fc89aab460ece0a5ecb378a"
  },
  "morphine_iv_sc 33.3333×1": {
   "error": null,
@@ -328,7 +328,7 @@
   "ome": "100.0",
   "doses": "37.5 30.0 26.0 100.0 33.3 15.0 3.7 50.0 750 536 500 326",
   "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "11f679ff289eb80860e8cd3cdf65eb9ec34692782933695d315597baa31bc94c"
+  "sha256": "f05b6bf1e2a44d3ac74a016c53577d22860e8de46cfe8815ca5ee29bbd97cf5f"
  },
  "morphine_iv_sc 100×1": {
   "error": null,
@@ -339,7 +339,7 @@
   "ome": "300.0",
   "doses": "112.5 90.0 78.1 300.0 100.0 45.0 11.3 150.0 2250 1607 1500 978",
   "patchRec": " 計算值 112.5 mcg/h → 建議選 <strong>112 mcg/h（100+12）</strong>（保守）或 <strong>125 mcg/h（100+25）</strong>（積極）。",
-  "sha256": "fc156641f12aef68862357c879ef36d84b95ccee4ee7b114998230239c474b69"
+  "sha256": "797d8a5a877b0a19f5cdf447cc4a754af1ade4de0e2d8c08d53f48a96e8fea93"
  },
  "morphine_iv_sc 333.333×1": {
   "error": null,
@@ -350,7 +350,7 @@
   "ome": "1000.0",
   "doses": "375.0 300.0 260.4 1000.0 333.3 150.0 37.5 500.0 7500 5357 5000 3261",
   "patchRec": " 計算值 375.0 mcg/h → 建議 <strong>375 mcg/h（100+100+100+75）</strong>（與規格相符）。",
-  "sha256": "98a224e2b3f8eb0f06aedbcf590cd050f35afb507a9ae893ec3dcc48079c463f"
+  "sha256": "801e328fe8c9a878f3d35c9b2e03135a80ad65389978cb0e83d846815c995bbf"
  },
  "morphine_iv_sc 1000×1": {
   "error": null,
@@ -360,8 +360,8 @@
   ],
   "ome": "3000.0",
   "doses": "1125.0 900.0 781.3 3000.0 1000.0 450.0 112.5 1500.0 22500 16071 15000 9783",
-  "patchRec": " 計算值 1125.0 mcg/h → 建議 <strong>1125 mcg/h（100×11+25）</strong>（與規格相符）。",
-  "sha256": "41963a8e61640072f737391fff23b08c1273cb01f712f4c33b568de19fb49960"
+  "patchRec": " 計算值 1125.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "67a7bd739f2538ba37c067b8f565246d14da5dbb71953546b34d9465a5737a60"
  },
  "morphine_iv_sc 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -525,7 +525,7 @@
   "ome": "77.8",
   "doses": "29.2 23.3 20.2 58.3 19.4 15.6 3.9 38.9 583 417 389 254",
   "patchRec": " 計算值 29.2 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "3833c40063bb8d17ae18b287949795a7c908ce9e364de2f484197f2b3e9d388b"
+  "sha256": "880567e6409cdf12a11f0c81873dc49947eaf37b33f500c4a784add11a9e90b8"
  },
  "hydromorphone_oral 30×1": {
   "error": null,
@@ -536,7 +536,7 @@
   "ome": "150.0",
   "doses": "56.3 45.0 39.1 112.5 37.5 30.0 7.5 75.0 1125 804 750 489",
   "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "e913fcc7c015f68c9ebd58eb276a10d50cf71974646f3f175cfd7bbc3f5fe386"
+  "sha256": "43db1819ed82a3560118a375580b7eddb6df9fb6e797393b975031d2a65f9c0b"
  },
  "hydromorphone_oral 33.3333×1": {
   "error": null,
@@ -547,7 +547,7 @@
   "ome": "166.7",
   "doses": "62.5 50.0 43.4 125.0 41.7 33.3 8.3 83.3 1250 893 833 543",
   "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "48a34c42ebb5235db11d03d4eccf8071844852ca6f9de11d620605bd6922b845"
+  "sha256": "a009c55bdbef77d56bca131e14da1db9fa43d8f9fead94289cbb92da8abb3ca9"
  },
  "hydromorphone_oral 100×1": {
   "error": null,
@@ -558,7 +558,7 @@
   "ome": "500.0",
   "doses": "187.5 150.0 130.2 375.0 125.0 100.0 25.0 250.0 3750 2679 2500 1630",
   "patchRec": " 計算值 187.5 mcg/h → 建議選 <strong>175 mcg/h（100+75）</strong>（保守）或 <strong>200 mcg/h（100+100）</strong>（積極）。",
-  "sha256": "8271ad22a058e93c7f960f039a2d0c3c60672605c8de81d182f86c44f2a255a0"
+  "sha256": "f07ad0bb475aa8154d512862d48960632453ecaee1e62cdda9f0081998f7e8f2"
  },
  "hydromorphone_oral 333.333×1": {
   "error": null,
@@ -568,8 +568,8 @@
   ],
   "ome": "1666.7",
   "doses": "625.0 500.0 434.0 1250.0 416.7 333.3 83.3 833.3 12500 8929 8333 5435",
-  "patchRec": " 計算值 625.0 mcg/h → 建議 <strong>625 mcg/h（100×6+25）</strong>（與規格相符）。",
-  "sha256": "eb9d6ee5a679bfb77d52468d671f79a0ddd48a44e99504ecf823bac8e388e81d"
+  "patchRec": " 計算值 625.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "900c5a56ce0add30becef6d67485455c622f83c079d6ce406dd93006af3145b4"
  },
  "hydromorphone_oral 1000×1": {
   "error": null,
@@ -579,8 +579,8 @@
   ],
   "ome": "5000.0",
   "doses": "1875.0 1500.0 1302.1 3750.0 1250.0 1000.0 250.0 2500.0 37500 26786 25000 16304",
-  "patchRec": " 計算值 1875.0 mcg/h → 建議 <strong>1875 mcg/h（100×18+75）</strong>（與規格相符）。",
-  "sha256": "2478aab62979305863e5307c4b3196a01f06acc0c0e0c960e2d09e0df07655a9"
+  "patchRec": " 計算值 1875.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "4e3093cf6a87e80b113983e6ac0332c2cc9510671ff892cd14e1012ff9e00631"
  },
  "hydromorphone_oral 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -645,7 +645,7 @@
   "ome": "100.0",
   "doses": "37.5 30.0 26.0 75.0 25.0 20.0 5.0 50.0 750 536 500 326",
   "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "d23d6f97a3ef247f65a3302bf0396e1010fd82214636dba90a2ec89e1fae6064"
+  "sha256": "391adda74c7ea138b236e8dd9aa41c3a8dc4d55691d6c0a0997cb3fe33a8a271"
  },
  "hydromorphone_oral 2.5×6": {
   "error": null,
@@ -656,7 +656,7 @@
   "ome": "75.0",
   "doses": "28.1 22.5 19.5 56.3 18.8 15.0 3.8 37.5 563 402 375 245",
   "patchRec": " 計算值 28.1 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "68d7621eb2ddf3919771cef7909db8e48628f47365cbe52f04814f1d1ef7e11f"
+  "sha256": "32211e0b05ba1197225306e8078f7867f8fd04d1ad83381e6b2fb68cd9669422"
  },
  "hydromorphone_iv_sc 0.01×1": {
   "error": null,
@@ -722,7 +722,7 @@
   "ome": "150.0",
   "doses": "56.3 45.0 39.1 112.5 37.5 30.0 7.5 75.0 1125 804 750 489",
   "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "f335e81cb7d24f93b3dd74655472e2be11423afd4777bed5fa464fb0038cf7af"
+  "sha256": "15a3bd168de3c1c1677623dff884ae402b796a646e4bf57216d62b9ea6066003"
  },
  "hydromorphone_iv_sc 10×1": {
   "error": null,
@@ -733,7 +733,7 @@
   "ome": "200.0",
   "doses": "75.0 60.0 52.1 150.0 50.0 40.0 10.0 100.0 1500 1071 1000 652",
   "patchRec": " 計算值 75.0 mcg/h → 建議 <strong>75 mcg/h</strong>（與規格相符）。",
-  "sha256": "831dd8a6d2da6a43ba601a4ab892e6d1aefdf0d3cc12774d454c8e7f6880036f"
+  "sha256": "3a4eb81e0266fcba29c6bfe2e3471a74e50d6759d99eef0d655ded6c0eaa61ac"
  },
  "hydromorphone_iv_sc 15.55×1": {
   "error": null,
@@ -744,7 +744,7 @@
   "ome": "311.0",
   "doses": "116.6 93.3 81.0 233.3 77.8 62.2 15.6 155.5 2333 1666 1555 1014",
   "patchRec": " 計算值 116.6 mcg/h → 建議選 <strong>112 mcg/h（100+12）</strong>（保守）或 <strong>125 mcg/h（100+25）</strong>（積極）。",
-  "sha256": "9f75b1f1a2bfa865261750ff7af502ecb64a35deddd3ece57a74e5262a5a9580"
+  "sha256": "c20557def04fc6cea223f7e7dd33cce296209c9771a76d33a09f62dd8d3ac0c7"
  },
  "hydromorphone_iv_sc 30×1": {
   "error": null,
@@ -755,7 +755,7 @@
   "ome": "600.0",
   "doses": "225.0 180.0 156.3 450.0 150.0 120.0 30.0 300.0 4500 3214 3000 1957",
   "patchRec": " 計算值 225.0 mcg/h → 建議 <strong>225 mcg/h（100+100+25）</strong>（與規格相符）。",
-  "sha256": "e74f0606527ca3ee11ed8b9e0221a86d75388c7a6b5bd9dad2f61d302e5811a5"
+  "sha256": "f94755f6b99e9f6ba3a9c0651c02f6a881be2c0468e4d131b92db6b2c5f37994"
  },
  "hydromorphone_iv_sc 33.3333×1": {
   "error": null,
@@ -766,7 +766,7 @@
   "ome": "666.7",
   "doses": "250.0 200.0 173.6 500.0 166.7 133.3 33.3 333.3 5000 3571 3333 2174",
   "patchRec": " 計算值 250.0 mcg/h → 建議 <strong>250 mcg/h（100+100+50）</strong>（與規格相符）。",
-  "sha256": "e3f75f5621150199ff8c01f868e950b1984bcdcda5e860ea71ae04129837a3d1"
+  "sha256": "c01529b62c7caa74ee4dbb14e46a83d3ec75be5cddaf1fd49dd5c4f610e77181"
  },
  "hydromorphone_iv_sc 100×1": {
   "error": null,
@@ -776,8 +776,8 @@
   ],
   "ome": "2000.0",
   "doses": "750.0 600.0 520.8 1500.0 500.0 400.0 100.0 1000.0 15000 10714 10000 6522",
-  "patchRec": " 計算值 750.0 mcg/h → 建議 <strong>750 mcg/h（100×7+50）</strong>（與規格相符）。",
-  "sha256": "9e28fdcb02f89d2a9f6940cef5676c1735c8e2c74a78079cde4a053c60d56030"
+  "patchRec": " 計算值 750.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "96fb9412f4f61284b465528dc32d2edb33dd61da6d39ddc089436cf5a25c2e96"
  },
  "hydromorphone_iv_sc 333.333×1": {
   "error": null,
@@ -787,8 +787,8 @@
   ],
   "ome": "6666.7",
   "doses": "2500.0 2000.0 1736.1 5000.0 1666.7 1333.3 333.3 3333.3 50000 35714 33333 21739",
-  "patchRec": " 計算值 2500.0 mcg/h → 建議 <strong>2500 mcg/h（100×25）</strong>（與規格相符）。",
-  "sha256": "46b24437ba7da6cbd490a71876e29f0c326af3c6065eb52add8bafc14c635aa5"
+  "patchRec": " 計算值 2500.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "6afff94e95565196d2daeed24ec2debe10917cb1cdbad0d8535c8654ef570202"
  },
  "hydromorphone_iv_sc 1000×1": {
   "error": "單項 OME 過高（20000 mg）。請確認輸入數值是否正確。",
@@ -862,7 +862,7 @@
   "ome": "400.0",
   "doses": "150.0 120.0 104.2 300.0 100.0 80.0 20.0 200.0 3000 2143 2000 1304",
   "patchRec": " 計算值 150.0 mcg/h → 建議 <strong>150 mcg/h（100+50）</strong>（與規格相符）。",
-  "sha256": "e0fcb4b4df66c6f88f0470db72bf3c301c21bc1dfd3efe69807dc1f558f14ea5"
+  "sha256": "98604c6d04249668bafe46e1871ed24742334bc9371c869265f7ddbcb76c7cb4"
  },
  "hydromorphone_iv_sc 2.5×6": {
   "error": null,
@@ -873,7 +873,7 @@
   "ome": "300.0",
   "doses": "112.5 90.0 78.1 225.0 75.0 60.0 15.0 150.0 2250 1607 1500 978",
   "patchRec": " 計算值 112.5 mcg/h → 建議選 <strong>112 mcg/h（100+12）</strong>（保守）或 <strong>125 mcg/h（100+25）</strong>（積極）。",
-  "sha256": "20c23b1663bfd384c9cf1c48a4f1e43fd22d7e6db462f1538a29aad13a7847a0"
+  "sha256": "46e023f7a31343a100f5f1618bee78c5bd4bab953749e6916f16d8bbe0fd22e4"
  },
  "oxycodone_oral 0.01×1": {
   "error": null,
@@ -994,7 +994,7 @@
   "ome": "150.0",
   "doses": "56.3 45.0 39.1 112.5 37.5 22.5 5.6 100.0 1125 804 750 489",
   "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "90b0e2bc9f46367a4e9f054296c36e0dd59cfa8c59f746597b498ea78495cb28"
+  "sha256": "bff512593accdfbf97b83b6923c9a7ef070556a571bcc6f4de556c339973f11f"
  },
  "oxycodone_oral 333.333×1": {
   "error": null,
@@ -1005,7 +1005,7 @@
   "ome": "500.0",
   "doses": "187.5 150.0 130.2 375.0 125.0 75.0 18.7 333.3 3750 2679 2500 1630",
   "patchRec": " 計算值 187.5 mcg/h → 建議選 <strong>175 mcg/h（100+75）</strong>（保守）或 <strong>200 mcg/h（100+100）</strong>（積極）。",
-  "sha256": "9aa132713a219f99be8861181593fcfb2cad77f7de10a76439a1ad2186fb6b69"
+  "sha256": "31cc622faf9e2047d3cbf29e08cb61f1a89c6bde450143b093377ef9ce4aa114"
  },
  "oxycodone_oral 1000×1": {
   "error": null,
@@ -1015,8 +1015,8 @@
   ],
   "ome": "1500.0",
   "doses": "562.5 450.0 390.6 1125.0 375.0 225.0 56.3 1000.0 11250 8036 7500 4891",
-  "patchRec": " 計算值 562.5 mcg/h → 建議選 <strong>550 mcg/h（100+100+100+100+100+50）</strong>（保守）或 <strong>575 mcg/h（100+100+100+100+100+75）</strong>（積極）。",
-  "sha256": "3497b474b43027caf9abcdf585df9cbd026cf9d02c900110acbd0510a12b77a4"
+  "patchRec": " 計算值 562.5 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "158b39ccfdaa86e8062014c767eb9d5684569908d7aac59b8dd6919eb5634c14"
  },
  "oxycodone_oral 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -1235,7 +1235,7 @@
   "ome": "100.0",
   "doses": "37.5 30.0 26.0 75.0 25.0 15.0 3.8 50.0 1000 714 500 326",
   "patchRec": " 計算值 37.5 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "df685f2bc14c95b92fe0b6717609e4c40568908f4d16ac5a3e6d5dae37b49733"
+  "sha256": "8c8745f190cb0863b98dce795940be8c20c026672d0646b6bcd81ebbeb6a532c"
  },
  "tramadol_oral 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -1291,7 +1291,7 @@
   "ome": "1000.0",
   "doses": "375.0 300.0 260.4 750.0 250.0 150.0 37.5 500.0 10000 7143 5000 3261",
   "patchRec": " 計算值 375.0 mcg/h → 建議 <strong>375 mcg/h（100+100+100+75）</strong>（與規格相符）。",
-  "sha256": "5d1d54351886657fcc6db8ff0493f23fafee9619bd04f49a805745f4dd86533c"
+  "sha256": "fc4d584074c33fea6586fbefdb4ea8743cf0c5b8c9d2bb6ad846be4c4eeb3c93"
  },
  "tramadol_oral 5×4": {
   "error": null,
@@ -1456,7 +1456,7 @@
   "ome": "140.0",
   "doses": "52.5 42.0 36.5 105.0 35.0 21.0 5.3 70.0 1400 1000 700 457",
   "patchRec": " 計算值 52.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "4c7628eb56cba4cb6063731f5ee9d5afffd7f73f617a186fa0337004ff3a9d53"
+  "sha256": "d752e97a13bea95986f00cc279c1f878ceed3ca69c90809eb8eeb73cae85e8d6"
  },
  "tramadol_iv 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -1511,8 +1511,8 @@
   ],
   "ome": "1400.0",
   "doses": "525.0 420.0 364.6 1050.0 350.0 210.0 52.5 700.0 14000 10000 7000 4565",
-  "patchRec": " 計算值 525.0 mcg/h → 建議 <strong>525 mcg/h（100+100+100+100+100+25）</strong>（與規格相符）。",
-  "sha256": "804fffd609fde69d0334b52f359eb1a54a809a1e7c0ea7929d751c4a2ea0ec79"
+  "patchRec": " 計算值 525.0 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "195436f6c7d5f3a7e0b7a7ee89c612c7230c8c55f5afbb3578fd9e3a89efa437"
  },
  "tramadol_iv 5×4": {
   "error": null,
@@ -1677,7 +1677,7 @@
   "ome": "150.0",
   "doses": "56.3 45.0 39.1 112.5 37.5 22.5 5.6 75.0 1125 804 1000 652",
   "patchRec": " 計算值 56.3 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "66e3c760470173b111c612b99f963ae980cb5d724c59c252e6422d8358f2da09"
+  "sha256": "ce8def1fe9487a4a93ebf07b1be65187914c69f595f4273ead6483c0ba40f43b"
  },
  "codeine_oral 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -1732,8 +1732,8 @@
   ],
   "ome": "1500.0",
   "doses": "562.5 450.0 390.6 1125.0 375.0 225.0 56.3 750.0 11250 8036 10000 6522",
-  "patchRec": " 計算值 562.5 mcg/h → 建議選 <strong>550 mcg/h（100+100+100+100+100+50）</strong>（保守）或 <strong>575 mcg/h（100+100+100+100+100+75）</strong>（積極）。",
-  "sha256": "fb19899280ed41b192b367b20749edbd6ef10e2297b60110dcc1585bb8b05784"
+  "patchRec": " 計算值 562.5 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "af11b9c6d7d263fbeb0fd38e2a6fdcc0ee7afd788335b383c8ecf57fcc0a8d05"
  },
  "codeine_oral 5×4": {
   "error": null,
@@ -1887,7 +1887,7 @@
   "ome": "76.7",
   "doses": "28.7 23.0 20.0 57.5 19.2 11.5 2.9 38.3 575 411 511 333",
   "patchRec": " 計算值 28.7 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "e7d5bd53160c8564bb6fc24567ce875d1a7362f54e289df13d2c951d46ba4e4d"
+  "sha256": "f2e42a1e9f844331ffe72e202ca14fd8f7deb0b45cf2cd96244ef24262f4e269"
  },
  "codeine_im 1000×1": {
   "error": null,
@@ -1898,7 +1898,7 @@
   "ome": "230.0",
   "doses": "86.3 69.0 59.9 172.5 57.5 34.5 8.6 115.0 1725 1232 1533 1000",
   "patchRec": " 計算值 86.3 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
-  "sha256": "0f951af7741a984f4e839c640e599cfc735d88385591e3a047924ead20c8ad61"
+  "sha256": "8280c6be432d6b5f98e3675c194e83ec6f2b812d38cbfa5067d797ea8d303a9d"
  },
  "codeine_im 0×1": {
   "error": "請輸入有效的正數劑量。",
@@ -1953,8 +1953,8 @@
   ],
   "ome": "2300.0",
   "doses": "862.5 690.0 599.0 1725.0 575.0 345.0 86.3 1150.0 17250 12321 15333 10000",
-  "patchRec": " 計算值 862.5 mcg/h → 建議選 <strong>850 mcg/h（100×8+50）</strong>（保守）或 <strong>875 mcg/h（100×8+75）</strong>（積極）。",
-  "sha256": "f2ce2d9d5eb3e4f0d5e7688dc2ea14967ee69c2fe1bccbb28f7538520d506b60"
+  "patchRec": " 計算值 862.5 mcg/h → 超過 500 mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。",
+  "sha256": "978fcc8af4aff51c113f327e82d07f246ee3db359d6bb14d6f9e75d2ff7732a2"
  },
  "codeine_im 5×4": {
   "error": null,
@@ -2009,7 +2009,7 @@
   "ome": "74.0",
   "doses": "37.0 22.2 19.3 55.5 18.5 11.1 2.8 37.0 555 396 370 241",
   "patchRec": null,
-  "sha256": "f7b1a6753f2c5a7f22a63dc171309d8583e0147292c7c91deabf83b650826c5f"
+  "sha256": "1eb35226619da5d066e1da660c5e480a93465d9395de90259457c40a99d83539"
  },
  "fentanyl_patch 37.5": {
   "error": null,
@@ -2020,7 +2020,7 @@
   "ome": "75.0",
   "doses": "37.5 22.5 19.5 56.3 18.8 11.3 2.8 37.5 563 402 375 245",
   "patchRec": null,
-  "sha256": "122bcf93e489f7315190395188049b22a41d9d2b7a6190bca751447bb89462fe"
+  "sha256": "a11122cbc4174d63baf3852ce6fe886441e86e7c1b726fc388b114fe5524620b"
  },
  "fentanyl_patch 50": {
   "error": null,
@@ -2031,7 +2031,7 @@
   "ome": "100.0",
   "doses": "50.0 30.0 26.0 75.0 25.0 15.0 3.8 50.0 750 536 500 326",
   "patchRec": null,
-  "sha256": "97b514e4cd69c9932e3a7e9e17bf22105b5adaa7487bba49620f7ec913386e90"
+  "sha256": "8157cb1ef88daa99f2db01381fa693c10498b1b40017f7e4f1ad4e096beb1db0"
  },
  "fentanyl_patch 62": {
   "error": null,
@@ -2042,7 +2042,7 @@
   "ome": "124.0",
   "doses": "62.0 37.2 32.3 93.0 31.0 18.6 4.7 62.0 930 664 620 404",
   "patchRec": null,
-  "sha256": "abf8587b9ff005cd0b6e4e3b8694d9c87fb27dbe2dfafa06c7ccdae9332fa67e"
+  "sha256": "9fdeea24e0d020276d9d937c960926a2c248ca21109fd5e66ec9461a5e9d60df"
  },
  "fentanyl_patch 62.5": {
   "error": null,
@@ -2053,7 +2053,7 @@
   "ome": "125.0",
   "doses": "62.5 37.5 32.6 93.8 31.3 18.8 4.7 62.5 938 670 625 408",
   "patchRec": null,
-  "sha256": "67d0f7b61327f98a531a1bae8464b39beb334b118d9bebfa9f35421e9eff8003"
+  "sha256": "5a4d5eb00f5923341f42075d0fa130ace03762d3292ea15826ed4cbb9d9bbbef"
  },
  "fentanyl_patch 75": {
   "error": null,
@@ -2064,7 +2064,7 @@
   "ome": "150.0",
   "doses": "75.0 45.0 39.1 112.5 37.5 22.5 5.6 75.0 1125 804 750 489",
   "patchRec": null,
-  "sha256": "dc92d10c5d51be25fb7043a8a94831ca9062a6bfb7b739981106468c3bd8a606"
+  "sha256": "4ae38c195742f6dc4aa7e4b39085f45b20dd46eb1a488c660085277a5060691b"
  },
  "fentanyl_patch 87": {
   "error": null,
@@ -2075,7 +2075,7 @@
   "ome": "174.0",
   "doses": "87.0 52.2 45.3 130.5 43.5 26.1 6.5 87.0 1305 932 870 567",
   "patchRec": null,
-  "sha256": "57a13266092b2c63ec2a1e02c048e0076b8faeb99e4efda3490de3578d3e3ada"
+  "sha256": "03eb3070c7f7005de21e0e9f276c1bf73d4292aab40b85a0f093c62c1c4a8226"
  },
  "fentanyl_patch 87.5": {
   "error": null,
@@ -2086,7 +2086,7 @@
   "ome": "175.0",
   "doses": "87.5 52.5 45.6 131.3 43.8 26.3 6.6 87.5 1313 937 875 571",
   "patchRec": null,
-  "sha256": "c961a323d6800c878d5c95024c5643c1abf14909e35b2f7c502ad589095445e1"
+  "sha256": "c29e337e1a051dc1a77fccc05f77ad399ee34a66796d400aa09e003f3e65f2f9"
  },
  "fentanyl_patch 100": {
   "error": null,
@@ -2097,7 +2097,7 @@
   "ome": "200.0",
   "doses": "100.0 60.0 52.1 150.0 50.0 30.0 7.5 100.0 1500 1071 1000 652",
   "patchRec": null,
-  "sha256": "ab45d58cdfec8fd011757931c826b2f735030c62e7aa8ca231acf25f1a67854c"
+  "sha256": "010096a17ce92274ba323cbb2617c08136da7fe0923d80abbf52ec6b450c39d7"
  },
  "fentanyl_patch 125": {
   "error": null,
@@ -2108,7 +2108,7 @@
   "ome": "250.0",
   "doses": "125.0 75.0 65.1 187.5 62.5 37.5 9.4 125.0 1875 1339 1250 815",
   "patchRec": null,
-  "sha256": "a112d762ace5cde5d55f07159b5d4f8540c84f4932c5fbf692a53e75952e7f67"
+  "sha256": "1e3b824147651ee63812ef2ce263baf774288e9dac8b2b5e768ff62a8fd4b52c"
  },
  "fentanyl_patch 150": {
   "error": null,
@@ -2119,7 +2119,7 @@
   "ome": "300.0",
   "doses": "150.0 90.0 78.1 225.0 75.0 45.0 11.3 150.0 2250 1607 1500 978",
   "patchRec": null,
-  "sha256": "a62cf2a2dbfccaef80acc927e506c56ff52b8c650f30c13d8b4cc7560a5bab4b"
+  "sha256": "07206701fa5abed32c78da4ba724d6e25f556125f40134610e80b42244bf6e7e"
  },
  "fentanyl_patch blank": {
   "error": "請從下拉選單選擇有效的貼片劑量。",
@@ -2216,7 +2216,7 @@
   "ome": "288.0",
   "doses": "100.0 86.4 100.0 216.0 72.0 43.2 10.8 144.0 2160 1543 1440 939",
   "patchRec": " 計算值 100.0 mcg/h → 建議 <strong>100 mcg/h</strong>（與規格相符）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
-  "sha256": "87d6d7227cadcbe98206fd08b0cb32a2762f1f133f254e1bde24bc742c04c881"
+  "sha256": "6d9b66849f2542fa55ed7581f54d526efb8ce6bdf08c038ddec9afd0c1a6a1aa"
  },
  "fentanyl_iv 138.9": {
   "error": null,
@@ -2227,7 +2227,7 @@
   "ome": "400.0",
   "doses": "138.9 120.0 138.9 300.0 100.0 60.0 15.0 200.0 3000 2143 2000 1304",
   "patchRec": " 計算值 138.9 mcg/h → 建議選 <strong>125 mcg/h（100+25）</strong>（保守）或 <strong>150 mcg/h（100+50）</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
-  "sha256": "612512ae7fc28ce3ade23009c900e393f941fe51e87f8dd4fe89de68e48a42dc"
+  "sha256": "4e287ece4440fcd34cf9b80df01ad1df136dea4a1ad9f7454b2c6b2cbe8d1635"
  },
  "fentanyl_iv 139": {
   "error": null,
@@ -2238,7 +2238,7 @@
   "ome": "400.3",
   "doses": "139.0 120.1 139.0 300.2 100.1 60.0 15.0 200.2 3002 2145 2002 1305",
   "patchRec": " 計算值 139.0 mcg/h → 建議選 <strong>125 mcg/h（100+25）</strong>（保守）或 <strong>150 mcg/h（100+50）</strong>（積極）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
-  "sha256": "afd613d0c7a747df66b7ee7716507cfe7ef51ddac5afe6a367b12efbc51d890c"
+  "sha256": "e4ff81977e956234ccf82301b29d451c572c5703dd953de3f8307ef09c246bfe"
  },
  "fentanyl_iv 0": {
   "error": "請輸入有效的正數劑量。",
@@ -2287,7 +2287,7 @@
   "ome": "60.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 12.0 3.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "19cfbb29b9f2a2fe5c77f73af47d6b40f95df4826986ab53c756483a86b1ce4d"
+  "sha256": "1efc97f98d42d324e79ef1ae7914592b096990395b25bf85f00ed2a66d1f0d51"
  },
  "oxycodone_oral 40 tol0 cancer": {
   "error": null,
@@ -2298,7 +2298,7 @@
   "ome": "60.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 12.0 3.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "28d9268614ba662bcd16d76d30624ef5eafad2d75320a64e1fc764d8be0e7a7c"
+  "sha256": "5e2696e1a08c6d91f5570afd776363630cbcf8c29d7032d86ee535e4f82b1e2c"
  },
  "fentanyl_patch 50 tol0 cancer": {
   "error": null,
@@ -2309,7 +2309,7 @@
   "ome": "100.0",
   "doses": "50.0 40.0 34.7 100.0 33.3 20.0 5.0 66.7 1000 714 667 435",
   "patchRec": null,
-  "sha256": "263054e49412e4fd1155ebf96ef8ceecef174463df8f6ca27cce0ceb341f4a4d"
+  "sha256": "0ea457819b594cd431e4db7f09847333d97aff1c0b6aabcdc8eefec4f1f43edf"
  },
  "hydromorphone_iv_sc 4 tol0 cancer": {
   "error": null,
@@ -2320,7 +2320,7 @@
   "ome": "80.0",
   "doses": "40.0 32.0 27.8 80.0 26.7 16.0 4.0 53.3 800 571 533 348",
   "patchRec": " 計算值 40.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "853c05a8441e848bfe1ff2b21e245c99b55c8f1479196535f5d86906c875cf42"
+  "sha256": "cbf1237543224c08edcf27ef0fe1d7fb81edf6a7bda9a753fec89e44d2c5feaa"
  },
  "morphine_oral 250 tol0 cancer": {
   "error": null,
@@ -2331,7 +2331,7 @@
   "ome": "250.0",
   "doses": "125.0 100.0 86.8 250.0 83.3 50.0 12.5 166.7 2500 1786 1667 1087",
   "patchRec": " 計算值 125.0 mcg/h → 建議 <strong>125 mcg/h（100+25）</strong>（與規格相符）。",
-  "sha256": "0d9d5c29a4f599cc8fe22b7e88db6e2420d0abff9dd04dbaeb725e7ccc70128e"
+  "sha256": "8f910c4b56d2fcab8176a986878f475925281e1043df9ba9b033ceb66bcb7c42"
  },
  "morphine_oral 30 tol0 noncancer": {
   "error": null,
@@ -2353,7 +2353,7 @@
   "ome": "60.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 12.0 3.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "604e9893f7d6cc3dae9d374e1dc598cd46de791b4364dc70ed1e229476fad0b1"
+  "sha256": "6f248824f6fdda4cf6cabcbb6d7316dec60105c911ea32324dfb4e9a9551898c"
  },
  "oxycodone_oral 40 tol0 noncancer": {
   "error": null,
@@ -2364,7 +2364,7 @@
   "ome": "60.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 12.0 3.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "80f92903f63bf91380f524414585ed7baca1fd9686dac6db5aadb9e8051d2bab"
+  "sha256": "6926aa1a24a41b7d30c28baa441d4e7c308a8b1bd929e2a125b85c9eb4d26bb5"
  },
  "fentanyl_patch 50 tol0 noncancer": {
   "error": null,
@@ -2375,7 +2375,7 @@
   "ome": "100.0",
   "doses": "50.0 40.0 34.7 100.0 33.3 20.0 5.0 66.7 1000 714 667 435",
   "patchRec": null,
-  "sha256": "c64354295a387dd797a556188e3cd8d89cd5a8bd04ecf913353d7947d54b779d"
+  "sha256": "8c1533e8785eaa77dbdde988c4db3d0663eac1bbf29ea75c854f7011dadb6588"
  },
  "hydromorphone_iv_sc 4 tol0 noncancer": {
   "error": null,
@@ -2386,7 +2386,7 @@
   "ome": "80.0",
   "doses": "40.0 32.0 27.8 80.0 26.7 16.0 4.0 53.3 800 571 533 348",
   "patchRec": " 計算值 40.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "245a7495692d5739a2c8ca340b77ec595d79738ea8c9d17a2dbcfec31f230156"
+  "sha256": "fb5f48656950ada515e008edfd4f3d396168f8e3d9ca73508a3b861825e73d59"
  },
  "morphine_oral 250 tol0 noncancer": {
   "error": null,
@@ -2397,7 +2397,7 @@
   "ome": "250.0",
   "doses": "125.0 100.0 86.8 250.0 83.3 50.0 12.5 166.7 2500 1786 1667 1087",
   "patchRec": " 計算值 125.0 mcg/h → 建議 <strong>125 mcg/h（100+25）</strong>（與規格相符）。",
-  "sha256": "4445834965d3178d63b0d5726893d22c5abef609b58a5c55d2eb561f1c37b78f"
+  "sha256": "4c00bc218d468890f6366d035e93bc18a1f94bcea2260f0b698b02716f32997e"
  },
  "morphine_oral 30 tol25 cancer": {
   "error": null,
@@ -2441,7 +2441,7 @@
   "ome": "100.0",
   "doses": "50.0 30.0 26.0 75.0 25.0 15.0 3.8 50.0 750 536 500 326",
   "patchRec": null,
-  "sha256": "97b514e4cd69c9932e3a7e9e17bf22105b5adaa7487bba49620f7ec913386e90"
+  "sha256": "8157cb1ef88daa99f2db01381fa693c10498b1b40017f7e4f1ad4e096beb1db0"
  },
  "hydromorphone_iv_sc 4 tol25 cancer": {
   "error": null,
@@ -2452,7 +2452,7 @@
   "ome": "80.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 16.0 4.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "8a3c01174ac2a5a15be3bacc422bd28aacf8e763bdb97ce5e0a1a406ef011b7d"
+  "sha256": "d57e094e73743eb8cf2db510f319e80eee562731f45c63ee872aef8698c9a52c"
  },
  "morphine_oral 250 tol25 cancer": {
   "error": null,
@@ -2463,7 +2463,7 @@
   "ome": "250.0",
   "doses": "93.8 75.0 65.1 250.0 83.3 37.5 9.4 125.0 1875 1339 1250 815",
   "patchRec": " 計算值 93.8 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
-  "sha256": "9713af830fdc116a5ed5d3dd82d223efc6ea82bf63a235a68b4a767f32928587"
+  "sha256": "7668a589e87696058dbece84921919cf312f6a994b2f3ab463a0612c57f24fae"
  },
  "morphine_oral 30 tol25 noncancer": {
   "error": null,
@@ -2507,7 +2507,7 @@
   "ome": "100.0",
   "doses": "50.0 30.0 26.0 75.0 25.0 15.0 3.8 50.0 750 536 500 326",
   "patchRec": null,
-  "sha256": "be837fe61335348c3583cd686f92c9c1d6d1726f8281e161a0edd5c5dfa4529d"
+  "sha256": "62f7171554eb23e9ff3637017b948a425d4d2574924025159ed1bac77b1069c3"
  },
  "hydromorphone_iv_sc 4 tol25 noncancer": {
   "error": null,
@@ -2518,7 +2518,7 @@
   "ome": "80.0",
   "doses": "30.0 24.0 20.8 60.0 20.0 16.0 4.0 40.0 600 429 400 261",
   "patchRec": " 計算值 30.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "ff7af0d84d3268d72a80b30491471a060dbcdeb6730f1c931a9ac7bde66e813a"
+  "sha256": "a47eba080541da6d694d94453ce9695f77c2eecf9b0165b4fefe318545483275"
  },
  "morphine_oral 250 tol25 noncancer": {
   "error": null,
@@ -2529,7 +2529,7 @@
   "ome": "250.0",
   "doses": "93.8 75.0 65.1 250.0 83.3 37.5 9.4 125.0 1875 1339 1250 815",
   "patchRec": " 計算值 93.8 mcg/h → 建議選 <strong>75 mcg/h</strong>（保守）或 <strong>100 mcg/h</strong>（積極）。",
-  "sha256": "949ecd0bc57293bdfc0d037a830a08af041ac5ea03d9840073fc17533523eb1f"
+  "sha256": "be3bc1acab6df01f44add4d4f5880163ed1f91e1bf7486e60391a8a4723dc5eb"
  },
  "morphine_oral 30 tol50 cancer": {
   "error": null,
@@ -2595,7 +2595,7 @@
   "ome": "250.0",
   "doses": "62.5 50.0 43.4 250.0 83.3 25.0 6.3 83.3 1250 893 833 543",
   "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "24654cf3cd3e059f97064b7c0a8c1dd95c6f834bb342a9f1392055ba56416de9"
+  "sha256": "4b892498426edd1e158b7495e86236fc04d827681004d13050d6d78cdf146f92"
  },
  "morphine_oral 30 tol50 noncancer": {
   "error": null,
@@ -2639,7 +2639,7 @@
   "ome": "100.0",
   "doses": "50.0 20.0 17.4 50.0 16.7 10.0 2.5 33.3 500 357 333 217",
   "patchRec": null,
-  "sha256": "2033df51b42bb8a3f5fa453ca25494f03c08649ea6b3e69efb998c45821f99e6"
+  "sha256": "fc8417936b9318d826beed44f1e3f3b70531ef0a16581ec422e25f3735bbb24d"
  },
  "hydromorphone_iv_sc 4 tol50 noncancer": {
   "error": null,
@@ -2661,7 +2661,7 @@
   "ome": "250.0",
   "doses": "62.5 50.0 43.4 250.0 83.3 25.0 6.3 83.3 1250 893 833 543",
   "patchRec": " 計算值 62.5 mcg/h → 建議選 <strong>50 mcg/h</strong>（保守）或 <strong>75 mcg/h</strong>（積極）。",
-  "sha256": "4fb4a0ff8d0355a9c6f0ee9f26b97033a316ad45e91cf26040441328e02fdfcc"
+  "sha256": "f6f7efd60c5f7aff58ab72b836e653423d15c1f98aaf5f07f9107800722924ab"
  },
  "multi morphine+oxy": {
   "error": null,
@@ -2673,7 +2673,7 @@
   "ome": "120.0",
   "doses": "45.0 36.0 31.3 90.0 30.0 18.0 4.5 60.0 900 643 600 391",
   "patchRec": " 計算值 45.0 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "2fd82f3e13cf97727749120788cddbaad5b7fcd333b80bc6f2cc46430b5494f3"
+  "sha256": "c74476684e955f73f0e9d7e45d3489ea4dc76b0268b8ada772deb3752c57f931"
  },
  "multi patch+morphine": {
   "error": null,
@@ -2685,7 +2685,7 @@
   "ome": "110.0",
   "doses": "41.3 33.0 28.6 82.5 27.5 16.5 4.1 55.0 825 589 550 359",
   "patchRec": " 計算值 41.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。",
-  "sha256": "a4e227d2b8934803f2a4941e8a877a4dbfb9ffd5b468e97db959053c48fda39a"
+  "sha256": "8a7a05608b65a7fbcedc962d58b20ceca81673b31ae9f673451b2a55a49464c5"
  },
  "multi same drug twice": {
   "error": null,
@@ -2709,7 +2709,7 @@
   "ome": "150.0",
   "doses": "75.0 45.0 39.1 112.5 37.5 22.5 5.6 75.0 1125 804 750 489",
   "patchRec": null,
-  "sha256": "371d35ccae27ef80be43bbcaf85321a1d9f72b968a11b22f79755197cc78b06e"
+  "sha256": "a2cb35fb49acbcd0d739d3393bd3a900ad54888e808e01af57f6aeefda94fb62"
  },
  "multi fentanyl_iv + morphine": {
   "error": null,
@@ -2721,7 +2721,7 @@
   "ome": "102.0",
   "doses": "38.3 30.6 26.6 76.5 25.5 15.3 3.8 51.0 765 546 510 333",
   "patchRec": " 計算值 38.3 mcg/h → 建議選 <strong>25 mcg/h</strong>（保守）或 <strong>50 mcg/h</strong>（積極）。<br>混合來源，未套用 IV→貼片 1:1",
-  "sha256": "d3cad47a5ec0ca5373d6c3d214abfedd85b8b699fcfb08e4d2ceba7fc8646281"
+  "sha256": "78551f5e8db3dd7e76ac6cfd97c53e15067edc0f49d09cc8af98934f1ab6d097"
  },
  "multi fentanyl_iv twice": {
   "error": null,
@@ -2744,7 +2744,7 @@
   "ome": "72.0",
   "doses": "25.0 28.8 25.0 72.0 24.0 14.4 3.6 48.0 720 514 480 313",
   "patchRec": " 計算值 25.0 mcg/h → 建議 <strong>25 mcg/h</strong>（與規格相符）。<br>依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。",
-  "sha256": "8b2fbb08679595126487ac4cbadbe3ff72814f08f85762dd8d1523fe75c03d30"
+  "sha256": "cf5f9fa0815e1c4399d1ac94a13972723a874c6f13f7a5b27d3924cbe2df9f82"
  },
  "fentanyl_iv 25 tol50": {
   "error": null,
@@ -2788,7 +2788,7 @@
   "ome": "75.0",
   "doses": "37.5 22.5 19.5 56.3 18.8 11.3 2.8 37.5 563 402 375 245",
   "patchRec": null,
-  "sha256": "66ea34fc051a935657d59dfeb902146b7eb06277e8a154a02550eb4696ac7f35"
+  "sha256": "1ec326ad3d812ff3c475db6fd87be5915128c57759d1012d49050139eed5b60e"
  },
  "morphine_iv_sc 10 noncancer": {
   "error": null,
@@ -2878,7 +2878,7 @@
   "ome": "75.0",
   "doses": "37.5 22.5 19.5 56.3 18.8 11.3 2.8 37.5 563 402 375 245",
   "patchRec": null,
-  "sha256": "122bcf93e489f7315190395188049b22a41d9d2b7a6190bca751447bb89462fe"
+  "sha256": "a11122cbc4174d63baf3852ce6fe886441e86e7c1b726fc388b114fe5524620b"
  },
  "morphine_iv_sc 10 cancer": {
   "error": null,
@@ -2947,7 +2947,7 @@
   "ome": "1100.0",
   "doses": "412.5 330.0 286.5 1100.0 366.7 165.0 41.3 550.0 8250 5893 5500 3587",
   "patchRec": " 計算值 412.5 mcg/h → 建議選 <strong>412 mcg/h（100+100+100+100+12）</strong>（保守）或 <strong>425 mcg/h（100+100+100+100+25）</strong>（積極）。",
-  "sha256": "9af59ac5011a4c7f804619b1a51929f7664df08329a072994d9eb73deb1c4f16"
+  "sha256": "b93dd20fadea3a77951d781d3bda433dda7d1ca633139c182b8a0943369d64d5"
  },
  "multi then remove": {
   "error": null,
