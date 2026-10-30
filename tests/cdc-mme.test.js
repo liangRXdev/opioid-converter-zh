@@ -100,11 +100,11 @@ test('#2 非癌症 Fentanyl 貼片 25 → MME 60、「注意」；OME 50', () =>
   assert.equal(st.ome, '50.0');
 });
 
-test('#2 非癌症 Fentanyl 貼片 37.5 → MME 90、「高劑量警示」；OME 75', () => {
+test('#2 非癌症 Fentanyl 貼片 37.5 → MME 90、高劑量（CDC 2016 門檻，P12）；OME 75', () => {
   const { st } = ui([{ key: 'fentanyl_patch', dose: 37.5 }]);
   assert.ok(st.cdcMme.startsWith(MME_LINE('90.0')));
   assert.equal(st.caution, false);
-  assert.match(st.highDose, /高劑量警示（CDC 2022）/);
+  assert.match(st.highDose, /高劑量（CDC 2016 門檻）/);
   assert.match(st.highDose, /MME ≥ 90 mg\/day/);
   assert.doesNotMatch(st.highDose, /OME/);
   assert.equal(st.ome, '75.0');

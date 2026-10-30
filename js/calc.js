@@ -65,6 +65,13 @@
   const MAX_OME = 1000;
   const MAX_OME_CANCER = 10000;
   const OME_WARN_CANCER = 1000;
+
+  // Codeine 口服每日上限：Codeine Sulfate Tablets 美國仿單（Hikma，Revised 12/2025）§2.3
+  //   「The maximum 24-hour dose is 360 mg.」
+  const CODEINE_ORAL_MAX = 360;
+
+  // 貼片建議上限（mcg/h）：超過 5 片 100 mcg/h 實務上不可行，不給規格建議。實務值，無文獻出處
+  const PATCH_REC_MAX = 500;
   function omeLimit(context) {
     return context === 'cancer' ? MAX_OME_CANCER : MAX_OME;
   }
@@ -279,7 +286,7 @@
     const { ivDirect, ivMixed, ivTotal } = ivPatchMode(list);
     const patchFactor = onlyFentanyl ? 1 : crossTolFactor(crossTolPct);
     const target = ivDirect ? ivTotal : DRUGS.fentanyl_patch.fromOME(totalOME(list)) * patchFactor;
-    return { onlyFentanyl, ivDirect, ivMixed, target, ...recommendPatch(target) };
+    return { onlyFentanyl, ivDirect, ivMixed, target, tooHigh: target > PATCH_REC_MAX, ...recommendPatch(target) };
   }
 
   // Breakthrough dose：總 OME × 10–20%
@@ -313,7 +320,8 @@
       const sameMol = !srcOnly && sameMolecule(sourceKeys, dk);
       const adj = iv ? ivTotal : (srcOnly || sameMol) ? d.fromOME(ome) : d.fromOME(ome) * factor;
       const val = d.isPatch ? `${fmt(adj, 1)} mcg/h` : `${fmt(adj, 1)} mg/day`;
-      txt += `  • ${d.label}：${val}${srcOnly ? '（來源，未減量）' : ''}${sameMol ? '（同藥換途徑，未減量）' : ''}${iv ? '（IV→貼片 1:1，未減量）' : ''}\n`;
+      const tooHigh = d.isPatch && dk === 'fentanyl_patch' && adj > PATCH_REC_MAX;
+      txt += `  • ${d.label}：${val}${srcOnly ? '（來源，未減量）' : ''}${sameMol ? '（同藥換途徑，未減量）' : ''}${iv ? '（IV→貼片 1:1，未減量）' : ''}${tooHigh ? '（超過 5 片 100 mcg/h，不適合以貼片給予）' : ''}\n`;
     });
 
     txt += `\n【Breakthrough Dose（PRN q1–4h）】\n`;
@@ -329,7 +337,7 @@
   }
 
   const api = {
-    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, MAX_OME_CANCER, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
+    DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, MAX_OME_CANCER, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, CODEINE_ORAL_MAX, PATCH_REC_MAX, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
     crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, sourceNote, sameMolecule, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,

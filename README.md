@@ -16,7 +16,7 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | **Dose conversion calculator** | Enter the current dose and instantly get the equivalent OME and converted dose for every supported drug |
 | **Multi-drug cumulative list** | Enter several drugs at once; total OME is summed and then converted (combined pain-management scenarios) |
 | **Scenario switch** | Cancer pain (NCCN 2026) vs. chronic non-cancer pain (CDC 2022), with warning thresholds switching automatically |
-| **High-dose warnings** | Cancer: warning at OME > 200; non-cancer: caution at ≥ 50 / warning at ≥ 90 (CDC 2022) |
+| **High-dose warnings** | Cancer: warning at OME > 200; non-cancer: reassess at MME ≥ 50 (CDC 2022) / high dose at ≥ 90 (CDC 2016 threshold; CDC 2022 sets no hard limit) |
 | **Renal caution flags** | Each result card shows a 🫘 renal-failure risk label (avoid / caution / safe, Micromedex 2025) |
 | **Incomplete cross-tolerance reduction** | Three options: no reduction / reduce 25% / reduce 50% (standard opioid-rotation practice) |
 | **Breakthrough dose** | Automatically computes the PRN rescue dose (total OME × 10–20%, NCCN 2026; MASCC-ASCO 2025 recommends starting at 10–15%), listing morphine / hydromorphone / oxycodone equivalents; prefer the short-acting form of the same agent as the long-acting opioid |
@@ -117,7 +117,7 @@ Basis: 1 mcg/hr × 24 h = 24 mcg/day; at steady state 250 mcg IV fentanyl ≈ 10
 |------|---------|------|---------|
 | **Cancer pain** (NCCN 2026) | 🔴 High-dose warning | OME > 200 mg/day | Pain service / palliative care consult |
 | **Chronic non-cancer pain** (CDC 2022) | 🟡 Caution | MME ≥ 50 mg/day (CDC 2022 factors) | Reassess treatment goals and risk–benefit |
-| **Chronic non-cancer pain** (CDC 2022) | 🔴 High-dose warning | MME ≥ 90 mg/day (CDC 2022 factors) | Strongly consider gradual tapering and multimodal analgesia |
+| **Chronic non-cancer pain** (CDC 2022) | 🔴 High dose | MME ≥ 90 mg/day (CDC 2022 factors; threshold from CDC 2016) | CDC 2022 sets no hard limit; review the plan, consider gradual tapering (avoid abrupt discontinuation) and multimodal analgesia |
 
 ### Tramadol oral vs IV/IM conversion
 
@@ -165,6 +165,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.10 | 2026-10-30 | Oral codeine maximum 400 → 360 mg/day (US label, Hikma, revised 12/2025); non-cancer ≥ 90 MME now labelled as the CDC 2016 threshold; no patch-strength recommendation when the fentanyl patch target exceeds 500 mcg/h (more than five 100 mcg/h patches) |
 | v1.4.9 | 2026-10-30 | OME source note now counts distinct drugs/routes instead of list entries (two SR + IR entries of one drug used to read "2 drugs"); added GitHub Actions tests and `tests/tools/statecmp.js` |
 | v1.4.8 | 2026-10-30 | Breakthrough note now matches the drugs listed and cites MASCC 10–15%; buprenorphine patch ×2.5 now cites its derivation (NCCN 2026); NCCN citations updated to v2.2026 (algorithm and Table 2 unchanged) |
 | v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20 (NCCN 2026 Table 2); oral ×5 now cites the MASCC-ASCO 2025 consensus; same-opioid route changes (morphine / hydromorphone / tramadol / codeine) skip the cross-tolerance reduction (NCCN PAIN-G) |
