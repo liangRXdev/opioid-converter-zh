@@ -655,7 +655,7 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.4.9 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.10 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -670,10 +670,10 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.9 | OME 來源說明以藥物／途徑種類計
+// v1.4.10 | Codeine 上限 360（P7）、≥90 MME 標 CDC 2016（P12）、貼片 > 500 mcg/h 不給建議
 // ============================================================
 
-const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS } = OpioidCalc;
+const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, CODEINE_ORAL_MAX, PATCH_REC_MAX, RENAL_FLAGS } = OpioidCalc;
 
 let drugList = []; // { key, label, doseLabel, ome }
 
@@ -854,7 +854,8 @@ function calculate() {
     if (isSource && !singleSource)  warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 目前用藥之一</div>`;
     if (ivDirect) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ IV→貼片 1:1（NCCN PAIN-G 13），未減量</div>`;
     if (sameMolecule && !(isSource && singleSource)) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 同藥換途徑，未減量（NCCN：交叉耐受減量僅適用不同藥物）</div>`;
-    if (dk === 'codeine_oral'  && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
+    if (dk === 'codeine_oral'  && adjDose > CODEINE_ORAL_MAX) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量（360 mg，美國仿單）</div>`;
+    if (dk === 'fentanyl_patch' && adjDose > PATCH_REC_MAX) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過 5 片 100 mcg/h，不適合以貼片給予</div>`;
     if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_iv'   && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 ×5（6 mg=30 MME；MASCC-ASCO 2025 共識、UpToDate）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
@@ -877,13 +878,14 @@ function calculate() {
   });
 
   // Fentanyl 貼片建議
-  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, match, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
+  const { onlyFentanyl, ivDirect, ivMixed, target: targetPatchDose, tooHigh, match, lower, higher } = OpioidCalc.patchRecommendation(drugList, crossTolPct);
   let patchRec = '';
-  if (match)                patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議 <strong>${match.label}</strong>（與規格相符）。`;
+  if (tooHigh)              patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 超過 ${PATCH_REC_MAX} mcg/h（5 片 100 mcg/h），不建議以貼片給予；請考慮其他給藥途徑，並會診緩和醫療／疼痛團隊。`;
+  else if (match)                patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議 <strong>${match.label}</strong>（與規格相符）。`;
   else if (lower && higher) patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 建議選 <strong>${lower.label}</strong>（保守）或 <strong>${higher.label}</strong>（積極）。`;
   else                  patchRec = `計算值 ${fmt(targetPatchDose, 1)} mcg/h → 劑量低於最小規格 12 mcg/h，需重新評估是否適合貼片。`;
-  if (ivDirect)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
-  else if (ivMixed) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;
+  if (ivDirect && !tooHigh)     patchRec += `<br>${OpioidCalc.IV_PATCH_HINT}`;
+  else if (ivMixed && !tooHigh) patchRec += `<br>${OpioidCalc.IV_MIXED_HINT}`;
   document.getElementById('patchRecText').innerHTML = ` ${patchRec}`;
   document.getElementById('patchRec').style.display = !onlyFentanyl ? '' : 'none';
 
@@ -914,7 +916,7 @@ function calculate() {
     cdcEl.style.display = '';
     cautionEl.innerHTML = '<strong>⚠ 劑量注意（CDC 2022）：</strong> MME ≥ 50 mg/day。建議重新評估治療目標、疼痛功能改善效益，以及繼續使用的風險。';
     if (mme >= 90) {
-      warnEl.innerHTML = '<strong>⚠ 高劑量警示（CDC 2022）：</strong> MME ≥ 90 mg/day。嚴重不良事件風險顯著上升，強烈建議重新評估整體治療計畫，考慮逐步減量及多模式鎮痛策略。';
+      warnEl.innerHTML = '<strong>⚠ 高劑量（CDC 2016 門檻）：</strong> MME ≥ 90 mg/day。CDC 2022 已不設硬性上限，但超過 50 MME 後每次增量都應重新評估效益與風險；建議檢視整體治療計畫，考慮逐步減量（避免驟停）及多模式鎮痛。';
       warnEl.style.display = '';
       cautionEl.style.display = 'none';
     } else if (mme >= 50) {
@@ -1033,7 +1035,7 @@ function buildRefTable() {
         } else {
           display = dose % 1 === 0 ? dose.toFixed(0) + ' mg' : dose.toFixed(1) + ' mg';
         }
-        if (row.key === 'codeine_oral' && dose > 400) {
+        if (row.key === 'codeine_oral' && dose > CODEINE_ORAL_MAX) {
           display = `<span style="color:var(--danger);">${display} ⚠</span>`;
         }
         cells += `<td>${display}</td>`;
@@ -1050,7 +1052,7 @@ buildRefTable();
 function updateContextNote() {
   const ctx = document.getElementById('clinicContext').value;
   document.getElementById('contextNote').textContent =
-    ctx === 'cancer' ? 'OME > 200 警示' : 'CDC 2022：≥50 注意 ／ ≥90 警示';
+    ctx === 'cancer' ? 'OME > 200 警示' : 'MME ≥50 重新評估（CDC 2022）／≥90 高劑量（CDC 2016 門檻）';
 }
 
 document.getElementById('inpDose').addEventListener('keydown', e => { if (e.key === 'Enter') addDrug(); });
