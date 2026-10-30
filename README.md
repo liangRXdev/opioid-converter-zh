@@ -155,6 +155,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.6 | 2026-10-30 | Cancer scenario: OME > 1000 mg/day is calculated with an ultra-high-dose warning (also in the copied summary); only > 10000 is rejected as a typo guard. Non-cancer keeps rejecting > 1000. Patch combinations above 5 patches are shown as 100×n + r |
 | v1.4.5 | 2026-10-29 | Non-cancer scenario adds CDC 2022 risk MME: 50/90 warnings use CDC 2022 factors; drugs not in the CDC table use the tool factors and are flagged; conversions unchanged. Conversion-factor sources separated from CDC |
 | v1.4.4 | 2026-10-29 | Patch recommendation: a single strength when the target matches it (±0.05 mcg/h); targets > 100 mcg/h use 100×n + r combinations with their composition shown; the "highest common strength" cap is removed |
 | v1.4.3 | 2026-10-29 | Fentanyl IV now uses the NCCN steady-state ratio ×2.88 (was ×7.2); fentanyl IV-only sources convert to patch 1:1 with infusion taper guidance (NCCN PAIN-G 13); js/calc.js extraction and node --test suite (PR #1) |
