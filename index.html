@@ -399,6 +399,8 @@ select:focus, input[type="number"]:focus {
     本工具僅供臨床決策輔助，所有換算結果為近似值，<strong>不得</strong>取代臨床判斷。
     跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性；同藥只換途徑不減量），並依病患腎功能、疼痛控制狀態及個別反應調整。
     高劑量（TDF &gt; 100 mcg/h）或老年病患請更保守換算。
+    <br><strong>Methadone 不支援：</strong>半衰期長（15–120 h）且個體差異大，換算比隨原劑量非線性變化，無法以固定係數換算；
+    換至 methadone 應由有經驗的疼痛／安寧專科處理（NCCN 2026；MASCC-ASCO 2025 Rec 2.6），一般需較計算等效劑量減量 75–90%（Fine 2009）。
   </div>
 
   <!-- TABS -->
@@ -443,6 +445,9 @@ select:focus, input[type="number"]:focus {
             </optgroup>
             <optgroup label="Fentanyl 靜脈注射">
               <option value="fentanyl_iv">Fentanyl IV 持續輸注</option>
+            </optgroup>
+            <optgroup label="Methadone 美沙冬">
+              <option value="" disabled>Methadone（不支援線性換算，見上方免責聲明）</option>
             </optgroup>
           </select>
         </div>
