@@ -19,7 +19,7 @@
 | **高劑量警示** | 癌症：OME > 200 警示；非癌症：≥ 50 注意 / ≥ 90 警示（CDC 2022）|
 | **腎功能注意提示** | 每張結果卡片顯示 🫘 腎衰竭風險標籤（危險 / 注意 / 安全，Micromedex 2025）|
 | **不完全交叉耐受性減量** | 不減量 / 減 25% / 減 50% 三選項（opioid rotation 標準做法）|
-| **Breakthrough Dose** | 自動計算 PRN 搶救劑量（總 OME × 10–20%，含 Morphine / Hydromorphone / Oxycodone 換算）|
+| **Breakthrough Dose** | 自動計算 PRN 搶救劑量（總 OME × 10–20%，NCCN 2026；MASCC-ASCO 2025 建議起始 10–15%），列出 Morphine / Hydromorphone / Oxycodone 換算值，優先使用與長效藥相同成分的短效劑型 |
 | **Fentanyl 貼片規格建議** | 依計算結果自動推薦最近規格（保守 / 積極兩選項；與規格相符時只建議該劑量；> 100 mcg/h 以組合貼片建議）|
 | **複製換算摘要** | 一鍵複製純文字換算報告，可直接貼入病歷或交班記錄 |
 | **貼片劑量對照表** | 以 Fentanyl 貼片強度為基準，列出所有藥物對應每日劑量（含 Buprenorphine）|
@@ -32,7 +32,7 @@
 | 藥物 | 途徑 | MME 換算因子 | 備注 |
 |------|------|------------|------|
 | Fentanyl 貼片（TDF）| Transdermal | ÷2（mcg/h → mg OME/day）| UpToDate / NCCN 2026 ÷2 公式 |
-| Buprenorphine 貼片（Norspan®）| Transdermal | ×2.5（20 mcg/h = 50 mg OME）| 規格：5 / 10 / 20 mcg/h |
+| Buprenorphine 貼片（Norspan®）| Transdermal | ×2.5（20 mcg/h = 50 mg OME）| 規格：5 / 10 / 20 mcg/h；推論自 NCCN 2026：20 mcg/h ≈ TDF 25 mcg/h × TDF ×2（NCCN 未直接寫 ×2.5）|
 | Fentanyl IV 持續輸注 | IV Infusion | ×2.88（mcg/hr → mg OME/day）| NCCN 2026 Table 2 註 c（穩態比）；轉貼片採 1:1（PAIN-G 13）|
 | Morphine | 口服 | ×1（基準）| — |
 | Morphine | IV / SC | ×3 | — |
@@ -91,7 +91,7 @@
 
 ### Fentanyl IV 持續輸注換算說明
 
-換算因子 **×2.88**（1 mcg/hr 持續輸注 ≈ 2.88 mg OME/day；NCCN Adult Cancer Pain v1.2026 Table 2 註 c，穩態）：
+換算因子 **×2.88**（1 mcg/hr 持續輸注 ≈ 2.88 mg OME/day；NCCN Adult Cancer Pain v2.2026 Table 2 註 c，穩態）：
 
 計算依據：1 mcg/hr × 24 h = 24 mcg/day；穩態下 250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine → 24 × 30/250 = 2.88 mg OME/day（單次給藥比 100 mcg ≈ 10 mg 不適用持續輸注）。
 
@@ -164,6 +164,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.8 | 2026-10-30 | BT 說明改為與列出藥物一致並註明 MASCC 10–15%；Buprenorphine 貼片 ×2.5 標示推論出處（NCCN 2026）；NCCN 版本標示改為 v2.2026（演算法與 Table 2 未變）|
 | v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20（NCCN 2026 Table 2），口服 ×5 改標 MASCC-ASCO 2025 共識；同藥換途徑（Morphine / Hydromorphone / Tramadol / Codeine）不套交叉耐受減量（NCCN PAIN-G）|
 | v1.4.6 | 2026-10-30 | 癌症情境 OME > 1000 mg/day 改為照算並顯示超高劑量警示（複製摘要同步），> 10000 才拒絕（防打錯字）；非癌症維持 > 1000 拒絕。貼片組合超過 5 片改以 100×n + r 表示 |
 | v1.4.5 | 2026-10-29 | 非癌症情境新增 CDC 2022 MME（風險評估）：50/90 警示改用 CDC 2022 係數，CDC 表未列者沿用工具係數並註記；換算結果不變。換算係數出處與 CDC 分開標示 |

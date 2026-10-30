@@ -9,8 +9,10 @@
 
   const DRUGS = {
     fentanyl_patch:        { label: 'Fentanyl 貼片', route: 'transdermal', unit: 'mcg/h',   toOME: d => d * 2,   fromOME: ome => ome / 2,   isPatch: true },
+    // Buprenorphine 貼片 ×2.5：NCCN Adult Cancer Pain v2.2026 PAIN-G（Buprenorphine）「20 mcg/h is approximately equal to
+    //   transdermal fentanyl 25 mcg/h」× TDF ×2 → 20 mcg/h ≈ 50 mg OME。兩個等效式串接的推論，NCCN 未直接寫 ×2.5
     buprenorphine_td:      { label: 'Buprenorphine 貼片', route: 'transdermal', unit: 'mcg/h', toOME: d => d * 2.5, fromOME: ome => ome / 2.5, isPatch: true, isBupPatch: true },
-    // Fentanyl IV 持續輸注（穩態）— NCCN Adult Cancer Pain v1.2026 Table 2 註 c（穩態）：
+    // Fentanyl IV 持續輸注（穩態）— NCCN Adult Cancer Pain v2.2026 Table 2 註 c（穩態）：
     //   重複給藥（steady-state）時 10 mg IV morphine ≈ 250 mcg IV fentanyl（單次給藥為 100 mcg，不適用持續輸注）
     //   1 mcg/h × 24 h = 24 mcg/day；250 mcg IV fentanyl ≈ 10 mg IV morphine ≈ 30 mg PO morphine
     //   → 24 × 30/250 = 2.88 mg OME/day per mcg/h
@@ -168,7 +170,7 @@
     return { sourceKeys, singleSource: sourceKeys.size === 1 };
   }
 
-  // NCCN Adult Cancer Pain v1.2026 PAIN-G 13：持續輸注 fentanyl → 貼片 straight 1:1（mcg/h）
+  // NCCN Adult Cancer Pain v2.2026 PAIN-G 13：持續輸注 fentanyl → 貼片 straight 1:1（mcg/h）
   const IV_PATCH_HINT = '依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。';
   const IV_MIXED_HINT = '混合來源，未套用 IV→貼片 1:1';
 
@@ -312,7 +314,7 @@
       txt += `  • ${lbl}：${fmt(d.fromOME(bt.min), 1)}–${fmt(d.fromOME(bt.max), 1)} mg  Q4H PRN\n`;
     });
 
-    txt += `\n⚠ 本工具僅供臨床輔助參考，不取代臨床判斷。\n（UpToDate 2026 Graphic 111216 / NCCN 2026 v1）`;
+    txt += `\n⚠ 本工具僅供臨床輔助參考，不取代臨床判斷。\n（UpToDate 2026 Graphic 111216 / NCCN Adult Cancer Pain v2.2026）`;
     return txt;
   }
 
