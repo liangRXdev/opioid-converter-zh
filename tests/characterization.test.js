@@ -14,5 +14,6 @@ for (const sc of scenarios()) {
 }
 
 test('characterization: 貼片對照表', () => {
-  assert.equal(loadApp().el('refTableBody').innerHTML, golden.__refTable);
+  // 表格以 appendChild 逐列建立，innerHTML 恆為空字串；改比對各列內容
+  assert.equal(loadApp().el('refTableBody').children.map(r => r.innerHTML).join('\n'), golden.__refTable);
 });
