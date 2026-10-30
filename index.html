@@ -829,9 +829,7 @@ function calculate() {
 
   // OME 顯示
   document.getElementById('omeValue').textContent = fmt(totalOME, 1);
-  document.getElementById('omeNote').textContent = drugList.length === 1
-    ? `來源：${drugList[0].label} ${drugList[0].doseLabel} → OME`
-    : `來源：${drugList.length} 種藥物加總`;
+  document.getElementById('omeNote').textContent = OpioidCalc.sourceNote(drugList);
 
   // Cross-tol note
   const crossTolNote = document.getElementById('crossTolNote');

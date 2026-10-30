@@ -170,6 +170,16 @@
     return { sourceKeys, singleSource: sourceKeys.size === 1 };
   }
 
+  // OME 來源說明：種類以不同藥物/途徑（key）計，不以清單筆數計
+  function sourceNote(list) {
+    if (list.length === 0) return '';
+    if (list.length === 1) return `來源：${list[0].label} ${list[0].doseLabel} → OME`;
+    const { sourceKeys, singleSource } = sourceInfo(list);
+    if (singleSource) return `來源：${list[0].label} ${list.length} 筆加總`;
+    const extra = list.length > sourceKeys.size ? `（共 ${list.length} 筆）` : '';
+    return `來源：${sourceKeys.size} 種藥物／途徑加總${extra}`;
+  }
+
   // NCCN Adult Cancer Pain v2.2026 PAIN-G 13：持續輸注 fentanyl → 貼片 straight 1:1（mcg/h）
   const IV_PATCH_HINT = '依 NCCN 2026 PAIN-G 13：持續輸注→貼片 1:1。貼上後 6 小時輸注速率減半，12 小時停止（或 6 小時直接停止）；部分病人需再調整貼片劑量。';
   const IV_MIXED_HINT = '混合來源，未套用 IV→貼片 1:1';
@@ -321,7 +331,7 @@
   const api = {
     DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, MAX_OME_CANCER, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, sameMolecule, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, sourceNote, sameMolecule, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 
