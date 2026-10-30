@@ -655,7 +655,7 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.4.5 | 梁哲嘉藥師</div>
+<div class="version-badge">v1.4.6 |梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -670,10 +670,10 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.5 | 非癌症情境 CDC 2022 MME 風險評估（不影響換算）
+// v1.4.6 | 癌症情境 OME > 1000 警示照算、> 10000 拒絕；非癌症維持 > 1000 拒絕（P8）
 // ============================================================
 
-const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, RENAL_FLAGS } = OpioidCalc;
+const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS } = OpioidCalc;
 
 let drugList = []; // { key, label, doseLabel, ome }
 
@@ -752,9 +752,10 @@ function addDrug() {
 
   const drug = DRUGS[key];
   const rawDose = drug.isPatch ? document.getElementById('selPatchDose').value : document.getElementById('inpDose').value;
-  const entry = OpioidCalc.parseEntry(key, rawDose, document.getElementById('inpFreq').value);
+  const ctx = document.getElementById('clinicContext').value;
+  const entry = OpioidCalc.parseEntry(key, rawDose, document.getElementById('inpFreq').value, ctx);
   if (entry.error) { showError(entry.error); return; }
-  const totalErr = OpioidCalc.totalOMEError(drugList, entry);
+  const totalErr = OpioidCalc.totalOMEError(drugList, entry, ctx);
   if (totalErr) { showError(totalErr); return; }
 
   drugList.push(entry);
@@ -815,7 +816,16 @@ function calculate() {
   const crossTolFactor = OpioidCalc.crossTolFactor(crossTolPct);
   const totalOME = OpioidCalc.totalOME(drugList);
 
-  if (totalOME > MAX_OME) { showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。請確認輸入數值是否正確。`); hideResult(); return; }
+  // 清單在癌症情境加入後切換到非癌症，會在此超過上限
+  const limitCtx = document.getElementById('clinicContext').value;
+  const limit = OpioidCalc.omeLimit(limitCtx);
+  if (totalOME > limit) {
+    const ctxNote = limitCtx === 'cancer' ? '' : `非癌症情境上限 ${limit} mg/day，`;
+    showError(`總 OME 過高（${totalOME.toFixed(0)} mg/day）。${ctxNote}請確認輸入數值是否正確。`);
+    hideResult();
+    return;
+  }
+  hideError();
 
   // OME 顯示
   document.getElementById('omeValue').textContent = fmt(totalOME, 1);
@@ -885,7 +895,11 @@ function calculate() {
   if (clinicCtx === 'cancer') {
     cdcEl.style.display = 'none';
     cautionEl.style.display = 'none';
-    if (totalOME > 200) {
+    if (totalOME > OME_WARN_CANCER) {
+      const [head, ...rest] = ULTRA_HIGH_OME_TEXT.split('：');
+      warnEl.innerHTML = `<strong>${head}：</strong> ${rest.join('：').replace(/>/g, '&gt;')}`;
+      warnEl.style.display = '';
+    } else if (totalOME > 200) {
       warnEl.innerHTML = '<strong>⚠ 高劑量警示（NCCN 2026）：</strong> OME &gt; 200 mg/day（等效 TDF &gt; 100 mcg/h）。建議加強監測，考慮疼痛科或安寧療護會診。';
       warnEl.style.display = '';
     } else {
