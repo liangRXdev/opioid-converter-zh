@@ -141,7 +141,7 @@ Tramadol must be metabolized by CYP2D6 to O-desmethyltramadol (M1) to have μ-re
 - **Same opioid, route change only** (e.g. morphine PO ↔ IV/SC): no reduction. NCCN PAIN-G limits the reduction to cross-tolerance "between different opioids". Applied automatically when all sources are the same molecule (fentanyl excluded)
 - MASCC-ASCO 2025 did **not reach consensus** on automatic 25–50% reductions (no clinical experience with the reduced doses; higher withdrawal risk); the tool keeps the 0/25/50% choice to the user
 - Pain uncontrolled → start at **100%** of the equianalgesic dose
-- Switching to methadone → special case requiring a **75–>90%** reduction (methadone is not supported by this tool; assess individually)
+- Switching to methadone → special case, usually a **75–90%** reduction from the calculated equianalgesic dose (Fine 2009), managed by an experienced pain/palliative specialist (NCCN 2026; MASCC-ASCO 2025 Rec 2.6). Methadone is not supported by this tool; the drug menu and disclaimer say so
 
 ---
 
@@ -165,6 +165,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.11 | 2026-10-30 | Service worker offline error handling (network error instead of undefined for uncached non-document requests, no unhandled rejection when a background update fails, non-GET requests not intercepted); methadone shown as unsupported in the drug menu and disclaimer |
 | v1.4.10 | 2026-10-30 | Oral codeine maximum 400 → 360 mg/day (US label, Hikma, revised 12/2025); non-cancer ≥ 90 MME now labelled as the CDC 2016 threshold; no patch-strength recommendation when the fentanyl patch target exceeds 500 mcg/h (more than five 100 mcg/h patches) |
 | v1.4.9 | 2026-10-30 | OME source note now counts distinct drugs/routes instead of list entries (two SR + IR entries of one drug used to read "2 drugs"); added GitHub Actions tests and `tests/tools/statecmp.js` |
 | v1.4.8 | 2026-10-30 | Breakthrough note now matches the drugs listed and cites MASCC 10–15%; buprenorphine patch ×2.5 now cites its derivation (NCCN 2026); NCCN citations updated to v2.2026 (algorithm and Table 2 unchanged) |
