@@ -1,7 +1,7 @@
 // 前綴必須含完整 repo 名稱：同 origin 上若有 opioid-converter-en 等相近名稱的工具，
 // 只用 'opioid-converter-' 會把對方的快取當成自己的舊版刪掉。
 const PREFIX = 'opioid-converter-zh-';
-const CACHE = `${PREFIX}v1.4.5`;
+const CACHE = `${PREFIX}v1.4.6`;
 // 改名前本工具使用的舊快取名（opioid-converter-v1.4.0 等），升級時一併清除
 const LEGACY_CACHE = /^opioid-converter-v\d/;
 

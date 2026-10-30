@@ -36,8 +36,8 @@
 | Fentanyl IV 持續輸注 | IV Infusion | ×2.88（mcg/hr → mg OME/day）| NCCN 2026 Table 2 註 c（穩態比）；轉貼片採 1:1（PAIN-G 13）|
 | Morphine | 口服 | ×1（基準）| — |
 | Morphine | IV / SC | ×3 | — |
-| Hydromorphone | 口服 | ×5 | UpToDate 2026；NCCN 2026 採 ×4，差異 25%（見注意事項）|
-| Hydromorphone | IV / SC | ×25 | UpToDate 2026；NCCN 2026 採 ×20 |
+| Hydromorphone | 口服 | ×5 | MASCC-ASCO 2025 共識 5:1、UpToDate 2026；NCCN 2026 採 ×4，差異 25%（見注意事項）|
+| Hydromorphone | IV / SC | ×20 | NCCN 2026 Table 2（1.5 mg IV ≈ 30 mg PO morphine）；UpToDate 採 ×25；MASCC-ASCO 2025 無共識比 |
 | Oxycodone | 口服 | ×1.5 | 全來源一致 |
 | Tramadol | 口服 | ×0.1 | Micromedex 2025；前驅藥（CYP2D6）；最大 400 mg/day。CDC 2022 MME 係數 0.2 僅用於非癌症風險 MME |
 | Tramadol | IV/IM | ×0.14 ⚠ | **推算值**（oral ×0.1 ÷ bioavailability 0.70）；無主要指引支持，僅供估算 |
@@ -52,10 +52,17 @@
 
 | 來源 | 口服 Hydromorphone = 30 MME | 換算因子 |
 |------|---------------------------|---------|
-| **UpToDate 2026**（本工具採用）| 6 mg | ×5 |
-| **NCCN 2026 Table 2** | 7.5 mg | ×4 |
+| **MASCC-ASCO 2025 Table 3**（本工具採用）| 6 mg | ×5（5:1，89.1% 共識）|
+| UpToDate 2026 | 6 mg | ×5 |
+| NCCN 2026 Table 2 | 7.5 mg | ×4 |
 
-兩者相差 25%。本工具採用 UpToDate（較保守），高風險評估時為偏安全選擇。臨床使用時請選定一個來源並前後一致。
+| 來源 | IV/SC Hydromorphone = 30 MME | 換算因子 |
+|------|---------------------------|---------|
+| **NCCN 2026 Table 2**（本工具採用，v1.4.7 起）| 1.5 mg | ×20 |
+| UpToDate 2026 | 1.2 mg | ×25 |
+| MASCC-ASCO 2025 | — | 無共識比 |
+
+口服採國際共識 ×5；IV/SC 採 NCCN ×20，使 Hydromorphone PO:IV 為 4 倍，落在 NCCN PO:IV 範圍 2.5–5 之間（×25 時為 5 倍，位於上限，且 HM IV → 他藥方向會高估 OME 25%）。
 
 ### Fentanyl 貼片（TDF）換算比例
 
@@ -130,7 +137,9 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 ### Opioid Rotation 減量原則
 
-- 疼痛已控制 → 換算後**減量 25–50%**（不完全交叉耐受性）
+- 疼痛已控制 → 換成**不同藥物**時減量 **25–50%**（不完全交叉耐受性）
+- **同藥只換途徑**（如 Morphine PO ↔ IV/SC）不減量：NCCN PAIN-G 的減量限定於「between different opioids」。本工具在來源全為同一分子時自動套用（Fentanyl 除外）
+- MASCC-ASCO 2025 對「自動減量 25–50%」**未達共識**（減量後劑量缺臨床經驗、增加戒斷風險），本工具保留 0／25／50% 由使用者選擇
 - 疼痛未控制 → 從 **100%** 等效劑量起始
 - 換至 Methadone → 特例，需減量 **75–>90%**（本工具未支援 Methadone，請個別評估）
 
@@ -155,6 +164,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20（NCCN 2026 Table 2），口服 ×5 改標 MASCC-ASCO 2025 共識；同藥換途徑（Morphine / Hydromorphone / Tramadol / Codeine）不套交叉耐受減量（NCCN PAIN-G）|
 | v1.4.6 | 2026-10-30 | 癌症情境 OME > 1000 mg/day 改為照算並顯示超高劑量警示（複製摘要同步），> 10000 才拒絕（防打錯字）；非癌症維持 > 1000 拒絕。貼片組合超過 5 片改以 100×n + r 表示 |
 | v1.4.5 | 2026-10-29 | 非癌症情境新增 CDC 2022 MME（風險評估）：50/90 警示改用 CDC 2022 係數，CDC 表未列者沿用工具係數並註記；換算結果不變。換算係數出處與 CDC 分開標示 |
 | v1.4.4 | 2026-10-29 | 貼片建議：計算值與規格相符（±0.05 mcg/h）時只建議該劑量；> 100 mcg/h 以 100×n + r 組合貼片建議並顯示組成，移除「已達最高常用規格」|

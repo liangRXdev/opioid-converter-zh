@@ -397,7 +397,7 @@ select:focus, input[type="number"]:focus {
   <div class="disclaimer mb-3">
     <strong>⚠ 臨床免責聲明：</strong>
     本工具僅供臨床決策輔助，所有換算結果為近似值，<strong>不得</strong>取代臨床判斷。
-    跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性），並依病患腎功能、疼痛控制狀態及個別反應調整。
+    跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性；同藥只換途徑不減量），並依病患腎功能、疼痛控制狀態及個別反應調整。
     高劑量（TDF &gt; 100 mcg/h）或老年病患請更保守換算。
   </div>
 
@@ -649,13 +649,13 @@ select:focus, input[type="number"]:focus {
     Reddy A et al. Cancer 2016;122:149-56 ·
     EAPC Guidelines 2012 · Palliative Care Formulary 6th ed.
     <br>
-    換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×25（UpToDate；NCCN 2026 ×20）·
+    換算係數：Morphine IV/SC ×3 · Hydromorphone oral ×5（MASCC-ASCO 2025 / UpToDate；NCCN 2026 ×4）· Hydromorphone IV/SC ×20（NCCN 2026；UpToDate ×25）·
     Oxycodone oral ×1.5 · Tramadol oral ×0.1（Micromedex 2025）· Tramadol IV/IM ×0.14 [推算] · Codeine oral ×0.15 · Codeine IM ×0.23 ·
     Buprenorphine TD ×2.5（20 mcg/h = 50 mg OME）· Fentanyl IV ×2.88（mcg/hr 換算 mg OME/day；NCCN 2026 Table 2 註 c 穩態比）
   </footer>
 </div>
 
-<div class="version-badge">v1.4.6 |梁哲嘉藥師</div>
+<div class="version-badge">v1.4.7 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -670,7 +670,7 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.6 | 癌症情境 OME > 1000 警示照算、> 10000 拒絕；非癌症維持 > 1000 拒絕（P8）
+// v1.4.7 | Hydromorphone IV/SC ×20（NCCN）；同藥換途徑不減量（P6、P9）
 // ============================================================
 
 const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS } = OpioidCalc;
@@ -846,7 +846,7 @@ function calculate() {
   const grid = document.getElementById('resultGrid');
   grid.innerHTML = '';
 
-  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, ivDirect, adjDose, display: doseDisplay }) => {
+  OpioidCalc.conversions(drugList, crossTolPct).forEach(({ key: dk, drug: d, isSource, singleSource, ivDirect, sameMolecule, adjDose, display: doseDisplay }) => {
     const card = document.createElement('div');
     card.className = `result-item${d.isPatch ? ' patch-item' : ''}${isSource ? ' highlight' : ''}`;
 
@@ -855,11 +855,12 @@ function calculate() {
     if (isSource && singleSource)   warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 來源藥物（未減量）</div>`;
     if (isSource && !singleSource)  warnHtml = `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 目前用藥之一</div>`;
     if (ivDirect) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ IV→貼片 1:1（NCCN PAIN-G 13），未減量</div>`;
+    if (sameMolecule && !(isSource && singleSource)) warnHtml += `<div style="font-size:0.68rem; color: var(--accent); margin-top:0.2rem;">▶ 同藥換途徑，未減量（NCCN：交叉耐受減量僅適用不同藥物）</div>`;
     if (dk === 'codeine_oral'  && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_oral' && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
     if (dk === 'tramadol_iv'   && adjDose > 400) warnHtml += `<div style="font-size:0.68rem; color: var(--danger); margin-top:0.2rem;">⚠ 超過每日最大劑量建議（400mg）</div>`;
-    if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×5（6 mg=30 MME）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
-    if (dk === 'hydromorphone_iv_sc')  warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 UpToDate ×25（1.2 mg=30 MME）；NCCN 2026 採 ×20（1.5 mg），差異 20%</div>`;
+    if (dk === 'hydromorphone_oral')   warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 ×5（6 mg=30 MME；MASCC-ASCO 2025 共識、UpToDate）；NCCN 2026 採 ×4（7.5 mg），差異 25%</div>`;
+    if (dk === 'hydromorphone_iv_sc')  warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">採 NCCN 2026 ×20（1.5 mg=30 MME）；UpToDate 採 ×25（1.2 mg）；MASCC-ASCO 2025 無共識比</div>`;
     if (dk === 'fentanyl_iv') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">換算因子 ×2.88（穩態：250 mcg IV fentanyl ≈ 10 mg IV morphine，NCCN 2026 Table 2 註 c）</div>`;
     if (dk === 'buprenorphine_td') warnHtml += `<div style="font-size:0.68rem; color: var(--text-muted); margin-top:0.2rem;">Norspan® 規格：5 / 10 / 20 mcg/h；換算因子 ×2.5（20 mcg/h = 50 mg OME）</div>`;
     if (RENAL_FLAGS[dk]) {

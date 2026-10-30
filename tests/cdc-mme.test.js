@@ -40,7 +40,7 @@ test('#1 CDC 表未列者沿用 toOME 計入並列入 unlisted（Morphine IV/SC 
     E('buprenorphine_td', 10), E('hydromorphone_iv_sc', 1), E('morphine_iv_sc', 5), E('morphine_iv_sc', 5)]);
   assert.deepEqual(all.unlisted, ['Fentanyl IV 持續輸注', 'Tramadol IV/IM', 'Codeine IM', 'Hydromorphone IV/SC', 'Morphine IV/SC']);
   assert.deepEqual(all.excluded, ['Buprenorphine 貼片']);
-  close(all.mme, 28.8 + 14 + 60 * 0.23 + 25 + 30);
+  close(all.mme, 28.8 + 14 + 60 * 0.23 + 20 + 30);
 });
 
 // CDC 2022 Recommendation 4 正文："Buprenorphine should not be counted in the total MME/day in calculations

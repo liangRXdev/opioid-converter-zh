@@ -17,8 +17,12 @@
     fentanyl_iv:           { label: 'Fentanyl IV 持續輸注', route: 'IV', unit: 'mcg/hr',    toOME: d => d * 2.88, fromOME: ome => ome / 2.88, isIVInfusion: true },
     morphine_oral:         { label: 'Morphine 口服',  route: 'oral',        unit: 'mg/day',  toOME: d => d * 1,   fromOME: ome => ome / 1 },
     morphine_iv_sc:        { label: 'Morphine IV/SC', route: 'IV/SC',       unit: 'mg/day',  toOME: d => d * 3,   fromOME: ome => ome / 3 },
+    // Hydromorphone 口服 ×5：MASCC-ASCO-AAHPM-HPNA-NICSO 2025 Table 3（oral morphine:oral HM 5:1，89.1% 共識），與 CDC 2022 / UpToDate 一致；
+    //   NCCN 2026 Table 2 為 ×4（7.5 mg PO）
+    // Hydromorphone IV/SC ×20：NCCN Adult Cancer Pain v2.2026 Table 2（1.5 mg IV ≈ 10 mg IV morphine ≈ 30 mg PO）；
+    //   MASCC-ASCO 2025 無共識比。UpToDate ×25 較高，HM IV → 他藥方向會高估 OME
     hydromorphone_oral:    { label: 'Hydromorphone 口服', route: 'oral',    unit: 'mg/day',  toOME: d => d * 5,   fromOME: ome => ome / 5 },
-    hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 25,  fromOME: ome => ome / 25 },
+    hydromorphone_iv_sc:   { label: 'Hydromorphone IV/SC', route: 'IV/SC', unit: 'mg/day',  toOME: d => d * 20,  fromOME: ome => ome / 20 },
     oxycodone_oral:        { label: 'Oxycodone 口服', route: 'oral',        unit: 'mg/day',  toOME: d => d * 1.5, fromOME: ome => ome / 1.5 },
     // Tramadol 口服換算係數 0.1：Micromedex 2025（300 mg ≈ 30 MME）。CDC 2022 MME 表為 0.2，
     // 僅用於 CDC_MME_FACTORS 的非癌症風險評估，不用於換算。
@@ -177,7 +181,23 @@
     return { ivDirect: hasIV && singleSource, ivMixed: hasIV && !singleSource, ivTotal };
   }
 
-  // 各藥物換算劑量（依 DRUG_DISPLAY_ORDER）；單一來源藥物不減量，其餘套用交叉耐受減量
+  // 同藥換途徑不套交叉耐受減量：NCCN Adult Cancer Pain v2.2026 PAIN-G「reduce the dose by 25%–50% to allow for
+  // incomplete cross-tolerance between different opioids」。Fentanyl 不列入：IV→貼片已由 ivPatchMode 處理，
+  // 貼片→IV 方向 NCCN 未規定
+  const MOLECULE = {
+    morphine_oral: 'morphine', morphine_iv_sc: 'morphine',
+    hydromorphone_oral: 'hydromorphone', hydromorphone_iv_sc: 'hydromorphone',
+    tramadol_oral: 'tramadol', tramadol_iv: 'tramadol',
+    codeine_oral: 'codeine', codeine_im: 'codeine',
+  };
+
+  // 來源全部為同一分子（可多途徑、多筆），且 key 也是該分子 → 同藥換途徑
+  function sameMolecule(sourceKeys, key) {
+    const m = MOLECULE[key];
+    return !!m && sourceKeys.size > 0 && [...sourceKeys].every(k => MOLECULE[k] === m);
+  }
+
+  // 各藥物換算劑量（依 DRUG_DISPLAY_ORDER）；單一來源藥物與同藥換途徑不減量，其餘套用交叉耐受減量
   function conversions(list, crossTolPct) {
     const factor = crossTolFactor(crossTolPct);
     const ome = totalOME(list);
@@ -187,9 +207,10 @@
       const drug = DRUGS[key];
       const isSource = sourceKeys.has(key);
       const ivDirect = ivMode && key === 'fentanyl_patch';
+      const sameMol = sameMolecule(sourceKeys, key);
       const rawDose = ivDirect ? ivTotal : drug.fromOME(ome);
-      const adjDose = (ivDirect || (isSource && singleSource)) ? rawDose : rawDose * factor;
-      return { key, drug, isSource, singleSource, ivDirect, rawDose, adjDose, display: formatDose(drug, adjDose) };
+      const adjDose = (ivDirect || (isSource && singleSource) || sameMol) ? rawDose : rawDose * factor;
+      return { key, drug, isSource, singleSource, ivDirect, sameMolecule: sameMol, rawDose, adjDose, display: formatDose(drug, adjDose) };
     });
   }
 
@@ -276,9 +297,11 @@
       const d = DRUGS[dk];
       const isSource = sourceKeys.has(dk);
       const iv = ivDirect && dk === 'fentanyl_patch';
-      const adj = iv ? ivTotal : (isSource && singleSource) ? d.fromOME(ome) : d.fromOME(ome) * factor;
+      const srcOnly = isSource && singleSource;
+      const sameMol = !srcOnly && sameMolecule(sourceKeys, dk);
+      const adj = iv ? ivTotal : (srcOnly || sameMol) ? d.fromOME(ome) : d.fromOME(ome) * factor;
       const val = d.isPatch ? `${fmt(adj, 1)} mcg/h` : `${fmt(adj, 1)} mg/day`;
-      txt += `  • ${d.label}：${val}${isSource && singleSource ? '（來源，未減量）' : ''}${iv ? '（IV→貼片 1:1，未減量）' : ''}\n`;
+      txt += `  • ${d.label}：${val}${srcOnly ? '（來源，未減量）' : ''}${sameMol ? '（同藥換途徑，未減量）' : ''}${iv ? '（IV→貼片 1:1，未減量）' : ''}\n`;
     });
 
     txt += `\n【Breakthrough Dose（PRN q1–4h）】\n`;
@@ -296,7 +319,7 @@
   const api = {
     DRUGS, CDC_MME_FACTORS, PATCH_SIZES, PATCH_MATCH_TOL, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, MAX_OME, MAX_OME_CANCER, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS, DRUG_DISPLAY_ORDER,
     IV_PATCH_HINT, IV_MIXED_HINT,
-    crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, ivPatchMode, conversions, formatDose,
+    crossTolFactor, fmt, totalOME, omeLimit, cdcRiskMME, cdcMmeLine, totalOMEError, parseEntry, sourceInfo, sameMolecule, ivPatchMode, conversions, formatDose,
     recommendPatch, patchRecommendation, breakthroughRange, buildSummary,
   };
 
