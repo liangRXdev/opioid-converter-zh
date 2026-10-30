@@ -397,7 +397,7 @@ select:focus, input[type="number"]:focus {
   <div class="disclaimer mb-3">
     <strong>⚠ 臨床免責聲明：</strong>
     本工具僅供臨床決策輔助，所有換算結果為近似值，<strong>不得</strong>取代臨床判斷。
-    跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性），並依病患腎功能、疼痛控制狀態及個別反應調整。
+    跨藥物轉換時建議減量 <strong>25–50%</strong>（不完全交叉耐受性；同藥只換途徑不減量），並依病患腎功能、疼痛控制狀態及個別反應調整。
     高劑量（TDF &gt; 100 mcg/h）或老年病患請更保守換算。
   </div>
 
@@ -655,7 +655,7 @@ select:focus, input[type="number"]:focus {
   </footer>
 </div>
 
-<div class="version-badge">v1.4.6 |梁哲嘉藥師</div>
+<div class="version-badge">v1.4.7 | 梁哲嘉藥師</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -670,7 +670,7 @@ if ('serviceWorker' in navigator) {
 <script>
 // ============================================================
 // OPIOID CONVERSION TOOL — UI 層（計算見 js/calc.js）
-// v1.4.6 | 癌症情境 OME > 1000 警示照算、> 10000 拒絕；非癌症維持 > 1000 拒絕（P8）
+// v1.4.7 | Hydromorphone IV/SC ×20（NCCN）；同藥換途徑不減量（P6、P9）
 // ============================================================
 
 const { fmt, DRUGS, PATCH_SIZES, BUP_PATCH_SIZES, FENTANYL_PATCH_OPTIONS, OME_WARN_CANCER, ULTRA_HIGH_OME_TEXT, RENAL_FLAGS } = OpioidCalc;

@@ -36,8 +36,8 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 | Fentanyl continuous IV infusion | IV infusion | ×2.88 (mcg/hr → mg OME/day) | NCCN 2026 Table 2 note c (steady state); IV → patch 1:1 (PAIN-G 13) |
 | Morphine | Oral | ×1 (reference) | — |
 | Morphine | IV / SC | ×3 | — |
-| Hydromorphone | Oral | ×5 | UpToDate 2026; NCCN 2026 uses ×4, a 25% difference (see notes) |
-| Hydromorphone | IV / SC | ×25 | UpToDate 2026; NCCN 2026 uses ×20 |
+| Hydromorphone | Oral | ×5 | MASCC-ASCO 2025 consensus 5:1, UpToDate 2026; NCCN 2026 uses ×4, a 25% difference (see notes) |
+| Hydromorphone | IV / SC | ×20 | NCCN 2026 Table 2 (1.5 mg IV ≈ 30 mg PO morphine); UpToDate uses ×25; no MASCC-ASCO 2025 consensus ratio |
 | Oxycodone | Oral | ×1.5 | Consistent across all sources |
 | Tramadol | Oral | ×0.1 | Micromedex 2025; prodrug (CYP2D6); max 400 mg/day. CDC 2022 MME factor 0.2 is used only for non-cancer risk MME |
 | Tramadol | IV/IM | ×0.14 ⚠ | **Derived value** (oral ×0.1 ÷ bioavailability 0.70); not supported by any major guideline, estimate only |
@@ -52,10 +52,17 @@ An opioid MME (morphine milligram equivalent) conversion tool for clinical pharm
 
 | Source | Oral hydromorphone = 30 MME | Factor |
 |------|---------------------------|---------|
-| **UpToDate 2026** (used by this tool) | 6 mg | ×5 |
-| **NCCN 2026 Table 2** | 7.5 mg | ×4 |
+| **MASCC-ASCO 2025 Table 3** (used by this tool) | 6 mg | ×5 (5:1, 89.1% consensus) |
+| UpToDate 2026 | 6 mg | ×5 |
+| NCCN 2026 Table 2 | 7.5 mg | ×4 |
 
-The two differ by 25%. This tool uses UpToDate (more conservative), the safer choice for high-risk assessment. In clinical use, pick one source and apply it consistently.
+| Source | IV/SC hydromorphone = 30 MME | Factor |
+|------|---------------------------|---------|
+| **NCCN 2026 Table 2** (used by this tool from v1.4.7) | 1.5 mg | ×20 |
+| UpToDate 2026 | 1.2 mg | ×25 |
+| MASCC-ASCO 2025 | — | no consensus ratio |
+
+Oral uses the international consensus ×5; IV/SC uses NCCN ×20, giving a hydromorphone PO:IV ratio of 4, inside the NCCN PO:IV range of 2.5–5 (×25 gives 5, at the upper limit, and overestimates OME by 25% when converting from IV hydromorphone).
 
 ### Fentanyl patch (TDF) conversion ratio
 
@@ -130,7 +137,9 @@ Tramadol must be metabolized by CYP2D6 to O-desmethyltramadol (M1) to have μ-re
 
 ### Opioid rotation dose-reduction principles
 
-- Pain controlled → **reduce by 25–50%** after conversion (incomplete cross-tolerance)
+- Pain controlled → **reduce by 25–50%** when switching to a **different opioid** (incomplete cross-tolerance)
+- **Same opioid, route change only** (e.g. morphine PO ↔ IV/SC): no reduction. NCCN PAIN-G limits the reduction to cross-tolerance "between different opioids". Applied automatically when all sources are the same molecule (fentanyl excluded)
+- MASCC-ASCO 2025 did **not reach consensus** on automatic 25–50% reductions (no clinical experience with the reduced doses; higher withdrawal risk); the tool keeps the 0/25/50% choice to the user
 - Pain uncontrolled → start at **100%** of the equianalgesic dose
 - Switching to methadone → special case requiring a **75–>90%** reduction (methadone is not supported by this tool; assess individually)
 
@@ -155,6 +164,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20 (NCCN 2026 Table 2); oral ×5 now cites the MASCC-ASCO 2025 consensus; same-opioid route changes (morphine / hydromorphone / tramadol / codeine) skip the cross-tolerance reduction (NCCN PAIN-G) |
 | v1.4.6 | 2026-10-30 | Cancer scenario: OME > 1000 mg/day is calculated with an ultra-high-dose warning (also in the copied summary); only > 10000 is rejected as a typo guard. Non-cancer keeps rejecting > 1000. Patch combinations above 5 patches are shown as 100×n + r |
 | v1.4.5 | 2026-10-29 | Non-cancer scenario adds CDC 2022 risk MME: 50/90 warnings use CDC 2022 factors; drugs not in the CDC table use the tool factors and are flagged; conversions unchanged. Conversion-factor sources separated from CDC |
 | v1.4.4 | 2026-10-29 | Patch recommendation: a single strength when the target matches it (±0.05 mcg/h); targets > 100 mcg/h use 100×n + r combinations with their composition shown; the "highest common strength" cap is removed |
