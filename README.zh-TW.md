@@ -154,7 +154,8 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 ## 技術說明
 
 - **架構**：純靜態 HTML，無需後端，無資料上傳；換算邏輯在 `js/calc.js`（純函式，瀏覽器以 `<script>` 載入，Node 可 `require`）
-- **測試**：`node --test`（零相依；characterization golden 僅在刻意改變輸出時以 `node tests/update-golden.js` 重產）
+- **測試**：`node --test`（零相依；characterization golden 僅在刻意改變輸出時以 `node tests/update-golden.js` 重產）。GitHub Actions 在 push main 與 PR 時以 UTC、Asia/Taipei 兩個時區執行
+- **完整狀態比對**：`node tests/tools/statecmp.js [base-ref] [--ignore <regex>] [--only <欄位>] [--show]`，以 git worktree 取出基準版本，逐欄比對全部情境的 UI 狀態；刻意改輸出的 PR 用它證明變動範圍（golden 只存雜湊，看不出哪個欄位變了）
 - **相依套件**：Bootstrap 5.3.2（CDN）、Noto Sans TC / JetBrains Mono（Google Fonts CDN）
 - **部署**：GitHub Pages（`main` branch root）
 
@@ -164,6 +165,7 @@ Tramadol 需經 CYP2D6 代謝為 O-desmethyltramadol（M1）才具 μ 受體活�
 
 | 版本 | 日期 | 變更摘要 |
 |------|------|---------|
+| v1.4.9 | 2026-10-30 | OME 來源說明改以藥物／途徑種類計（原以清單筆數計，SR + IR 同藥兩筆會顯示「2 種藥物」）；新增 GitHub Actions 測試與 `tests/tools/statecmp.js` |
 | v1.4.8 | 2026-10-30 | BT 說明改為與列出藥物一致並註明 MASCC 10–15%；Buprenorphine 貼片 ×2.5 標示推論出處（NCCN 2026）；NCCN 版本標示改為 v2.2026（演算法與 Table 2 未變）|
 | v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20（NCCN 2026 Table 2），口服 ×5 改標 MASCC-ASCO 2025 共識；同藥換途徑（Morphine / Hydromorphone / Tramadol / Codeine）不套交叉耐受減量（NCCN PAIN-G）|
 | v1.4.6 | 2026-10-30 | 癌症情境 OME > 1000 mg/day 改為照算並顯示超高劑量警示（複製摘要同步），> 10000 才拒絕（防打錯字）；非癌症維持 > 1000 拒絕。貼片組合超過 5 片改以 100×n + r 表示 |

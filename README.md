@@ -154,7 +154,8 @@ This tool is **for clinical decision support only**. All conversions are approxi
 ## Technical Notes
 
 - **Architecture**: pure static HTML, no backend, no data upload; conversion logic lives in `js/calc.js` (pure functions, loaded via `<script>`, also `require`-able from Node)
-- **Tests**: `node --test` (zero dependencies; characterization golden regenerated with `node tests/update-golden.js` only for intentional output changes)
+- **Tests**: `node --test` (zero dependencies; characterization golden regenerated with `node tests/update-golden.js` only for intentional output changes). GitHub Actions runs them on pushes to main and on PRs, in both UTC and Asia/Taipei
+- **Full-state comparison**: `node tests/tools/statecmp.js [base-ref] [--ignore <regex>] [--only <fields>] [--show]` checks out the base in a git worktree and compares every scenario's UI state field by field; use it to prove the scope of intentional output changes (the golden only stores hashes)
 - **Dependencies**: Bootstrap 5.3.2 (CDN), Noto Sans TC / JetBrains Mono (Google Fonts CDN)
 - **Deployment**: GitHub Pages (`main` branch root)
 
@@ -164,6 +165,7 @@ This tool is **for clinical decision support only**. All conversions are approxi
 
 | Version | Date | Summary |
 |------|------|---------|
+| v1.4.9 | 2026-10-30 | OME source note now counts distinct drugs/routes instead of list entries (two SR + IR entries of one drug used to read "2 drugs"); added GitHub Actions tests and `tests/tools/statecmp.js` |
 | v1.4.8 | 2026-10-30 | Breakthrough note now matches the drugs listed and cites MASCC 10–15%; buprenorphine patch ×2.5 now cites its derivation (NCCN 2026); NCCN citations updated to v2.2026 (algorithm and Table 2 unchanged) |
 | v1.4.7 | 2026-10-30 | Hydromorphone IV/SC ×25 → ×20 (NCCN 2026 Table 2); oral ×5 now cites the MASCC-ASCO 2025 consensus; same-opioid route changes (morphine / hydromorphone / tramadol / codeine) skip the cross-tolerance reduction (NCCN PAIN-G) |
 | v1.4.6 | 2026-10-30 | Cancer scenario: OME > 1000 mg/day is calculated with an ultra-high-dose warning (also in the copied summary); only > 10000 is rejected as a typo guard. Non-cancer keeps rejecting > 1000. Patch combinations above 5 patches are shown as 100×n + r |
